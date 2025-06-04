@@ -1,8 +1,8 @@
 # ⚛️ React do Zero a Maestria
 
-**Instrutor**: Matheus Battisti
-**Plataforma**: Udemy
-**Link do curso**: [https://www.udemy.com/course/react-do-zero-a-maestria-c-hooks-router-api-projetos/](https://www.udemy.com/course/react-do-zero-a-maestria-c-hooks-router-api-projetos/)
+- **Instrutor**: Matheus Battisti
+- **Plataforma**: Udemy
+- **Link do curso**: [React do Zero a Maestria](https://www.udemy.com/course/react-do-zero-a-maestria-c-hooks-router-api-projetos/)
 
 ## 📝 Descrição do Curso
 
