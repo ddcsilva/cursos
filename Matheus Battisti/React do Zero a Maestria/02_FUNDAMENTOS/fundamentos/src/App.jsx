@@ -5,6 +5,8 @@ import Events from "./components/Events";
 
 // Style
 import "./App.css";
+import InlineEvent from "./components/InlineEvent";
+import RenderFunction from "./components/RenderFunction";
 
 // Componente Pai
 function App() {
@@ -15,6 +17,8 @@ function App() {
       <FirstComponent />
       <TemplateExpessions />
       <Events />
+      <InlineEvent />
+      <RenderFunction />
     </div>
   );
 }
