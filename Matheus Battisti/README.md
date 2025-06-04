@@ -1,14 +1,12 @@
 # 👨‍💻 Matheus Battisti - Cursos Udemy
 
-Esta pasta contém materiais dos cursos do instrutor **Matheus Battisti**, disponíveis na plataforma Udemy. Matheus é reconhecido por seus cursos práticos e didáticos em desenvolvimento web.
+Esta pasta contém materiais dos cursos do instrutor **Matheus Battisti**, disponíveis na plataforma Udemy.
 
 ## 📚 Cursos Disponíveis
 
 ### ⚛️ React do Zero a Maestria (c/ hooks, router, API, Projetos)
 
-**Link do curso**: [https://www.udemy.com/course/react-do-zero-a-maestria-c-hooks-router-api-projetos/](https://www.udemy.com/course/react-do-zero-a-maestria-c-hooks-router-api-projetos/)
-
-Curso completo de React do básico ao avançado, cobrindo desde fundamentos até tópicos avançados como Context API, hooks, requisições HTTP e muito mais.
+**Link do curso**: [React do Zero a Maestria](./React%20do%20Zero%20a%20Maestria/)
 
 ---
 
