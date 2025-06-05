@@ -1,0 +1,36 @@
+.challenge-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 20px;
+}
+
+.challenge-question {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+.challenge-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+}
+
+.challenge-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.challenge-button:active {
+  transform: translateY(0);
+}
