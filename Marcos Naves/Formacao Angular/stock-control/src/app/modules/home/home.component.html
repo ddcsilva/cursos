@@ -2,18 +2,33 @@
   <div class="col-12">
     <div class="form-container">
       <!-- LOGIN -->
-      <form class="auth-form" *ngIf="loginCard">
+      <form
+        [formGroup]="loginForm"
+        class="auth-form"
+        *ngIf="loginCard"
+        (ngSubmit)="onLoginSubmit()"
+      >
         <p-card
           styleClass="mt-10"
           header="Login"
-          subheader="Faça login com sua conta existente!"
+          subheader="Faça login para acessar o sistema"
         >
           <div class="input-group">
-            <input type="email" pInputText placeholder="Email" required />
+            <input
+              type="email"
+              formControlName="email"
+              pInputText
+              placeholder="Email"
+            />
           </div>
 
           <div class="input-group">
-            <input type="password" pInputText placeholder="Senha" required />
+            <input
+              type="password"
+              formControlName="password"
+              pInputText
+              placeholder="Senha"
+            />
           </div>
 
           <div class="button-container">
@@ -23,6 +38,7 @@
               pRipple
               label="Login"
               class="auth-button"
+              [disabled]="loginForm.invalid"
             ></button>
           </div>
 
@@ -39,22 +55,42 @@
       </form>
 
       <!-- SIGNUP -->
-      <form class="auth-form" *ngIf="!loginCard">
+      <form
+        [formGroup]="signupForm"
+        class="auth-form"
+        *ngIf="!loginCard"
+        (ngSubmit)="onSignupSubmit()"
+      >
         <p-card
           styleClass="mt-10"
           header="Criar conta"
           subheader="Crie já sua conta gratuita!"
         >
           <div class="input-group">
-            <input type="text" pInputText placeholder="Nome" required />
+            <input
+              type="text"
+              pInputText
+              placeholder="Nome"
+              formControlName="name"
+            />
           </div>
 
           <div class="input-group">
-            <input type="email" pInputText placeholder="Email" required />
+            <input
+              type="email"
+              pInputText
+              placeholder="Email"
+              formControlName="email"
+            />
           </div>
 
           <div class="input-group">
-            <input type="password" pInputText placeholder="Senha" required />
+            <input
+              type="password"
+              pInputText
+              placeholder="Senha"
+              formControlName="password"
+            />
           </div>
 
           <div class="button-container">
@@ -64,6 +100,7 @@
               pRipple
               label="Criar conta"
               class="auth-button"
+              [disabled]="signupForm.invalid"
             ></button>
           </div>
 
