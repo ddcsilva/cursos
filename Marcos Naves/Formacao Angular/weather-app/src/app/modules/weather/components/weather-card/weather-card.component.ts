@@ -5,6 +5,8 @@ import {
   faTemperatureHigh,
   faTemperatureLow,
   faWind,
+  faGauge,
+  faEye,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -20,4 +22,6 @@ export class WeatherCardComponent {
   maxTemperaturaIcon = faTemperatureHigh;
   humidityIcon = faDroplet;
   windIcon = faWind;
+  pressureIcon = faGauge;
+  visibilityIcon = faEye;
 }

@@ -1,18 +1,30 @@
 <div class="container" *ngIf="weatherData">
   <div class="upper-data">
-    <img
-      src="../../../../../assets/sun.jpg"
-      *ngIf="weatherData.main.temp > 15"
-    />
-    <img
-      src="../../../../../assets/cold1.jpg"
-      *ngIf="weatherData.main.temp <= 15"
-    />
+    <!-- Ícone dinâmico da API OpenWeather -->
+    <div class="weather-icon-container">
+      <img
+        [src]="
+          'https://openweathermap.org/img/wn/' +
+          weatherData.weather[0].icon +
+          '@4x.png'
+        "
+        [alt]="weatherData.weather[0].description"
+        class="weather-icon"
+      />
+    </div>
 
     <div class="weather-data">
-      <div class="location">{{ weatherData.name }}</div>
+      <div class="location">
+        {{ weatherData.name }}, {{ weatherData.sys.country }}
+      </div>
       <div class="temperature">
         {{ weatherData.main.temp | number : "1.0-0" }}°C
+      </div>
+      <div class="weather-description">
+        {{ weatherData.weather[0].description | titlecase }}
+      </div>
+      <div class="feels-like">
+        Sensação térmica: {{ weatherData.main.feels_like | number : "1.0-0" }}°C
       </div>
     </div>
   </div>
@@ -51,6 +63,22 @@
         </div>
         <div class="info-block-value">
           {{ weatherData.wind.speed | number : "1.0-0" }} km/h
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <fa-icon size="lg" [icon]="pressureIcon"></fa-icon>
+          <span>Pressão</span>
+        </div>
+        <div class="info-block-value">{{ weatherData.main.pressure }} hPa</div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <fa-icon size="lg" [icon]="visibilityIcon"></fa-icon>
+          <span>Visibilidade</span>
+        </div>
+        <div class="info-block-value">
+          {{ weatherData.visibility / 1000 | number : "1.0-1" }} km
         </div>
       </div>
     </div>

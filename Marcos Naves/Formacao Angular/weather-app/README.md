@@ -7,9 +7,12 @@ Uma aplicação web moderna desenvolvida em Angular para consulta de informaçõ
 - **Busca por cidade**: Pesquisar informações meteorológicas de qualquer cidade do mundo
 - **Dados em tempo real**: Integração com a API OpenWeatherMap
 - **Interface responsiva**: Design moderno e adaptável para diferentes dispositivos
+- **Ícones meteorológicos dinâmicos**: Ícones reais da API OpenWeather com animações
+- **Informações detalhadas**: Temperatura, sensação térmica, umidade, vento, pressão e visibilidade
 - **Tratamento de erros**: Feedback adequado para diferentes cenários de erro
-- **Estados de carregamento**: Indicadores visuais durante o carregamento dos dados
+- **Estados de carregamento**: Skeleton loading animado durante carregamento
 - **Validação de entrada**: Verificação dos dados inseridos pelo usuário
+- **Experiência aprimorada**: Animações suaves, hover effects e transições
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -113,11 +116,34 @@ Este projeto utiliza a [OpenWeatherMap API](https://openweathermap.org/api) para
 ## 📚 Funcionalidades Técnicas
 
 - **Arquitetura modular**: Organização em módulos para melhor manutenibilidade
-- **Lazy loading**: Carregamento otimizado dos módulos
-- **Error handling**: Tratamento robusto de erros com feedback para o usuário
+- **Error handling avançado**: Tratamento específico de erros HTTP com mensagens contextuais
 - **Memory leak prevention**: Uso adequado de subscriptions com takeUntil
 - **TypeScript interfaces**: Tipagem forte para dados da API
 - **Responsive design**: Interface adaptável para diferentes tamanhos de tela
+- **Animações CSS**: Transições suaves e animações keyframe personalizadas
+- **Estados visuais**: Loading, error e success states com feedback visual
+- **Grid layout**: Layout moderno com CSS Grid para organização dos dados
+- **Backdrop filters**: Efeitos de blur para profundidade visual
+
+## ✨ Melhorias Implementadas
+
+### 🎨 **Interface e Experiência do Usuário**
+- **Ícones dinâmicos**: Substituição de imagens estáticas por ícones reais da API OpenWeather
+- **Animações fluidas**: Efeito de flutuação no ícone do clima e transições suaves
+- **Hover effects**: Interações visuais nos cards e botões
+- **Design responsivo**: Adaptação completa para dispositivos móveis
+
+### 🛠️ **Funcionalidades Avançadas**
+- **Error handling robusto**: Tratamento específico para diferentes tipos de erro HTTP
+- **Skeleton loading**: Indicador de carregamento com animação
+- **Validação inteligente**: Verificação de entrada com feedback visual
+- **Busca aprimorada**: Suporte ao Enter e autocomplete desabilitado
+
+### 📊 **Informações Meteorológicas Expandidas**
+- **Dados completos**: Localização com país, descrição do clima
+- **Sensação térmica**: Informação adicional de conforto térmico
+- **Pressão atmosférica**: Dados de pressão em hPa
+- **Visibilidade**: Distância de visibilidade em quilômetros
 
 ## 📖 Sobre o Curso
 
@@ -126,8 +152,9 @@ Este projeto foi desenvolvido como parte da Formação Angular, demonstrando con
 - Criação de componentes e serviços
 - Integração com APIs REST
 - Gerenciamento de estado
-- Tratamento de erros
+- Tratamento de erros avançado
 - Boas práticas de desenvolvimento Angular
+- UX/UI Design moderno
 
 ---
 
