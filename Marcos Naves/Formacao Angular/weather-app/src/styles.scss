@@ -165,3 +165,131 @@ fa-icon {
 .search-icon {
   margin-left: 1em;
 }
+
+.search-icon.loading {
+  color: #ffcc00;
+}
+
+.disabled {
+  cursor: not-allowed !important;
+  opacity: 0.6;
+}
+
+.error-input {
+  border: 2px solid #ff4444 !important;
+  box-shadow: 0 0 8px rgba(255, 68, 68, 0.3) !important;
+}
+
+/* Error Container */
+.error-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-message {
+  background-color: var(--shadow-dark);
+  border: 2px solid #ff4444;
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  color: var(--white);
+  max-width: 400px;
+  width: 90%;
+}
+
+.error-message fa-icon {
+  color: #ff4444;
+  margin-bottom: 1rem;
+}
+
+.error-message p {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.retry-button {
+  background-color: var(--blue-2);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.retry-button:hover:not(:disabled) {
+  background-color: var(--blue-1);
+  transform: translateY(-2px);
+}
+
+.retry-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Loading Container */
+.loading-container {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-skeleton {
+  width: 500px;
+  height: 80vh;
+  background-color: var(--blue-2);
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px var(--shadow-dark);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.skeleton-header {
+  height: 50%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+
+.skeleton-temp {
+  height: 80px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.skeleton-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex: 1;
+}
+
+.skeleton-item {
+  width: calc(50% - 0.5rem);
+  height: 60px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 10px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

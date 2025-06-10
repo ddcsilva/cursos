@@ -4,22 +4,58 @@
       type="text"
       name="city"
       [(ngModel)]="initialCity"
-      placeholder="Buscar Localização"
+      placeholder="Digite o nome da cidade..."
+      [disabled]="isLoading"
+      [class.error-input]="hasError"
     />
 
-    <span (click)="onSubmit()">
+    <span (click)="onSubmit()" [class.disabled]="isLoading">
       <fa-icon
+        *ngIf="!isLoading"
         animation="fade"
-        style="--fa-animation-duration: 5s; cursor: pointer"
+        style="--fa-animation-duration: 2s; cursor: pointer"
         size="lg"
         class="search-icon"
         [icon]="searchIcon"
+      ></fa-icon>
+      <fa-icon
+        *ngIf="isLoading"
+        animation="spin"
+        size="lg"
+        class="search-icon loading"
+        [icon]="spinnerIcon"
       ></fa-icon>
     </span>
   </form>
 </div>
 
+<!-- Estado de Erro -->
+<div class="error-container" *ngIf="hasError">
+  <div class="error-message">
+    <fa-icon [icon]="errorIcon" size="2x"></fa-icon>
+    <p>{{ errorMessage }}</p>
+    <button class="retry-button" (click)="onSubmit()" [disabled]="isLoading">
+      Tentar Novamente
+    </button>
+  </div>
+</div>
+
+<!-- Estado de Loading -->
+<div class="loading-container" *ngIf="isLoading && !hasError">
+  <div class="loading-skeleton">
+    <div class="skeleton-header"></div>
+    <div class="skeleton-temp"></div>
+    <div class="skeleton-details">
+      <div class="skeleton-item"></div>
+      <div class="skeleton-item"></div>
+      <div class="skeleton-item"></div>
+      <div class="skeleton-item"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Card do Clima -->
 <app-weather-card
-  *ngIf="weatherData"
+  *ngIf="weatherData && !isLoading && !hasError"
   [weatherData]="weatherData"
 ></app-weather-card>

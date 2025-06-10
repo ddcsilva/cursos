@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +15,15 @@ export class WeatherService {
   constructor(private http: HttpClient) {}
 
   getWeatherData(city: string): Observable<any> {
-    return this.http.get(
-      `${this.apiUrl}?q=${city}&units=${this.units}&mode=${this.mode}&appid=${this.apiKey}`
-    );
+    return this.http
+      .get(
+        `${this.apiUrl}?q=${city}&units=${this.units}&mode=${this.mode}&appid=${this.apiKey}`
+      )
+      .pipe(catchError(this.handleError));
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    // Preserva o erro original para que o componente possa tratar adequadamente
+    return throwError(() => error);
   }
 }
