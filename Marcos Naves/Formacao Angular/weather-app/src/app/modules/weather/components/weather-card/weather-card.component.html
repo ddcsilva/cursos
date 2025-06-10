@@ -25,8 +25,32 @@
           <span>Mínima</span>
         </div>
         <div class="info-block-value">
-          {{ weatherData.main.temp_min }}
-          <span>°C</span>
+          {{ weatherData.main.temp_min | number : "1.0-0" }}°C
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <fa-icon size="lg" [icon]="maxTemperaturaIcon"></fa-icon>
+          <span>Máxima</span>
+        </div>
+        <div class="info-block-value">
+          {{ weatherData.main.temp_max | number : "1.0-0" }}°C
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <fa-icon size="lg" [icon]="humidityIcon"></fa-icon>
+          <span>Umidade</span>
+        </div>
+        <div class="info-block-value">{{ weatherData.main.humidity }}%</div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <fa-icon size="lg" [icon]="windIcon"></fa-icon>
+          <span>Vento</span>
+        </div>
+        <div class="info-block-value">
+          {{ weatherData.wind.speed | number : "1.0-0" }} km/h
         </div>
       </div>
     </div>
