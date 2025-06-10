@@ -1,13 +1,91 @@
+:host {
+  --primary-color: #dc2626; // red-600
+  --background-height: 100vmin;
+  --card-spacing: 1rem;
+}
+
 .grid {
   background-image: url("../../../assets/sean-pollock.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vmin;
+  height: var(--background-height);
+
+  @media screen and (max-width: 1400px) {
+    background-position: top;
+  }
 }
 
-@media screen and (max-width: 1400px) {
-  .grid {
-    background-position: top;
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100%;
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: var(--card-spacing);
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  input {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--card-spacing);
+}
+
+.auth-button {
+  min-width: 120px;
+}
+
+.switch-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: var(--card-spacing);
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .auth-form {
+    padding: 0 1rem;
+  }
+
+  .input-group input {
+    max-width: 100%;
   }
 }
