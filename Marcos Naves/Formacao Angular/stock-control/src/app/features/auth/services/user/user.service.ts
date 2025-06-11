@@ -6,6 +6,7 @@ import { UserRequest } from '../../../../shared/models/interfaces/user/user-requ
 import { UserResponse } from '../../../../shared/models/interfaces/user/user-response.interface';
 import { AuthRequest } from '../../../../shared/models/interfaces/auth/auth-request.interface';
 import { AuthResponse } from '../../../../shared/models/interfaces/auth/auth-response.interface';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ import { AuthResponse } from '../../../../shared/models/interfaces/auth/auth-res
 export class UserService {
   private apiUrl = environment.API_URL;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   signup(user: UserRequest): Observable<UserResponse> {
     return this.http.post<UserResponse>(`${this.apiUrl}/user`, user);
@@ -21,5 +22,19 @@ export class UserService {
 
   auth(auth: AuthRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/auth`, auth);
+  }
+
+  isAuthenticated(): boolean {
+    const token = this.cookieService.get('token');
+    return !!token;
+  }
+
+  logout(): void {
+    this.cookieService.delete('token');
+  }
+
+  getToken(): string | null {
+    const token = this.cookieService.get('token');
+    return token || null;
   }
 }

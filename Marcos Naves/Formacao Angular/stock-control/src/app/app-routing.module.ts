@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './features/auth/components/login.component';
+import { authGuard, noAuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [noAuthGuard],
   },
   {
     path: 'dashboard',
@@ -18,6 +20,11 @@ const routes: Routes = [
       import('./features/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
+    canActivate: [authGuard],
+  },
+  {
+    path: '**',
+    redirectTo: 'dashboard',
   },
 ];
 

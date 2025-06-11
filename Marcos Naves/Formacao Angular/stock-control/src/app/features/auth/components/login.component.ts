@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user/user.service';
 import { CookieService } from 'ngx-cookie-service';
 import { MessageService } from 'primeng/api';
@@ -9,9 +10,10 @@ import { MessageService } from 'primeng/api';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginCard: boolean = true;
   isLoading: boolean = false;
+  returnUrl: string = '/dashboard';
 
   loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -26,10 +28,18 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
     private userService: UserService,
     private cookieService: CookieService,
     private messageService: MessageService
   ) {}
+
+  ngOnInit(): void {
+    // Captura a URL de retorno dos query params
+    this.returnUrl =
+      this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
+  }
 
   onLoginSubmit() {
     if (this.loginForm.value && this.loginForm.valid) {
@@ -45,6 +55,9 @@ export class LoginComponent {
               detail: `Bem vindo de volta ${user.name}`,
               life: 3000,
             });
+
+            // Redireciona para a URL de retorno ou dashboard
+            this.router.navigate([this.returnUrl]);
           }
           this.isLoading = false;
         },
