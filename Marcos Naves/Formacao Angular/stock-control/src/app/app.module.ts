@@ -9,6 +9,7 @@ import { AuthModule } from './features/auth/auth.module';
 import { ToastModule } from 'primeng/toast';
 import { CookieService } from 'ngx-cookie-service';
 import { MessageService } from 'primeng/api';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { MessageService } from 'primeng/api';
     HttpClientModule,
     AuthModule,
     ToastModule,
+    ChartModule,
   ],
   providers: [CookieService, MessageService],
   bootstrap: [AppComponent],
