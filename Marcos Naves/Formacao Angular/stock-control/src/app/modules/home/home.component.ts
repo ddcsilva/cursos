@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../services/user/user.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -20,13 +22,42 @@ export class HomeComponent {
     password: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private cookieService: CookieService
+  ) {}
 
   onLoginSubmit() {
-    console.log(this.loginForm.value);
+    if (this.loginForm.value && this.loginForm.valid) {
+      this.userService.auth(this.loginForm.value).subscribe({
+        next: (user) => {
+          if (user) {
+            this.cookieService.set('token', user.token);
+            this.loginForm.reset();
+          }
+        },
+        error: (error) => {
+          console.error(`Erro ao fazer login: ${error.message}`);
+        },
+      });
+    }
   }
 
   onSignupSubmit() {
-    console.log(this.signupForm.value);
+    if (this.signupForm.value && this.signupForm.valid) {
+      this.userService.signup(this.signupForm.value).subscribe({
+        next: (user) => {
+          if (user) {
+            alert('Usuário criado com sucesso');
+            this.signupForm.reset();
+            this.loginCard = true;
+          }
+        },
+        error: (error) => {
+          console.error(`Erro ao criar usuário: ${error.message}`);
+        },
+      });
+    }
   }
 }
