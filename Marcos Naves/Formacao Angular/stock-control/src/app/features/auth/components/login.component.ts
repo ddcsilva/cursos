@@ -5,11 +5,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class HomeComponent {
+export class LoginComponent {
   loginCard: boolean = true;
   isLoading: boolean = false;
 

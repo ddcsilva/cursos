@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from './modules/auth/auth.module';
+import { AuthModule } from './features/auth/auth.module';
 import { ToastModule } from 'primeng/toast';
 import { CookieService } from 'ngx-cookie-service';
 import { MessageService } from 'primeng/api';

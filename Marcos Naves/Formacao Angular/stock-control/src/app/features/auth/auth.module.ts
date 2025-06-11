@@ -9,10 +9,10 @@ import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
 
-import { HomeComponent } from '../home/home.component';
+import { LoginComponent } from './components/login.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [LoginComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -22,6 +22,6 @@ import { HomeComponent } from '../home/home.component';
     PasswordModule,
     DividerModule,
   ],
-  exports: [HomeComponent],
+  exports: [LoginComponent],
 })
 export class AuthModule {}

@@ -14,15 +14,13 @@
           subheader="Faça login para acessar o sistema"
         >
           <div class="input-group">
-            <label for="login-email" class="input-label">Email</label>
+            <label class="input-label">Email</label>
             <input
-              id="login-email"
               type="email"
               formControlName="email"
               pInputText
               placeholder="Digite seu email"
               [class.ng-dirty]="isFieldInvalid(loginForm, 'email')"
-              autocomplete="email"
             />
             <small
               class="error-message"
@@ -33,14 +31,12 @@
           </div>
 
           <div class="input-group">
-            <label for="login-password" class="input-label">Senha</label>
+            <label class="input-label">Senha</label>
             <p-password
-              id="login-password"
               formControlName="password"
               placeholder="Digite sua senha"
               [toggleMask]="true"
               [feedback]="false"
-              autocomplete="current-password"
               [class.ng-dirty]="isFieldInvalid(loginForm, 'password')"
             ></p-password>
             <small
@@ -68,13 +64,7 @@
             <span class="divider-text">ou</span>
           </p-divider>
 
-          <span
-            class="switch-link"
-            (click)="loginCard = !loginCard"
-            tabindex="0"
-            (keydown.enter)="loginCard = !loginCard"
-            (keydown.space)="loginCard = !loginCard"
-          >
+          <span class="switch-link" (click)="loginCard = !loginCard">
             <i class="pi pi-user-plus"></i>
             Criar nova conta
           </span>
@@ -94,15 +84,13 @@
           subheader="Junte-se a nós! É rápido e gratuito"
         >
           <div class="input-group">
-            <label for="signup-name" class="input-label">Nome completo</label>
+            <label class="input-label">Nome completo</label>
             <input
-              id="signup-name"
               type="text"
               pInputText
               placeholder="Digite seu nome completo"
               formControlName="name"
               [class.ng-dirty]="isFieldInvalid(signupForm, 'name')"
-              autocomplete="name"
             />
             <small
               class="error-message"
@@ -113,15 +101,13 @@
           </div>
 
           <div class="input-group">
-            <label for="signup-email" class="input-label">Email</label>
+            <label class="input-label">Email</label>
             <input
-              id="signup-email"
               type="email"
               pInputText
               placeholder="Digite seu melhor email"
               formControlName="email"
               [class.ng-dirty]="isFieldInvalid(signupForm, 'email')"
-              autocomplete="email"
             />
             <small
               class="error-message"
@@ -132,14 +118,12 @@
           </div>
 
           <div class="input-group">
-            <label for="signup-password" class="input-label">Senha</label>
+            <label class="input-label">Senha</label>
             <p-password
-              id="signup-password"
               formControlName="password"
               placeholder="Crie uma senha segura"
               [toggleMask]="true"
               [feedback]="true"
-              autocomplete="new-password"
               [class.ng-dirty]="isFieldInvalid(signupForm, 'password')"
             ></p-password>
             <small
@@ -167,13 +151,7 @@
             <span class="divider-text">ou</span>
           </p-divider>
 
-          <span
-            class="switch-link"
-            (click)="loginCard = !loginCard"
-            tabindex="0"
-            (keydown.enter)="loginCard = !loginCard"
-            (keydown.space)="loginCard = !loginCard"
-          >
+          <span class="switch-link" (click)="loginCard = !loginCard">
             <i class="pi pi-sign-in"></i>
             Já tenho uma conta
           </span>
