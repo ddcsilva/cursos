@@ -2,11 +2,29 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { RouterModule } from '@angular/router';
+import { DASHBOARD_ROUTES } from './dashboard.routing';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
+import { ToolbarModule } from 'primeng/toolbar';
+import { CardModule } from 'primeng/card';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
-  declarations: [
-    DashboardComponent
+  declarations: [DashboardComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(DASHBOARD_ROUTES),
+    SidebarModule,
+    ButtonModule,
+    ToolbarModule,
+    CardModule,
+    ToastModule,
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  providers: [MessageService, CookieService],
 })
 export class DashboardModule {}
