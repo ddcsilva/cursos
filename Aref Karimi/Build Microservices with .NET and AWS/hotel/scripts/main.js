@@ -3,60 +3,44 @@ const currentUserToken = {
   idToken: "",
   role: "",
 };
-
 function pageLoad() {
-  try {
-    cognitoApp.auth.parseCognitoWebResponse(window.location.href);
-    var currentUser = cognitoApp.auth.getCurrentUser();
+  cognitoApp.auth.parseCognitoWebResponse(window.location.href);
+  var currentUser = cognitoApp.auth.getCurrentUser();
 
-    if (currentUser) {
-      cognitoApp.auth.getSession();
-      currentSession = cognitoApp.auth.signInUserSession;
+  if (currentUser) {
+    cognitoApp.auth.getSession();
 
-      if (currentSession && currentSession.idToken) {
-        currentUserToken.currentUserId = currentUser;
-        currentUserToken.idToken = currentSession.idToken.jwtToken;
-        console.info("Current user token:", currentUserToken);
+    currentSession = cognitoApp.auth.signInUserSession;
 
-        var tokenDetails = parseJwt(currentSession.idToken.jwtToken);
-        if (tokenDetails["cognito:groups"]) {
-          var groups = tokenDetails["cognito:groups"][0];
-          currentUserToken.role = groups;
-        }
-      }
+    currentUserToken.currentUserId = currentUser;
+    currentUserToken.idToken = currentSession.idToken.jwtToken;
+    console.info(currentUserToken);
+
+    var tokenDetails = parseJwt(currentSession.idToken.jwtToken);
+    if (tokenDetails["cognito:groups"]) {
+      var groups = tokenDetails["cognito:groups"][0];
+      currentUserToken.role = groups;
     }
+  }
 
-    $("#btnSignIn").on("click", function (btn) {
-      try {
-        cognitoApp.auth.getSession();
-      } catch (error) {
-        console.error("Error during sign in:", error);
-      }
-    });
+  $("#btnSignIn").on("click", function (btn) {
+    cognitoApp.auth.getSession();
+  });
 
-    $("#btnSignOut").on("click", function (btn) {
-      try {
-        currentUserToken.role = "";
-        currentUserToken.idToken = "";
-        currentUserToken.currentUserId = "";
-        cognitoApp.auth.signOut();
-        // Redirecionar para a página inicial após o logout
-        window.location.href = "/hotel/";
-      } catch (error) {
-        console.error("Error during sign out:", error);
-      }
-    });
+  $("#btnSignOut").on("click", function (btn) {
+    currentUserToken.role = "";
+    currentUserToken.idToken = "";
+    currentUserToken.currentUserId = "";
+    cognitoApp.auth.signOut();
+  });
 
-    $("#btnSignOut").hide();
-    $("#btnSignIn").hide();
+  $("#btnSignOut").hide();
+  $("#btnSignIn").hide();
 
-    if (currentUserToken.currentUserId === "") {
-      $("#btnSignIn").show();
-    } else {
-      $("#btnSignOut").show();
-    }
-  } catch (error) {
-    console.error("Error in pageLoad:", error);
+  if (currentUserToken.currentUserId === "") {
+    $("#btnSignIn").show();
+  } else {
+    $("#btnSignOut").show();
   }
 }
 

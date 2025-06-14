@@ -1,60 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Painel Administrativo - Sistema de Gestão Hoteleira</title>
+    <title>Admin Page</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css"
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      crossorigin="anonymous"
-    />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">
-        <a class="navbar-brand" href="#"> <i class="fas fa-hotel me-2"></i>Sistema de Gestão Hoteleira </a>
-        <div class="ms-auto">
-          <button id="btnSignIn" class="btn btn-auth btn-signin me-2">
-            <i class="fas fa-sign-in-alt me-2"></i>Entrar
-          </button>
-          <button id="btnSignOut" class="btn btn-auth btn-signout" style="display: none">
-            <i class="fas fa-sign-out-alt me-2"></i>Sair
-          </button>
-        </div>
-      </div>
-    </nav>
-
     <div class="container">
-      <div class="d-flex justify-content-between align-items-center mt-4">
-        <h2 class="page-title">Painel de Gestão de Hotéis</h2>
-        <a id="btnAddHotel" href="/hotel/addHotel.html" class="btn btn-add-hotel">
-          <i class="fas fa-plus me-2"></i>Adicionar Novo Hotel
-        </a>
+      <div class="my-4">
+        <button id="btnSignIn" class="btn btn-primary">Sign In</button>
+        <button id="btnSignOut" class="btn btn-danger ms-2" style="display: none">Sign Out</button>
       </div>
 
-      <div class="table-container">
-        <table id="divHotelList" class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Nome</th>
-              <th scope="col">Cidade</th>
-              <th scope="col">Preço</th>
-              <th scope="col">Avaliação</th>
-              <th scope="col">Imagem</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+      <div class="my-4">
+        <a id="btnAddHotel" href="/hotel/addHotel.html" class="btn btn-success">Add Hotel</a>
       </div>
+
+      <table id="divHotelList" class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">City</th>
+            <th scope="col">Price</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Image</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -63,7 +42,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/amazon-cognito-auth-js@1.3.3/dist/amazon-cognito-auth.min.js"></script>
+    <script src="scripts/amazon-cognito-auth.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/cognito.js"></script>
     <script>
@@ -71,19 +50,13 @@
         cognitoApp.Init();
         pageLoad();
 
-        // Verifica se o usuário está autenticado e tem role de Admin
-        if (!currentUserToken.idToken || currentUserToken.role !== "Admin") {
-          // Se não estiver autenticado ou não for admin, redireciona para a página inicial
-          window.location.href = "/hotel/";
-          return;
-        }
-
         populateHotelsList(currentUserToken.idToken);
       });
 
       function populateHotelsList(idToken) {
         var s3BaseUrl = "https://hotel-admin-bucket.s3.ap-southeast-2.amazonaws.com";
 
+        // replace the 'url' attribute below to your API's URL
         $.ajax({
           url: "<api url here>",
           type: "get",
@@ -95,11 +68,11 @@
               var row = $("<tr>");
               row.append($("<td>").text(hotel.Name));
               row.append($("<td>").text(hotel.CityName));
-              row.append($("<td>").text("R$ " + hotel.Price));
-              row.append($("<td>").html('<i class="fas fa-star text-warning"></i> ' + hotel.Rating));
+              row.append($("<td>").text(hotel.Price));
+              row.append($("<td>").text(hotel.Rating));
+
               var imageTag = $("<img>");
               imageTag.attr("src", s3BaseUrl.concat("/", hotel.FileName));
-              imageTag.addClass("hotel-image");
               imageTag.css("width", 300);
               row.append($("<td>").append(imageTag));
               table.append(row);

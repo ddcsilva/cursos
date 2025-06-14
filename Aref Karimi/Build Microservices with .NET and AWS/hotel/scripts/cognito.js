@@ -13,25 +13,17 @@ var cognitoApp = {
       ClientId: config.cognito.appId,
       AppWebDomain: config.cognito.cognitoDomain,
       TokenScopesArray: ["email", "openid", "profile"],
-      RedirectUriSignIn: window.location.origin + "/hotel/",
-      RedirectUriSignOut: window.location.origin + "/hotel/",
-      UserPoolId: config.cognito.userPoolId,
+      RedirectUriSignIn: "http://localhost/hotel/",
+      RedirectUriSignOut: "http://localhost/hotel/",
+      UserPoolId: config.cognito.identityPoolId,
       AdvancedSecurityDataCollectionFlag: false,
       Storage: null,
-      ResponseType: "token",
-      IdentityProvider: "",
-      UserAttributes: ["email"],
-      AuthenticationFlowType: "USER_SRP_AUTH",
     };
 
     cognitoApp.auth = new AmazonCognitoIdentity.CognitoAuth(authData);
     cognitoApp.auth.userhandler = {
-      onSuccess: function (result) {
-        console.log("Sign in success", result);
-      },
-      onFailure: function (err) {
-        console.error("Sign in error", err);
-      },
+      onSuccess: function (result) {},
+      onFailure: function (err) {},
     };
   },
 };
