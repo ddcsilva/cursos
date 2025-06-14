@@ -1,0 +1,123 @@
+/* Estilos Gerais */
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+/* Container Principal */
+.welcome-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+/* Botões de Autenticação */
+.btn-auth {
+  padding: 0.8rem 2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-signin {
+  background: #4caf50;
+  border: none;
+}
+
+.btn-signin:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+}
+
+.btn-signout {
+  background: #f44336;
+  border: none;
+}
+
+.btn-signout:hover {
+  background: #da190b;
+  transform: translateY(-2px);
+}
+
+/* Textos */
+.welcome-text {
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+/* Cards de Recursos */
+.feature-icon {
+  font-size: 2.5rem;
+  color: #4caf50;
+  margin-bottom: 1rem;
+}
+
+.feature-card {
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos do Painel Administrativo */
+.navbar {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-add-hotel {
+  background: #2196f3;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-add-hotel:hover {
+  background: #1976d2;
+  transform: translateY(-2px);
+}
+
+/* Container da Tabela */
+.table-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.table th {
+  border-top: none;
+  background: #f8f9fa;
+  font-weight: 600;
+}
+
+/* Imagens dos Hotéis */
+.hotel-image {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.hotel-image:hover {
+  transform: scale(1.05);
+}
+
+/* Títulos */
+.page-title {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}

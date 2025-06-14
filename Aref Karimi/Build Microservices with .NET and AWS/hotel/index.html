@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sistema de Gestão Hoteleira</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="welcome-container text-center">
+            <h1 class="welcome-text mb-4">Bem-vindo ao Sistema de Gestão Hoteleira</h1>
+            <div class="mb-4">
+              <button id="btnSignIn" class="btn btn-auth btn-signin me-2">
+                <i class="fas fa-sign-in-alt me-2"></i>Entrar
+              </button>
+              <button id="btnSignOut" class="btn btn-auth btn-signout" style="display: none">
+                <i class="fas fa-sign-out-alt me-2"></i>Sair
+              </button>
+            </div>
+
+            <div class="row mt-5">
+              <div class="col-md-4">
+                <div class="feature-card">
+                  <i class="fas fa-hotel feature-icon"></i>
+                  <h4>Gestão de Hotéis</h4>
+                  <p>Gerencie suas propriedades hoteleiras com eficiência</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="feature-card">
+                  <i class="fas fa-calendar-check feature-icon"></i>
+                  <h4>Sistema de Reservas</h4>
+                  <p>Gerencie reservas com facilidade</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="feature-card">
+                  <i class="fas fa-chart-line feature-icon"></i>
+                  <h4>Análises</h4>
+                  <p>Acompanhe o desempenho do seu negócio</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Amazon Cognito JavaScript SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/amazon-cognito-auth-js@1.3.3/dist/amazon-cognito-auth.min.js"></script>
+    <!-- Main JavaScript -->
+    <script src="scripts/main.js"></script>
+    <!-- Cognito JavaScript -->
+    <script src="scripts/cognito.js"></script>
+    <script>
+      $(function () {
+        cognitoApp.Init();
+        pageLoad();
+        createNav();
+      });
+
+      function createNav() {
+        if (currentUserToken) {
+          if (currentUserToken.role !== "") {
+            if (currentUserToken.role == "Admin") {
+              window.location.href = "/hotel/admin.html";
+            }
+
+            if (currentUserToken.role == "HotelManager") {
+              window.location.href = "/hotel/review-bookings.html";
+            }
+          } else {
+            if (currentUserToken.currentUserId !== "") {
+              window.location.href = "/hotel/search.html";
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
