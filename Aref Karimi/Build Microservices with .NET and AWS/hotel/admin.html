@@ -70,6 +70,14 @@
       $(function () {
         cognitoApp.Init();
         pageLoad();
+
+        // Verifica se o usuário está autenticado e tem role de Admin
+        if (!currentUserToken.idToken || currentUserToken.role !== "Admin") {
+          // Se não estiver autenticado ou não for admin, redireciona para a página inicial
+          window.location.href = "/hotel/";
+          return;
+        }
+
         populateHotelsList(currentUserToken.idToken);
       });
 
