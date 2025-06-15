@@ -1,7 +1,8 @@
 $(function () {
-  cognitoApp.Init();
-  inicializarAutenticacao();
+  // Inicializa os componentes básicos da página
+  inicializarPagina();
 
+  // Carrega a lista de hotéis
   populateHotelsList(dadosUsuarioAutenticado.idToken);
 });
 

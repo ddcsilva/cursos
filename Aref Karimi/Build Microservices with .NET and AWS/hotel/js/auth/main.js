@@ -101,33 +101,6 @@ function inicializarAutenticacao() {
 }
 
 /**
- * Decodifica um token JWT para extrair suas informações
- * @param {string} token - Token JWT a ser decodificado
- * @returns {Object} Objeto contendo os dados do token decodificado
- * @description
- * O token JWT é composto por três partes separadas por pontos:
- * 1. Header (algoritmo e tipo do token)
- * 2. Payload (dados do token)
- * 3. Signature (assinatura)
- * Esta função decodifica a parte do payload (segunda parte)
- */
-function decodificarTokenJwt(token) {
-  var base64Url = token.split(".")[1];
-  var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-  var jsonPayload = decodeURIComponent(
-    window
-      .atob(base64)
-      .split("")
-      .map(function (c) {
-        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-      })
-      .join("")
-  );
-
-  return JSON.parse(jsonPayload);
-}
-
-/**
  * Configura o cabeçalho de autenticação para requisições AJAX
  * @description
  * Intercepta o envio de formulários para:

@@ -1,8 +1,7 @@
 $(function () {
-  // Configura o Cognito Auth
-  cognitoApp.Init();
-  // Carrega o estado da página
-  inicializarAutenticacao();
+  // Inicializa os componentes básicos da página
+  inicializarPagina();
+
   // Cria as rotas de navegação baseadas no papel do usuário
   criarRotas();
 });
