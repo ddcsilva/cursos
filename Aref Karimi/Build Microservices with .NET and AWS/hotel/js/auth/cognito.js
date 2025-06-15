@@ -1,7 +1,20 @@
-/*
-  Propósito: Arquivo de configuração e inicialização do Amazon Cognito Auth SDK.
-*/
+/**
+ * @fileoverview Configuração e inicialização do Amazon Cognito Auth SDK
+ * @description Gerencia a integração com o Amazon Cognito para autenticação
+ * e autorização de usuários.
+ */
 
+/**
+ * @typedef {Object} CognitoConfig
+ * @property {string} userPoolId - ID do User Pool do Cognito
+ * @property {string} cognitoDomain - Domínio do Cognito
+ * @property {string} appId - ID do aplicativo no Cognito
+ */
+
+/**
+ * @type {CognitoConfig}
+ * Configuração do Cognito para autenticação
+ */
 const config = {
   cognito: {
     userPoolId: "us-east-2_EkGyR36BO",
@@ -10,8 +23,22 @@ const config = {
   },
 };
 
+/**
+ * @namespace cognitoApp
+ * @description Namespace principal para integração com o Cognito
+ */
 var cognitoApp = {
   auth: {},
+
+  /**
+   * Inicializa a integração com o Cognito
+   * @description
+   * Configura o Cognito Auth SDK com:
+   * - Credenciais do aplicativo
+   * - URLs de redirecionamento
+   * - Escopos do token
+   * - Handlers de eventos
+   */
   Init: function () {
     var authData = {
       ClientId: config.cognito.appId, // ID do aplicativo do Cognito
@@ -32,9 +59,18 @@ var cognitoApp = {
 
     // Define o manipulador de eventos do usuário
     cognitoApp.auth.userhandler = {
+      /**
+       * Handler de sucesso na autenticação
+       * @param {Object} result - Resultado da autenticação
+       */
       onSuccess: function (result) {
         console.log("Autenticação bem-sucedida:", result);
       },
+
+      /**
+       * Handler de erro na autenticação
+       * @param {Error} err - Erro ocorrido
+       */
       onFailure: function (err) {
         console.error("Erro de autenticação:", err);
         // Tenta redirecionar para a página inicial em caso de erro

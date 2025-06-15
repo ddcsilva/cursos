@@ -1,7 +1,21 @@
-/*
-  Arquivo principal que contém toda a lógica de autenticação, manipulação de tokens e interação com a UI.
-*/
+/**
+ * @fileoverview Arquivo principal de autenticação e gerenciamento de usuário
+ * @description Gerencia todo o fluxo de autenticação, incluindo login, logout,
+ * manipulação de tokens e interação com a UI. Integra-se com o Amazon Cognito
+ * para autenticação e autorização.
+ */
 
+/**
+ * @typedef {Object} DadosUsuario
+ * @property {string} currentUserId - ID do usuário atual
+ * @property {string} idToken - Token JWT de autenticação
+ * @property {string} role - Papel do usuário (Admin, User, etc)
+ */
+
+/**
+ * @type {DadosUsuario}
+ * Armazena os dados do usuário autenticado na sessão atual
+ */
 const dadosUsuarioAutenticado = {
   currentUserId: "",
   idToken: "",
@@ -9,11 +23,18 @@ const dadosUsuarioAutenticado = {
 };
 
 /**
- * Função para carregar os dados do usuário autenticado
+ * Inicializa o processo de autenticação e configura os eventos da UI
+ * @description
+ * 1. Processa a resposta do Cognito na URL (callback após login)
+ * 2. Recupera o usuário atual do localStorage
+ * 3. Se existir usuário, obtém a sessão e tokens
+ * 4. Extrai informações do token JWT
+ * 5. Configura eventos de login/logout
+ * 6. Atualiza a interface baseado no estado de autenticação
  */
 function inicializarAutenticacao() {
   try {
-    // 1. Processa resposta do Cognito na URL
+    // 1. Processa resposta do Cognito na URL (callback após login)
     cognitoApp.auth.parseCognitoWebResponse(window.location.href);
 
     // 2. Obtém usuário atual do localStorage
@@ -80,9 +101,15 @@ function inicializarAutenticacao() {
 }
 
 /**
- * Função para decodificar o token JWT
+ * Decodifica um token JWT para extrair suas informações
  * @param {string} token - Token JWT a ser decodificado
- * @returns {Object} - Objeto JSON contendo os dados do token
+ * @returns {Object} Objeto contendo os dados do token decodificado
+ * @description
+ * O token JWT é composto por três partes separadas por pontos:
+ * 1. Header (algoritmo e tipo do token)
+ * 2. Payload (dados do token)
+ * 3. Signature (assinatura)
+ * Esta função decodifica a parte do payload (segunda parte)
  */
 function decodificarTokenJwt(token) {
   var base64Url = token.split(".")[1];
@@ -101,7 +128,13 @@ function decodificarTokenJwt(token) {
 }
 
 /**
- * Função para configurar o cabeçalho de autenticação
+ * Configura o cabeçalho de autenticação para requisições AJAX
+ * @description
+ * Intercepta o envio de formulários para:
+ * 1. Adicionar o token JWT no cabeçalho Authorization
+ * 2. Configurar o tipo de conteúdo como multipart/form-data
+ * 3. Enviar os dados via AJAX
+ * 4. Redirecionar após sucesso
  */
 function configurarCabecalhoAutenticacao() {
   var forms = $("form");
@@ -131,7 +164,7 @@ function configurarCabecalhoAutenticacao() {
       // 8. Configura a função de sucesso
       success: function (response) {
         // 9. Redireciona para a página de administração
-        window.location.href = "/hotel/admin.html";
+        window.location.href = "/hotel/pages/admin.html";
       },
     });
   });
