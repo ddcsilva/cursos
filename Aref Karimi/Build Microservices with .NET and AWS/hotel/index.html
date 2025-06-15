@@ -193,13 +193,39 @@
           font-size: 2rem;
         }
       }
+
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      main.main-content {
+        flex: 1 0 auto;
+        padding-top: 90px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      footer.footer {
+        flex-shrink: 0;
+        width: 100%;
+        position: relative;
+        bottom: 0;
+        left: 0;
+      }
     </style>
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#"> <i class="fas fa-hotel me-2"></i>Sistema de Gestão Hoteleira </a>
+        <a class="navbar-brand fw-bold text-primary" href="#">
+          <i class="fas fa-hotel me-2"></i>Sistema de Gestão Hoteleira
+        </a>
         <div class="ms-auto">
           <button id="btnSignIn" class="btn btn-primary me-2"><i class="fas fa-sign-in-alt me-2"></i>Entrar</button>
           <button id="btnSignOut" class="btn btn-danger" style="display: none">
@@ -208,77 +234,76 @@
         </div>
       </div>
     </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="container">
-        <div class="hero-content">
-          <h1 class="hero-title">Transforme a Gestão do Seu Hotel</h1>
-          <p class="hero-subtitle">
-            Uma solução completa e intuitiva para gerenciar seu negócio hoteleiro com eficiência e profissionalismo
-          </p>
-          <button id="btnGetStarted" class="btn btn-primary btn-lg">
-            <i class="fas fa-rocket me-2"></i>Começar Agora
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features-section">
-      <div class="container">
-        <h2 class="section-title">Recursos Poderosos</h2>
-        <div class="row g-4">
-          <div class="col-md-4">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-hotel"></i>
-              </div>
-              <h3 class="feature-title">Gestão de Hotéis</h3>
-              <p class="feature-text">
-                Gerencie múltiplos hotéis com facilidade. Controle reservas, quartos e serviços em um só lugar.
-              </p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-chart-line"></i>
-              </div>
-              <h3 class="feature-title">Análise de Dados</h3>
-              <p class="feature-text">
-                Visualize métricas importantes e tome decisões baseadas em dados reais do seu negócio.
-              </p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="feature-card">
-              <div class="feature-icon">
-                <i class="fas fa-users"></i>
-              </div>
-              <h3 class="feature-title">Gestão de Usuários</h3>
-              <p class="feature-text">Controle de acesso granular e gerenciamento eficiente de sua equipe.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <h5 class="footer-title">Sistema de Gestão Hoteleira</h5>
-            <p class="footer-text">
-              Uma solução completa para gerenciar seu negócio hoteleiro com eficiência e profissionalismo.
+    <main class="main-content flex-grow-1">
+      <!-- Hero Section -->
+      <section class="hero-section w-100 mb-5">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-title">Transforme a Gestão do Seu Hotel</h1>
+            <p class="hero-subtitle">
+              Uma solução completa e intuitiva para gerenciar seu negócio hoteleiro com eficiência e profissionalismo
             </p>
-          </div>
-          <div class="col-md-6 text-md-end">
-            <p class="footer-text">&copy; 2024 Sistema de Gestão Hoteleira. Todos os direitos reservados.</p>
+            <button id="btnGetStarted" class="btn btn-primary btn-lg">
+              <i class="fas fa-rocket me-2"></i>Começar Agora
+            </button>
           </div>
         </div>
+      </section>
+      <!-- Features Section -->
+      <section class="features-section w-100">
+        <div class="container">
+          <h2 class="section-title">Recursos Poderosos</h2>
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fas fa-hotel"></i>
+                </div>
+                <h3 class="feature-title">Gestão de Hotéis</h3>
+                <p class="feature-text">
+                  Gerencie múltiplos hotéis com facilidade. Controle reservas, quartos e serviços em um só lugar.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="feature-title">Análise de Dados</h3>
+                <p class="feature-text">
+                  Visualize métricas importantes e tome decisões baseadas em dados reais do seu negócio.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h3 class="feature-title">Gestão de Usuários</h3>
+                <p class="feature-text">Controle de acesso granular e gerenciamento eficiente de sua equipe.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer mt-auto bg-dark text-light py-4">
+      <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <div class="mb-2 mb-md-0">
+          <strong>Sistema de Gestão Hoteleira</strong><br />
+          <span class="small"
+            >Uma solução completa para gerenciar seu negócio hoteleiro com eficiência e profissionalismo.</span
+          >
+        </div>
+        <div class="small">
+          &copy; <span id="footer-year"></span> Sistema de Gestão Hoteleira. Todos os direitos reservados.
+        </div>
       </div>
+      <script>
+        document.getElementById("footer-year").textContent = new Date().getFullYear();
+      </script>
     </footer>
 
     <!-- jQuery -->

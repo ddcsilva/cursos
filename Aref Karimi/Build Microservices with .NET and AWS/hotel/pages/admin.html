@@ -205,6 +205,26 @@
           height: 48px;
         }
       }
+
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      main.main-content {
+        flex: 1 0 auto;
+      }
+      footer.footer {
+        flex-shrink: 0;
+        width: 100%;
+        position: relative;
+        bottom: 0;
+        left: 0;
+      }
     </style>
   </head>
   <body>
