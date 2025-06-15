@@ -36,12 +36,12 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"
       crossorigin="anonymous"
     ></script>
-    <!-- Amazon Cognito JavaScript SDK -->
-    <script src="scripts/amazon-cognito-auth.js"></script>
-    <!-- Main JavaScript -->
-    <script src="scripts/main.js"></script>
-    <!-- Cognito JavaScript -->
-    <script src="scripts/cognito.js"></script>
+    <!-- Scripts -->
+    <script src="js/auth/amazon-cognito-auth.js"></script>
+    <script src="js/auth/cognito.js"></script>
+    <script src="js/utils/token.js"></script>
+    <script src="js/services/api.js"></script>
+    <script src="js/auth/main.js"></script>
     <script>
       $(function () {
         // Configura o Cognito Auth
@@ -62,7 +62,7 @@
           if (dadosUsuarioAutenticado.role !== "") {
             // Verifica se o usuário é um administrador
             if (dadosUsuarioAutenticado.role == "Admin") {
-              window.location.href = "/hotel/admin.html"; // Redireciona para a página de administração
+              window.location.href = "/hotel/pages/admin.html"; // Redireciona para a página de administração
             }
 
             // Verifica se o usuário é um gerente de hotel

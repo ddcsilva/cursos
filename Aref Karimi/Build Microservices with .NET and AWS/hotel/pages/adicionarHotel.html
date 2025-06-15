@@ -37,7 +37,7 @@
     <div class="container">
       <div class="d-flex justify-content-between align-items-center mt-4">
         <h2 class="page-title">Adicionar Novo Hotel</h2>
-        <a href="/hotel/admin.html" class="btn btn-add-hotel"> <i class="fas fa-arrow-left me-2"></i>Voltar </a>
+        <a href="/hotel/pages/admin.html" class="btn btn-add-hotel"> <i class="fas fa-arrow-left me-2"></i>Voltar </a>
       </div>
 
       <div class="table-container mt-4">
@@ -116,9 +116,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/amazon-cognito-auth-js@1.3.3/dist/amazon-cognito-auth.min.js"></script>
-    <script src="scripts/main.js"></script>
-    <script src="scripts/cognito.js"></script>
+    <script src="../js/auth/amazon-cognito-auth.js"></script>
+    <script src="../js/auth/cognito.js"></script>
+    <script src="../js/utils/token.js"></script>
+    <script src="../js/services/api.js"></script>
+    <script src="../js/auth/main.js"></script>
     <script>
       $(function () {
         cognitoApp.Init();

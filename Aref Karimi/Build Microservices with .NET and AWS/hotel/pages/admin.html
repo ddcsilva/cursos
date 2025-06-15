@@ -19,7 +19,7 @@
       </div>
 
       <div class="my-4">
-        <a id="btnAddHotel" href="/hotel/adicionarHotel.html" class="btn btn-success">Adicionar Hotel</a>
+        <a id="btnAddHotel" href="/hotel/pages/adicionarHotel.html" class="btn btn-success">Adicionar Hotel</a>
       </div>
 
       <table id="divHotelList" class="table table-striped table-bordered">
@@ -42,9 +42,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script src="scripts/amazon-cognito-auth.js"></script>
-    <script src="scripts/main.js"></script>
-    <script src="scripts/cognito.js"></script>
+    <script src="../js/auth/amazon-cognito-auth.js"></script>
+    <script src="../js/auth/cognito.js"></script>
+    <script src="../js/utils/token.js"></script>
+    <script src="../js/services/api.js"></script>
+    <script src="../js/auth/main.js"></script>
     <script>
       $(function () {
         cognitoApp.Init();
