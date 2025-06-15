@@ -15,37 +15,237 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       crossorigin="anonymous"
     />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles/styles.css" />
+    <style>
+      :root {
+        --primary-color: #2563eb;
+        --secondary-color: #1e40af;
+        --accent-color: #3b82f6;
+        --text-color: #1f2937;
+        --light-bg: #f3f4f6;
+        --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: var(--text-color);
+        line-height: 1.6;
+        background-color: var(--light-bg);
+      }
+
+      .navbar {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .navbar-brand {
+        font-weight: 600;
+        font-size: 1.25rem;
+        color: var(--primary-color) !important;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        font-weight: 500;
+        padding: 0.5rem 1.25rem;
+        transition: var(--transition);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        transform: translateY(-1px);
+      }
+
+      .btn-danger {
+        background-color: #dc2626;
+        border-color: #dc2626;
+        font-weight: 500;
+        padding: 0.5rem 1.25rem;
+        transition: var(--transition);
+      }
+
+      .btn-danger:hover {
+        background-color: #b91c1c;
+        border-color: #b91c1c;
+        transform: translateY(-1px);
+      }
+
+      .main-content {
+        margin-top: 76px;
+        padding: 2rem 0;
+      }
+
+      .page-header {
+        background: white;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+        box-shadow: var(--card-shadow);
+      }
+
+      .page-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-color);
+        margin: 0;
+      }
+
+      .btn-back {
+        background-color: #6b7280;
+        border-color: #6b7280;
+        color: white;
+        font-weight: 500;
+        padding: 0.5rem 1.25rem;
+        transition: var(--transition);
+      }
+
+      .btn-back:hover {
+        background-color: #4b5563;
+        border-color: #4b5563;
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .form-container {
+        background: white;
+        border-radius: 1rem;
+        box-shadow: var(--card-shadow);
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .form-label {
+        font-weight: 500;
+        color: var(--text-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .form-control {
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        transition: var(--transition);
+      }
+
+      .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+
+      .form-select {
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        transition: var(--transition);
+      }
+
+      .form-select:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+
+      .input-group-text {
+        background-color: #f3f4f6;
+        border: 1px solid #e5e7eb;
+        color: #6b7280;
+      }
+
+      .rating-input {
+        width: 100px;
+      }
+
+      .price-input {
+        width: 150px;
+      }
+
+      .btn-submit {
+        background-color: #059669;
+        border-color: #059669;
+        color: white;
+        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        transition: var(--transition);
+      }
+
+      .btn-submit:hover {
+        background-color: #047857;
+        border-color: #047857;
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .form-text {
+        color: #6b7280;
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+      }
+
+      .footer {
+        background-color: white;
+        padding: 2rem 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .footer-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-color);
+        margin-bottom: 1rem;
+      }
+
+      .footer-text {
+        color: #6b7280;
+      }
+
+      @media (max-width: 768px) {
+        .page-title {
+          font-size: 1.5rem;
+        }
+
+        .form-container {
+          padding: 1.5rem;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#"> <i class="fas fa-hotel me-2"></i>Sistema de Gestão Hoteleira </a>
+        <a class="navbar-brand fw-bold text-primary" href="/hotel/index.html">
+          <i class="fas fa-hotel me-2"></i>Sistema de Gestão Hoteleira
+        </a>
         <div class="ms-auto">
-          <button id="btnSignIn" class="btn btn-auth btn-signin me-2">
-            <i class="fas fa-sign-in-alt me-2"></i>Entrar
-          </button>
-          <button id="btnSignOut" class="btn btn-auth btn-signout" style="display: none">
+          <button id="btnSignIn" class="btn btn-primary me-2"><i class="fas fa-sign-in-alt me-2"></i>Entrar</button>
+          <button id="btnSignOut" class="btn btn-danger" style="display: none">
             <i class="fas fa-sign-out-alt me-2"></i>Sair
           </button>
         </div>
       </div>
     </nav>
 
-    <div class="container">
-      <div class="d-flex justify-content-between align-items-center mt-4">
-        <h2 class="page-title">Adicionar Novo Hotel</h2>
-        <a href="/hotel/pages/admin.html" class="btn btn-add-hotel"> <i class="fas fa-arrow-left me-2"></i>Voltar </a>
-      </div>
-
-      <div class="table-container mt-4">
-        <div class="card">
-          <div class="card-body">
-            <form id="upload-form" enctype="multipart/form-data" method="post" action="<api url here>">
-              <div class="mb-3">
-                <label for="hotelName" class="form-label">Nome do Hotel:</label>
+    <main class="main-content d-flex flex-column align-items-center" style="padding-top: 90px; min-height: 70vh">
+      <header class="mb-4 w-100" style="max-width: 700px">
+        <div class="d-flex justify-content-between align-items-center">
+          <h1 class="display-6 fw-bold mb-0">Adicionar Novo Hotel</h1>
+          <a href="/hotel/pages/admin.html" class="btn btn-secondary shadow-sm">
+            <i class="fas fa-arrow-left me-2"></i>Voltar
+          </a>
+        </div>
+      </header>
+      <section class="w-100" style="max-width: 700px">
+        <div class="bg-white rounded-4 shadow-sm p-4 mb-4">
+          <form id="upload-form" enctype="multipart/form-data" method="post" action="<api url here>">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="hotelName" class="form-label">Nome do Hotel</label>
                 <input
                   type="text"
                   name="hotelName"
@@ -56,59 +256,81 @@
                   required
                 />
               </div>
-
-              <div class="mb-3">
-                <label for="hotelRating" class="form-label">Avaliação:</label>
-                <input
-                  type="number"
-                  name="hotelRating"
-                  id="hotelRating"
-                  min="1"
-                  max="5"
-                  value="5"
-                  class="form-control"
-                  required
-                />
-              </div>
-
-              <div class="mb-3">
-                <label for="hotelCity" class="form-label">Cidade:</label>
+              <div class="col-md-6">
+                <label for="hotelCity" class="form-label">Cidade</label>
                 <select name="hotelCity" id="hotelCity" class="form-select" required>
-                  <option value="Sydney" selected>Sydney</option>
+                  <option value="" disabled selected>Selecione uma cidade</option>
+                  <option value="Sydney">Sydney</option>
                   <option value="London">Londres</option>
                   <option value="Paris">Paris</option>
                 </select>
               </div>
-
-              <div class="mb-3">
-                <label for="hotelPrice" class="form-label">Preço (R$):</label>
-                <input
-                  type="number"
-                  name="hotelPrice"
-                  id="hotelPrice"
-                  min="1"
-                  max="1000"
-                  placeholder="0"
-                  class="form-control"
-                  required
-                />
+              <div class="col-md-6">
+                <label for="hotelRating" class="form-label">Avaliação</label>
+                <div class="input-group">
+                  <input
+                    type="number"
+                    name="hotelRating"
+                    id="hotelRating"
+                    min="1"
+                    max="5"
+                    value="5"
+                    class="form-control"
+                    required
+                  />
+                  <span class="input-group-text"><i class="fas fa-star text-warning"></i></span>
+                </div>
               </div>
-
-              <div class="mb-3">
-                <label for="photo" class="form-label">Foto do Hotel:</label>
-                <input type="file" name="photo" id="photo" class="form-control" required />
+              <div class="col-md-6">
+                <label for="hotelPrice" class="form-label">Preço (R$)</label>
+                <div class="input-group">
+                  <span class="input-group-text">R$</span>
+                  <input
+                    type="number"
+                    name="hotelPrice"
+                    id="hotelPrice"
+                    min="1"
+                    max="1000"
+                    placeholder="0"
+                    class="form-control"
+                    required
+                  />
+                </div>
               </div>
-
-              <div class="mb-3">
+              <div class="col-12">
+                <label for="photo" class="form-label">Foto do Hotel</label>
+                <input type="file" name="photo" id="photo" class="form-control" accept="image/*" required />
+                <div class="form-text">Formatos aceitos: JPG, PNG. Tamanho máximo: 5MB</div>
+              </div>
+              <div class="col-12">
                 <input type="hidden" name="userId" id="userId" value="" />
                 <input type="hidden" name="idToken" id="idToken" value="" />
-                <button type="submit" class="btn btn-add-hotel"><i class="fas fa-save me-2"></i>Salvar Hotel</button>
+                <button type="submit" class="btn btn-success px-4 py-2 fw-bold shadow-sm">
+                  <i class="fas fa-save me-2"></i>Salvar Hotel
+                </button>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer mt-auto bg-dark text-light py-4">
+      <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <div class="mb-2 mb-md-0">
+          <strong>Sistema de Gestão Hoteleira</strong><br />
+          <span class="small"
+            >Uma solução completa para gerenciar seu negócio hoteleiro com eficiência e profissionalismo.</span
+          >
+        </div>
+        <div class="small">
+          &copy; <span id="footer-year"></span> Sistema de Gestão Hoteleira. Todos os direitos reservados.
         </div>
       </div>
-    </div>
+      <script>
+        document.getElementById("footer-year").textContent = new Date().getFullYear();
+      </script>
+    </footer>
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
