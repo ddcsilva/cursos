@@ -121,15 +121,6 @@
     <script src="../js/utils/token.js"></script>
     <script src="../js/services/api.js"></script>
     <script src="../js/auth/main.js"></script>
-    <script>
-      $(function () {
-        cognitoApp.Init();
-        inicializarAutenticacao();
-
-        configurarCabecalhoAutenticacao();
-        $("#userId").val(dadosUsuarioAutenticado.currentUserId);
-        $("#idToken").val(dadosUsuarioAutenticado.idToken);
-      });
-    </script>
+    <script src="../js/pages/adicionarHotel.js"></script>
   </body>
 </html>
