@@ -12,53 +12,70 @@ const dadosUsuarioAutenticado = {
  * Função para carregar os dados do usuário autenticado
  */
 function inicializarAutenticacao() {
-  // 1. Processa resposta do Cognito na URL
-  cognitoApp.auth.parseCognitoWebResponse(window.location.href);
+  try {
+    // 1. Processa resposta do Cognito na URL
+    cognitoApp.auth.parseCognitoWebResponse(window.location.href);
 
-  // 2. Obtém usuário atual do localStorage
-  var currentUser = cognitoApp.auth.getCurrentUser();
+    // 2. Obtém usuário atual do localStorage
+    var currentUser = cognitoApp.auth.getCurrentUser();
 
-  // 3. Se usuário existir, obtém sessão e tokens
-  if (currentUser) {
-    cognitoApp.auth.getSession();
-    currentSession = cognitoApp.auth.signInUserSession;
+    // 3. Se usuário existir, obtém sessão e tokens
+    if (currentUser) {
+      cognitoApp.auth.getSession();
+      currentSession = cognitoApp.auth.signInUserSession;
 
-    // 4. Extrai informações do token
-    dadosUsuarioAutenticado.currentUserId = currentUser;
-    dadosUsuarioAutenticado.idToken = currentSession.idToken.jwtToken;
+      // 4. Extrai informações do token
+      dadosUsuarioAutenticado.currentUserId = currentUser;
+      dadosUsuarioAutenticado.idToken = currentSession.idToken.jwtToken;
 
-    console.info(dadosUsuarioAutenticado);
+      console.info("Usuário autenticado:", dadosUsuarioAutenticado);
 
-    // 5. Decodifica token para obter roles
-    var tokenDetails = decodificarTokenJwt(currentSession.idToken.jwtToken);
-    if (tokenDetails["cognito:groups"]) {
-      var groups = tokenDetails["cognito:groups"][0];
-      dadosUsuarioAutenticado.role = groups;
+      // 5. Decodifica token para obter roles
+      var tokenDetails = decodificarTokenJwt(currentSession.idToken.jwtToken);
+      if (tokenDetails["cognito:groups"]) {
+        var groups = tokenDetails["cognito:groups"][0];
+        dadosUsuarioAutenticado.role = groups;
+      }
     }
-  }
 
-  // 6. Configura evento de clique para o botão de login
-  $("#btnSignIn").on("click", function (btn) {
-    cognitoApp.auth.getSession();
-  });
+    // 6. Configura evento de clique para o botão de login
+    $("#btnSignIn").on("click", function (btn) {
+      cognitoApp.auth.getSession();
+    });
 
-  // 7. Configura evento de clique para o botão de logout
-  $("#btnSignOut").on("click", function (btn) {
-    dadosUsuarioAutenticado.role = "";
-    dadosUsuarioAutenticado.idToken = "";
-    dadosUsuarioAutenticado.currentUserId = "";
-    cognitoApp.auth.signOut();
-  });
+    // 7. Configura evento de clique para o botão de logout
+    $("#btnSignOut").on("click", function (btn) {
+      try {
+        // Limpa os dados do usuário
+        dadosUsuarioAutenticado.role = "";
+        dadosUsuarioAutenticado.idToken = "";
+        dadosUsuarioAutenticado.currentUserId = "";
 
-  // 8. Oculta os botões de login e logout
-  $("#btnSignOut").hide();
-  $("#btnSignIn").hide();
+        // Limpa o localStorage
+        localStorage.clear();
 
-  // 9. Mostra os botões de login e logout
-  if (dadosUsuarioAutenticado.currentUserId === "") {
-    $("#btnSignIn").show();
-  } else {
-    $("#btnSignOut").show();
+        // Executa o logout
+        cognitoApp.auth.signOut();
+
+        // Redireciona para a página inicial
+        window.location.href = "/hotel/";
+      } catch (error) {
+        console.error("Erro ao fazer logout:", error);
+      }
+    });
+
+    // 8. Oculta os botões de login e logout
+    $("#btnSignOut").hide();
+    $("#btnSignIn").hide();
+
+    // 9. Mostra os botões de login e logout
+    if (dadosUsuarioAutenticado.currentUserId === "") {
+      $("#btnSignIn").show();
+    } else {
+      $("#btnSignOut").show();
+    }
+  } catch (error) {
+    console.error("Erro ao inicializar autenticação:", error);
   }
 }
 
