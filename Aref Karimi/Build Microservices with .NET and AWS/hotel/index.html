@@ -1,10 +1,16 @@
+<!--
+  Página inicial do sistema de gestão hoteleira
+  Autor: Danilo Silva
+  Data: 14/06/2025
+  Propósito: Página inicial do sistema que serve como roteador baseado em autenticação e papel do usuário
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Home Page</title>
+    <title>Página Inicial</title>
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -17,8 +23,8 @@
     <div class="container mt-5">
       <div class="row justify-content-left">
         <div class="col-md-6">
-          <button id="btnSignIn" class="btn btn-primary me-2">Sign In</button>
-          <button id="btnSignOut" class="btn btn-primary">Sign Out</button>
+          <button id="btnSignIn" class="btn btn-primary me-2">Entrar</button>
+          <button id="btnSignOut" class="btn btn-primary">Sair</button>
         </div>
       </div>
     </div>
@@ -38,24 +44,35 @@
     <script src="scripts/cognito.js"></script>
     <script>
       $(function () {
+        // Configura o Cognito Auth
         cognitoApp.Init();
-        pageLoad();
-        createNav();
+        // Carrega o estado da página
+        inicializarAutenticacao();
+        // Cria as rotas de navegação baseadas no papel do usuário
+        criarRotas();
       });
 
-      function createNav() {
-        if (currentUserToken) {
-          if (currentUserToken.role !== "") {
-            if (currentUserToken.role == "Admin") {
-              window.location.href = "/hotel/admin.html";
+      /*
+       * Função para criar as rotas de navegação baseadas no papel do usuário
+       */
+      function criarRotas() {
+        // Verifica se o usuário está autenticado
+        if (dadosUsuarioAutenticado) {
+          // Verifica se o usuário tem um papel
+          if (dadosUsuarioAutenticado.role !== "") {
+            // Verifica se o usuário é um administrador
+            if (dadosUsuarioAutenticado.role == "Admin") {
+              window.location.href = "/hotel/admin.html"; // Redireciona para a página de administração
             }
 
-            if (currentUserToken.role == "HotelManager") {
-              window.location.href = "/hotel/review-bookings.html";
+            // Verifica se o usuário é um gerente de hotel
+            if (dadosUsuarioAutenticado.role == "HotelManager") {
+              window.location.href = "/hotel/review-bookings.html"; // Redireciona para a página de avaliações de reservas
             }
           } else {
-            if (currentUserToken.currentUserId !== "") {
-              window.location.href = "/hotel/search.html";
+            // Verifica se o usuário tem um ID de usuário
+            if (dadosUsuarioAutenticado.currentUserId !== "") {
+              window.location.href = "/hotel/search.html"; // Redireciona para a página de busca de hotéis
             }
           }
         }

@@ -122,11 +122,11 @@
     <script>
       $(function () {
         cognitoApp.Init();
-        pageLoad();
+        inicializarAutenticacao();
 
-        setAuthHeader();
-        $("#userId").val(currentUserToken.currentUserId);
-        $("#idToken").val(currentUserToken.idToken);
+        configurarCabecalhoAutenticacao();
+        $("#userId").val(dadosUsuarioAutenticado.currentUserId);
+        $("#idToken").val(dadosUsuarioAutenticado.idToken);
       });
     </script>
   </body>
