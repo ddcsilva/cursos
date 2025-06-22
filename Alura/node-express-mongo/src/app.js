@@ -1,6 +1,16 @@
 import express from "express";
+import connectaNoBancoDeDados from "./config/dbConnect.js";
 
 const app = express();
+const conexao = await connectaNoBancoDeDados();
+
+conexao.on("error", (erro) => {
+  console.error("❌ Erro de conexão:", erro);
+});
+
+conexao.once("open", () => {
+  console.log("🚀 Conexão com o banco feita com sucesso!");
+});
 
 app.use(express.json());
 
@@ -47,7 +57,7 @@ app.put("/livros/:id", (req, res) => {
 
 app.delete("/livros/:id", (req, res) => {
   const index = buscaLivro(req.params.id);
-  livros.slice(index, 1);
+  livros.splice(index, 1);
   res.status(200).json("Livro removido com sucesso");
 });
 
