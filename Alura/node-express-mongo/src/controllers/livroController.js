@@ -38,6 +38,16 @@ class LivroController {
       res.status(500).json({ message: `Ocorreu uma falha ao atualizar o livro - ${erro.message}` });
     }
   }
+
+  static async deletarLivro(req, res) {
+    try {
+      const id = req.params.id;
+      await livro.findByIdAndDelete(id);
+      res.status(200).json({ message: "Livro deletado com sucesso" });
+    } catch (erro) {
+      res.status(500).json({ message: `Ocorreu uma falha ao deletar o livro - ${erro.message}` });
+    }
+  }
 }
 
 export default LivroController;
