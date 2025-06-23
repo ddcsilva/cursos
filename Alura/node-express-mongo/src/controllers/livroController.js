@@ -21,6 +21,16 @@ class LivroController {
     }
   }
 
+  static async listarLivrosPorEditora(req, res) {
+    const editora = req.query.editora;
+    try {
+      const livrosPorEditora = await livro.find({ editora: editora });
+      res.status(200).json(livrosPorEditora);
+    } catch (erro) {
+      res.status(500).json({ message: `Ocorreu uma falha ao buscar os livros por editora - ${erro.message}` });
+    }
+  }
+
   static async cadastrarLivro(req, res) {
     const novoLivro = req.body;
 
