@@ -4,6 +4,23 @@
   margin: 0 auto;
 }
 
+.header-card {
+  margin-bottom: 16px;
+
+  mat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+  }
+
+  mat-card-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -28,8 +45,15 @@ mat-form-field {
   margin-bottom: 16px;
 }
 
-mat-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.grid mat-card {
+  mat-card-header {
+    padding: 16px 16px 0 16px;
+  }
+
+  mat-card-actions {
+    padding: 8px 16px 16px 16px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
 }

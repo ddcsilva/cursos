@@ -1,5 +1,5 @@
 <div class="container">
-  <mat-card>
+  <mat-card class="header-card">
     <mat-card-header>
       <mat-card-title>Livros</mat-card-title>
       <button mat-raised-button color="primary" (click)="toggleForm()">
@@ -84,7 +84,7 @@
       <mat-card-content>
         <p>Preço: {{ item.preco | currency : "BRL" }}</p>
         <p>Páginas: {{ item.paginas }}</p>
-        <p>Autor: {{ item.autor.nome }}</p>
+        <p>Autor: {{ item.autor?.nome || "Não informado" }}</p>
       </mat-card-content>
       <mat-card-actions>
         <button mat-icon-button (click)="edit(item)">

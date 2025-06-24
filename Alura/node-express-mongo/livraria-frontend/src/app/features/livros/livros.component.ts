@@ -82,7 +82,7 @@ export class LivrosComponent implements OnInit {
       editora: livro.editora,
       preco: livro.preco,
       paginas: livro.paginas,
-      autor: livro.autor._id,
+      autor: livro.autor?._id || '',
     };
     this.showForm = true;
   }
