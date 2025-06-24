@@ -2,32 +2,33 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Autor } from '../../models/autor.model';
+import { API_CONFIG } from '../../core/config/api.config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AutoresService {
-  private readonly baseUrl = 'http://localhost:3000/autores';
+  private readonly urlBase = API_CONFIG.urlBase + API_CONFIG.endpoints.autores;
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Autor[]> {
-    return this.http.get<Autor[]>(this.baseUrl);
+  obterTodos(): Observable<Autor[]> {
+    return this.http.get<Autor[]>(this.urlBase);
   }
 
-  getById(id: string): Observable<Autor> {
-    return this.http.get<Autor>(`${this.baseUrl}/${id}`);
+  obterPorId(id: string): Observable<Autor> {
+    return this.http.get<Autor>(`${this.urlBase}/${id}`);
   }
 
-  create(autor: Omit<Autor, '_id'>): Observable<any> {
-    return this.http.post(this.baseUrl, autor);
+  criar(autor: Omit<Autor, '_id'>): Observable<any> {
+    return this.http.post(this.urlBase, autor);
   }
 
-  update(id: string, autor: Partial<Autor>): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, autor);
+  alterar(id: string, autor: Partial<Autor>): Observable<any> {
+    return this.http.put(`${this.urlBase}/${id}`, autor);
   }
 
-  delete(id: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`);
+  excluir(id: string): Observable<any> {
+    return this.http.delete(`${this.urlBase}/${id}`);
   }
 }

@@ -2,15 +2,15 @@
   <mat-card class="header-card">
     <mat-card-header>
       <mat-card-title>Autores</mat-card-title>
-      <button mat-raised-button color="primary" (click)="toggleForm()">
-        {{ showForm ? "Cancelar" : "Novo Autor" }}
+      <button mat-raised-button color="primary" (click)="alternarFormulario()">
+        {{ mostrarFormulario ? "Cancelar" : "Novo Autor" }}
       </button>
     </mat-card-header>
   </mat-card>
 
-  <mat-card *ngIf="showForm">
+  <mat-card *ngIf="mostrarFormulario">
     <mat-card-content>
-      <form (ngSubmit)="save()" #form="ngForm">
+      <form (ngSubmit)="salvar()" #form="ngForm">
         <mat-form-field>
           <mat-label>Nome</mat-label>
           <input matInput [(ngModel)]="autor.nome" name="nome" required />
@@ -27,16 +27,16 @@
         </mat-form-field>
 
         <div class="actions">
-          <button mat-button type="button" (click)="reset()">Limpar</button>
+          <button mat-button type="button" (click)="limpar()">Limpar</button>
           <button mat-raised-button color="primary" [disabled]="!form.valid">
-            {{ editing ? "Atualizar" : "Salvar" }}
+            {{ editando ? "Atualizar" : "Salvar" }}
           </button>
         </div>
       </form>
     </mat-card-content>
   </mat-card>
 
-  <div *ngIf="loading" class="loading">
+  <div *ngIf="carregando" class="loading">
     <mat-spinner></mat-spinner>
   </div>
 
@@ -47,10 +47,10 @@
         <mat-card-subtitle>{{ item.nacionalidade }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions>
-        <button mat-icon-button (click)="edit(item)">
+        <button mat-icon-button (click)="editar(item)">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="warn" (click)="delete(item._id!)">
+        <button mat-icon-button color="warn" (click)="excluir(item._id!)">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-card-actions>

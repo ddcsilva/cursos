@@ -30,58 +30,58 @@ import { Autor } from '../../models/autor.model';
 export class AutoresComponent implements OnInit {
   autores: Autor[] = [];
   autor: Omit<Autor, '_id'> = { nome: '', nacionalidade: '' };
-  editing: Autor | null = null;
-  showForm = false;
-  loading = false;
+  editando: Autor | null = null;
+  mostrarFormulario = false;
+  carregando = false;
 
   constructor(private autoresService: AutoresService) {}
 
   ngOnInit() {
-    this.loadAutores();
+    this.carregarAutores();
   }
 
-  loadAutores() {
-    this.loading = true;
-    this.autoresService.getAll().subscribe({
+  carregarAutores() {
+    this.carregando = true;
+    this.autoresService.obterTodos().subscribe({
       next: (data) => {
         this.autores = data;
-        this.loading = false;
+        this.carregando = false;
       },
-      error: () => (this.loading = false),
+      error: () => (this.carregando = false),
     });
   }
 
-  save() {
-    const request = this.editing
-      ? this.autoresService.update(this.editing._id!, this.autor)
-      : this.autoresService.create(this.autor);
+  salvar() {
+    const request = this.editando
+      ? this.autoresService.alterar(this.editando._id!, this.autor)
+      : this.autoresService.criar(this.autor);
 
     request.subscribe(() => {
-      this.loadAutores();
-      this.reset();
+      this.carregarAutores();
+      this.limpar();
     });
   }
 
-  edit(autor: Autor) {
-    this.editing = autor;
+  editar(autor: Autor) {
+    this.editando = autor;
     this.autor = { nome: autor.nome, nacionalidade: autor.nacionalidade };
-    this.showForm = true;
+    this.mostrarFormulario = true;
   }
 
-  delete(id: string) {
-    if (confirm('Deletar autor?')) {
-      this.autoresService.delete(id).subscribe(() => this.loadAutores());
+  excluir(id: string) {
+    if (confirm('Excluir autor?')) {
+      this.autoresService.excluir(id).subscribe(() => this.carregarAutores());
     }
   }
 
-  toggleForm() {
-    this.showForm = !this.showForm;
-    if (!this.showForm) this.reset();
+  alternarFormulario() {
+    this.mostrarFormulario = !this.mostrarFormulario;
+    if (!this.mostrarFormulario) this.limpar();
   }
 
-  reset() {
+  limpar() {
     this.autor = { nome: '', nacionalidade: '' };
-    this.editing = null;
-    this.showForm = false;
+    this.editando = null;
+    this.mostrarFormulario = false;
   }
 }

@@ -2,34 +2,35 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Livro } from '../../models/livro.model';
+import { API_CONFIG } from '../../core/config/api.config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LivrosService {
-  private readonly baseUrl = 'http://localhost:3000/livros';
+  private readonly urlBase = API_CONFIG.urlBase + API_CONFIG.endpoints.livros;
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Livro[]> {
-    return this.http.get<Livro[]>(this.baseUrl);
+  obterTodos(): Observable<Livro[]> {
+    return this.http.get<Livro[]>(this.urlBase);
   }
 
-  getById(id: string): Observable<Livro> {
-    return this.http.get<Livro>(`${this.baseUrl}/${id}`);
+  obterPorId(id: string): Observable<Livro> {
+    return this.http.get<Livro>(`${this.urlBase}/${id}`);
   }
 
-  create(
+  criar(
     livro: Omit<Livro, '_id' | 'autor'> & { autor: string }
   ): Observable<any> {
-    return this.http.post(this.baseUrl, livro);
+    return this.http.post(this.urlBase, livro);
   }
 
-  update(id: string, livro: Partial<Livro>): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, livro);
+  alterar(id: string, livro: Partial<Livro>): Observable<any> {
+    return this.http.put(`${this.urlBase}/${id}`, livro);
   }
 
-  delete(id: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`);
+  excluir(id: string): Observable<any> {
+    return this.http.delete(`${this.urlBase}/${id}`);
   }
 }

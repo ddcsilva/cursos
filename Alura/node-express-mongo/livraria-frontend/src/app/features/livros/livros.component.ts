@@ -35,9 +35,9 @@ export class LivrosComponent implements OnInit {
   livros: Livro[] = [];
   autores: Autor[] = [];
   livro: any = { titulo: '', editora: '', preco: 0, paginas: 0, autor: '' };
-  editing: Livro | null = null;
-  showForm = false;
-  loading = false;
+  editando: Livro | null = null;
+  mostrarFormulario = false;
+  carregando = false;
 
   constructor(
     private livrosService: LivrosService,
@@ -45,38 +45,38 @@ export class LivrosComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.loadLivros();
-    this.loadAutores();
+    this.carregarLivros();
+    this.carregarAutores();
   }
 
-  loadLivros() {
-    this.loading = true;
-    this.livrosService.getAll().subscribe({
+  carregarLivros() {
+    this.carregando = true;
+    this.livrosService.obterTodos().subscribe({
       next: (data) => {
         this.livros = data;
-        this.loading = false;
+        this.carregando = false;
       },
-      error: () => (this.loading = false),
+      error: () => (this.carregando = false),
     });
   }
 
-  loadAutores() {
-    this.autoresService.getAll().subscribe((data) => (this.autores = data));
+  carregarAutores() {
+    this.autoresService.obterTodos().subscribe((data) => (this.autores = data));
   }
 
-  save() {
-    const request = this.editing
-      ? this.livrosService.update(this.editing._id!, this.livro)
-      : this.livrosService.create(this.livro);
+  salvar() {
+    const request = this.editando
+      ? this.livrosService.alterar(this.editando._id!, this.livro)
+      : this.livrosService.criar(this.livro);
 
     request.subscribe(() => {
-      this.loadLivros();
-      this.reset();
+      this.carregarLivros();
+      this.limpar();
     });
   }
 
-  edit(livro: Livro) {
-    this.editing = livro;
+  editar(livro: Livro) {
+    this.editando = livro;
     this.livro = {
       titulo: livro.titulo,
       editora: livro.editora,
@@ -84,23 +84,23 @@ export class LivrosComponent implements OnInit {
       paginas: livro.paginas,
       autor: livro.autor?._id || '',
     };
-    this.showForm = true;
+    this.mostrarFormulario = true;
   }
 
-  delete(id: string) {
-    if (confirm('Deletar livro?')) {
-      this.livrosService.delete(id).subscribe(() => this.loadLivros());
+  excluir(id: string) {
+    if (confirm('Excluir livro?')) {
+      this.livrosService.excluir(id).subscribe(() => this.carregarLivros());
     }
   }
 
-  toggleForm() {
-    this.showForm = !this.showForm;
-    if (!this.showForm) this.reset();
+  alternarFormulario() {
+    this.mostrarFormulario = !this.mostrarFormulario;
+    if (!this.mostrarFormulario) this.limpar();
   }
 
-  reset() {
+  limpar() {
     this.livro = { titulo: '', editora: '', preco: 0, paginas: 0, autor: '' };
-    this.editing = null;
-    this.showForm = false;
+    this.editando = null;
+    this.mostrarFormulario = false;
   }
 }
