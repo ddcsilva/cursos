@@ -2,7 +2,6 @@
   padding: 24px;
   max-width: 1400px;
   margin: 0 auto;
-  animation: fadeInUp 0.6s ease-out;
 }
 
 .header-card {
@@ -107,6 +106,10 @@ mat-form-field {
 
   &:hover::before {
     opacity: 1;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
   }
 
   mat-card-header {
@@ -229,19 +232,6 @@ mat-card:has(form) {
   }
 }
 
-// Animações de entrada para os cards
-.grid mat-card {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.grid mat-card:nth-child(odd) {
-  animation-delay: 0.1s;
-}
-
-.grid mat-card:nth-child(even) {
-  animation-delay: 0.2s;
-}
-
 // Estilos para empty state
 .empty-state {
   display: flex;
@@ -289,6 +279,5 @@ mat-card:has(form) {
 
 // Melhorias para form card
 .form-card {
-  animation: fadeInUp 0.4s ease-out;
   margin-bottom: 24px;
 }
