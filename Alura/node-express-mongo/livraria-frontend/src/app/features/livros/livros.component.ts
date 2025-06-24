@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { LivrosService } from './livros.service';
 import { AutoresService } from '../autores/autores.service';
@@ -27,6 +28,7 @@ import { Autor } from '../../models/autor.model';
     MatIconModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatTooltipModule,
   ],
   templateUrl: './livros.component.html',
   styleUrl: './livros.component.scss',
@@ -88,7 +90,7 @@ export class LivrosComponent implements OnInit {
   }
 
   excluir(id: string) {
-    if (confirm('Excluir livro?')) {
+    if (confirm('Tem certeza que deseja excluir este livro?')) {
       this.livrosService.excluir(id).subscribe(() => this.carregarLivros());
     }
   }
@@ -102,5 +104,10 @@ export class LivrosComponent implements OnInit {
     this.livro = { titulo: '', editora: '', preco: 0, paginas: 0, autor: '' };
     this.editando = null;
     this.mostrarFormulario = false;
+  }
+
+  // Função para otimizar performance com trackBy
+  trackByLivro(index: number, livro: Livro): string {
+    return livro._id || index.toString();
   }
 }

@@ -1,10 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
+// Variáveis CSS para cores e espaçamentos
+:root {
+  --primary-color: #6366f1;
+  --primary-dark: #4f46e5;
+  --secondary-color: #e5e7eb;
+  --accent-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --background-light: #f9fafb;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --border-radius: 12px;
+  --border-radius-sm: 8px;
+}
+
 html,
 body {
   height: 100%;
   margin: 0;
-  font-family: Roboto, sans-serif;
+  font-family: "Roboto", sans-serif;
+  color: var(--text-primary);
 }
 
 * {
@@ -18,20 +38,21 @@ body {
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
 }
 
 /* Animações globais */
 * {
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Estilos para formulários */
@@ -56,9 +77,88 @@ textarea:focus {
 }
 
 .text-muted {
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .fw-bold {
   font-weight: 600;
+}
+
+/* Estilos para Angular Material */
+.mat-mdc-card {
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--card-shadow) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.mat-mdc-card:hover {
+  box-shadow: var(--card-shadow-hover) !important;
+  transform: translateY(-2px);
+}
+
+.mat-mdc-raised-button {
+  border-radius: var(--border-radius-sm) !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  padding: 0 24px !important;
+  box-shadow: var(--card-shadow) !important;
+}
+
+.mat-mdc-raised-button:hover {
+  box-shadow: var(--card-shadow-hover) !important;
+  transform: translateY(-1px);
+}
+
+.mat-mdc-outlined-button,
+.mat-mdc-button {
+  border-radius: var(--border-radius-sm) !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+}
+
+.mat-mdc-form-field {
+  .mat-mdc-form-field-focus-overlay {
+    border-radius: var(--border-radius-sm);
+  }
+}
+
+/* Estilos para toolbar */
+.mat-toolbar {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--primary-dark) 100%
+  ) !important;
+  box-shadow: var(--card-shadow) !important;
+}
+
+/* Loader personalizado */
+.mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: var(--primary-color);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .mat-mdc-card {
+    margin: 8px;
+  }
+}
+
+/* Animação para entrada de elementos */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease-out;
 }

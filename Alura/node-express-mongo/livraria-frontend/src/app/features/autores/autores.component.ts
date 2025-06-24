@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AutoresService } from './autores.service';
 import { Autor } from '../../models/autor.model';
@@ -23,6 +24,7 @@ import { Autor } from '../../models/autor.model';
     MatFormFieldModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatTooltipModule,
   ],
   templateUrl: './autores.component.html',
   styleUrl: './autores.component.scss',
@@ -69,7 +71,7 @@ export class AutoresComponent implements OnInit {
   }
 
   excluir(id: string) {
-    if (confirm('Excluir autor?')) {
+    if (confirm('Tem certeza que deseja excluir este autor?')) {
       this.autoresService.excluir(id).subscribe(() => this.carregarAutores());
     }
   }
@@ -83,5 +85,10 @@ export class AutoresComponent implements OnInit {
     this.autor = { nome: '', nacionalidade: '' };
     this.editando = null;
     this.mostrarFormulario = false;
+  }
+
+  // Função para otimizar performance com trackBy
+  trackByAutor(index: number, autor: Autor): string {
+    return autor._id || index.toString();
   }
 }

@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="modern-toolbar">
+  <div class="toolbar-brand">
+    <mat-icon class="brand-icon">library_books</mat-icon>
+    <span class="brand-text">Livraria</span>
+  </div>
+  <nav class="toolbar-nav">
+    <button
+      mat-button
+      routerLink="/livros"
+      routerLinkActive="active"
+      class="nav-button"
+    >
+      <mat-icon>book</mat-icon>
+      <span>Livros</span>
+    </button>
+    <button
+      mat-button
+      routerLink="/autores"
+      routerLinkActive="active"
+      class="nav-button"
+    >
+      <mat-icon>person</mat-icon>
+      <span>Autores</span>
+    </button>
+  </nav>
+</mat-toolbar>
