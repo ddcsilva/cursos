@@ -1,0 +1,34 @@
+<app-page-container title="Autores" icon="✍️">
+  <div slot="actions">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="toggleForm()"
+      [disabled]="carregando"
+    >
+      <mat-icon>{{ mostrarFormulario ? "close" : "add" }}</mat-icon>
+      {{ mostrarFormulario ? "Cancelar" : "Novo Autor" }}
+    </button>
+  </div>
+
+  <app-autor-form
+    *ngIf="mostrarFormulario"
+    [autor]="autorEditando"
+    [salvando]="salvando"
+    (onSalvar)="handleSalvar($event)"
+    (onCancelar)="handleCancelar()"
+  ></app-autor-form>
+
+  <div *ngIf="carregando" class="loading-container">
+    <mat-spinner></mat-spinner>
+    <p>Carregando autores...</p>
+  </div>
+
+  <app-autor-list
+    *ngIf="!carregando"
+    [autores]="autores"
+    (onEditar)="handleEditar($event)"
+    (onExcluir)="handleExcluir($event)"
+    (onAdicionarAutor)="toggleForm()"
+  ></app-autor-list>
+</app-page-container>

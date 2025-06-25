@@ -1,0 +1,35 @@
+<app-page-container title="Livros" icon="📚">
+  <div slot="actions">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="toggleForm()"
+      [disabled]="carregando"
+    >
+      <mat-icon>{{ mostrarFormulario ? "close" : "add" }}</mat-icon>
+      {{ mostrarFormulario ? "Cancelar" : "Novo Livro" }}
+    </button>
+  </div>
+
+  <app-livro-form
+    *ngIf="mostrarFormulario"
+    [livro]="livroEditando"
+    [autores]="autores"
+    [salvando]="salvando"
+    (onSalvar)="handleSalvar($event)"
+    (onCancelar)="handleCancelar()"
+  ></app-livro-form>
+
+  <div *ngIf="carregando" class="loading-container">
+    <mat-spinner></mat-spinner>
+    <p>Carregando livros...</p>
+  </div>
+
+  <app-livro-list
+    *ngIf="!carregando"
+    [livros]="livros"
+    (onEditar)="handleEditar($event)"
+    (onExcluir)="handleExcluir($event)"
+    (onAdicionarLivro)="toggleForm()"
+  ></app-livro-list>
+</app-page-container>

@@ -1,9 +1,23 @@
 import { Routes } from '@angular/router';
-import { LivrosComponent } from './features/livros/livros.component';
-import { AutoresComponent } from './features/autores/autores.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/livros', pathMatch: 'full' },
-  { path: 'livros', component: LivrosComponent },
-  { path: 'autores', component: AutoresComponent },
+  {
+    path: '',
+    redirectTo: '/livros',
+    pathMatch: 'full',
+  },
+  {
+    path: 'livros',
+    loadComponent: () =>
+      import('./features/livros/containers/livros-container.component').then(
+        (m) => m.LivrosContainerComponent
+      ),
+  },
+  {
+    path: 'autores',
+    loadComponent: () =>
+      import('./features/autores/containers/autores-container.component').then(
+        (m) => m.AutoresContainerComponent
+      ),
+  },
 ];
