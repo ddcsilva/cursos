@@ -8,7 +8,7 @@ import { LivrosService } from '../livros.service';
 import { AutoresService } from '../../autores/autores.service';
 import { Livro } from '../../../models/livro.model';
 import { Autor } from '../../../models/autor.model';
-import { PageContainerComponent } from '../../../shared/ui';
+import { PageContainerComponent } from '../../../shared';
 import { LivroListComponent } from '../components/livro-list/livro-list.component';
 import { LivroFormComponent } from '../components/livro-form/livro-form.component';
 

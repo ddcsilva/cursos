@@ -1,0 +1,69 @@
+<mat-card class="autor-form-card">
+  <mat-card-header>
+    <mat-card-title>
+      <mat-icon class="title-icon">{{
+        isEditing ? "edit" : "person_add"
+      }}</mat-icon>
+      {{ isEditing ? "Editar Autor" : "Novo Autor" }}
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form (ngSubmit)="handleSubmit()" #autorForm="ngForm">
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Nome do Autor</mat-label>
+          <input
+            matInput
+            [(ngModel)]="formData.nome"
+            name="nome"
+            required
+            #nome="ngModel"
+            placeholder="Ex: Machado de Assis"
+          />
+          <mat-icon matPrefix>person</mat-icon>
+          <mat-error *ngIf="nome.invalid && nome.touched">
+            Nome é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Nacionalidade</mat-label>
+          <input
+            matInput
+            [(ngModel)]="formData.nacionalidade"
+            name="nacionalidade"
+            required
+            #nacionalidade="ngModel"
+            placeholder="Ex: Brasileiro"
+          />
+          <mat-icon matPrefix>flag</mat-icon>
+          <mat-error *ngIf="nacionalidade.invalid && nacionalidade.touched">
+            Nacionalidade é obrigatória
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-actions">
+        <button
+          mat-button
+          type="button"
+          (click)="handleClear()"
+          [disabled]="salvando"
+        >
+          <mat-icon>clear</mat-icon>
+          Limpar
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!autorForm.valid || salvando"
+        >
+          <mat-icon>{{ isEditing ? "update" : "save" }}</mat-icon>
+          {{ salvando ? "Salvando..." : isEditing ? "Atualizar" : "Salvar" }}
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

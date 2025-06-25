@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AutoresService } from '../autores.service';
 import { Autor } from '../../../models/autor.model';
-import { PageContainerComponent } from '../../../shared/ui';
+import { PageContainerComponent } from '../../../shared';
 import { AutorListComponent } from '../components/autor-list/autor-list.component';
 import { AutorFormComponent } from '../components/autor-form/autor-form.component';
 

@@ -6,5 +6,5 @@ export interface Livro {
   editora: string;
   preco: number;
   paginas: number;
-  autor: Autor;
+  autor: Autor | null;
 }

@@ -15,43 +15,8 @@ import { AutorEmptyStateComponent } from '../autor-empty-state/autor-empty-state
     AutorCardComponent,
     AutorEmptyStateComponent,
   ],
-  template: `
-    <div class="autor-list">
-      <div class="grid" *ngIf="autores.length > 0">
-        <app-autor-card
-          *ngFor="let autor of autores; trackBy: trackByAutor"
-          [autor]="autor"
-          (onEditar)="onEditar.emit($event)"
-          (onExcluir)="onExcluir.emit($event)"
-        ></app-autor-card>
-      </div>
-
-      <app-autor-empty-state
-        *ngIf="autores.length === 0"
-        (onAdicionarAutor)="onAdicionarAutor.emit()"
-      ></app-autor-empty-state>
-    </div>
-  `,
-  styles: [
-    `
-      .autor-list {
-        margin-top: 24px;
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 24px;
-      }
-
-      @media (max-width: 768px) {
-        .grid {
-          grid-template-columns: 1fr;
-          gap: 16px;
-        }
-      }
-    `,
-  ],
+  templateUrl: './autor-list.component.html',
+  styleUrl: './autor-list.component.scss',
 })
 export class AutorListComponent {
   @Input() autores: Autor[] = [];

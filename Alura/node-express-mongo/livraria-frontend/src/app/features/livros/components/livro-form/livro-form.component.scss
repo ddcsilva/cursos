@@ -1,0 +1,50 @@
+.livro-form-card {
+  margin-bottom: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(249, 250, 251, 0.95) 100%
+  );
+  border: 2px solid rgba(99, 102, 241, 0.1);
+
+  mat-card-content {
+    padding: 24px;
+  }
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+
+  mat-form-field {
+    flex: 1;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+
+  .mat-mdc-form-field-focus-overlay {
+    background-color: rgba(99, 102, 241, 0.05);
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(229, 231, 235, 0.3);
+  justify-content: flex-end;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+}

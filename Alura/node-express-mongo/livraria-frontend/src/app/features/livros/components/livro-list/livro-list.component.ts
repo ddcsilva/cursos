@@ -15,43 +15,8 @@ import { LivroEmptyStateComponent } from '../livro-empty-state/livro-empty-state
     LivroCardComponent,
     LivroEmptyStateComponent,
   ],
-  template: `
-    <div class="livro-list">
-      <div class="grid" *ngIf="livros.length > 0">
-        <app-livro-card
-          *ngFor="let livro of livros; trackBy: trackByLivro"
-          [livro]="livro"
-          (onEditar)="onEditar.emit($event)"
-          (onExcluir)="onExcluir.emit($event)"
-        ></app-livro-card>
-      </div>
-
-      <app-livro-empty-state
-        *ngIf="livros.length === 0"
-        (onAdicionarLivro)="onAdicionarLivro.emit()"
-      ></app-livro-empty-state>
-    </div>
-  `,
-  styles: [
-    `
-      .livro-list {
-        margin-top: 24px;
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-        gap: 24px;
-      }
-
-      @media (max-width: 768px) {
-        .grid {
-          grid-template-columns: 1fr;
-          gap: 16px;
-        }
-      }
-    `,
-  ],
+  templateUrl: './livro-list.component.html',
+  styleUrl: './livro-list.component.scss',
 })
 export class LivroListComponent {
   @Input() livros: Livro[] = [];
