@@ -1,0 +1,16 @@
+<div class="empty-state">
+  <div class="empty-icon">
+    <mat-icon>person_off</mat-icon>
+  </div>
+  <h3>Nenhum autor encontrado</h3>
+  <p>Comece adicionando seu primeiro autor à biblioteca</p>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onAdicionarAutor.emit()"
+    class="add-button"
+  >
+    <mat-icon>add</mat-icon>
+    Adicionar Autor
+  </button>
+</div>

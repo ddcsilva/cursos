@@ -1,0 +1,45 @@
+<app-page-container title="Livros" icon="📚">
+  <div slot="actions">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="toggleForm()"
+      [disabled]="carregando"
+    >
+      <mat-icon>{{ mostrarFormulario ? "close" : "add" }}</mat-icon>
+      {{ mostrarFormulario ? "Cancelar" : "Novo Livro" }}
+    </button>
+  </div>
+
+  <!-- Mensagem de erro -->
+  <div *ngIf="erro" class="error-container">
+    <mat-icon class="error-icon">error</mat-icon>
+    <p class="error-message">{{ erro }}</p>
+    <button mat-button color="primary" (click)="ngOnInit()">
+      <mat-icon>refresh</mat-icon>
+      Tentar Novamente
+    </button>
+  </div>
+
+  <app-livro-form
+    *ngIf="mostrarFormulario && !erro"
+    [livro]="livroEditando"
+    [autores]="autores"
+    [salvando]="salvando"
+    (onSalvar)="handleSalvar($event)"
+    (onCancelar)="handleCancelar()"
+  ></app-livro-form>
+
+  <div *ngIf="carregando" class="loading-container">
+    <mat-spinner></mat-spinner>
+    <p>Carregando livros...</p>
+  </div>
+
+  <app-livro-list
+    *ngIf="!carregando && !erro"
+    [livros]="livros"
+    (onEditar)="handleEditar($event)"
+    (onExcluir)="handleExcluir($event)"
+    (onAdicionarLivro)="toggleForm()"
+  ></app-livro-list>
+</app-page-container>

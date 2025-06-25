@@ -1,0 +1,44 @@
+<app-page-container title="Autores" icon="✍️">
+  <div slot="actions">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="toggleForm()"
+      [disabled]="carregando"
+    >
+      <mat-icon>{{ mostrarFormulario ? "close" : "add" }}</mat-icon>
+      {{ mostrarFormulario ? "Cancelar" : "Novo Autor" }}
+    </button>
+  </div>
+
+  <!-- Mensagem de erro -->
+  <div *ngIf="erro" class="error-container">
+    <mat-icon class="error-icon">error</mat-icon>
+    <p class="error-message">{{ erro }}</p>
+    <button mat-button color="primary" (click)="ngOnInit()">
+      <mat-icon>refresh</mat-icon>
+      Tentar Novamente
+    </button>
+  </div>
+
+  <app-autor-form
+    *ngIf="mostrarFormulario && !erro"
+    [autor]="autorEditando"
+    [salvando]="salvando"
+    (onSalvar)="handleSalvar($event)"
+    (onCancelar)="handleCancelar()"
+  ></app-autor-form>
+
+  <div *ngIf="carregando" class="loading-container">
+    <mat-spinner></mat-spinner>
+    <p>Carregando autores...</p>
+  </div>
+
+  <app-autor-list
+    *ngIf="!carregando && !erro"
+    [autores]="autores"
+    (onEditar)="handleEditar($event)"
+    (onExcluir)="handleExcluir($event)"
+    (onAdicionarAutor)="toggleForm()"
+  ></app-autor-list>
+</app-page-container>
