@@ -11,8 +11,18 @@
     </button>
   </div>
 
+  <!-- Mensagem de erro -->
+  <div *ngIf="erro" class="error-container">
+    <mat-icon class="error-icon">error</mat-icon>
+    <p class="error-message">{{ erro }}</p>
+    <button mat-button color="primary" (click)="ngOnInit()">
+      <mat-icon>refresh</mat-icon>
+      Tentar Novamente
+    </button>
+  </div>
+
   <app-livro-form
-    *ngIf="mostrarFormulario"
+    *ngIf="mostrarFormulario && !erro"
     [livro]="livroEditando"
     [autores]="autores"
     [salvando]="salvando"
@@ -26,7 +36,7 @@
   </div>
 
   <app-livro-list
-    *ngIf="!carregando"
+    *ngIf="!carregando && !erro"
     [livros]="livros"
     (onEditar)="handleEditar($event)"
     (onExcluir)="handleExcluir($event)"

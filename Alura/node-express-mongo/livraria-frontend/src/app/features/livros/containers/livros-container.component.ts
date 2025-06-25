@@ -11,6 +11,11 @@ import { Autor } from '../../../models/autor.model';
 import { PageContainerComponent } from '../../../shared';
 import { LivroListComponent } from '../components/livro-list/livro-list.component';
 import { LivroFormComponent } from '../components/livro-form/livro-form.component';
+import {
+  ErrorHandlerService,
+  ErrorResponse,
+  NotificationService,
+} from '../../../core';
 
 @Component({
   selector: 'app-livros-container',
@@ -34,10 +39,14 @@ export class LivrosContainerComponent implements OnInit {
   mostrarFormulario = false;
   carregando = false;
   salvando = false;
+  erro: string | null = null;
+  private lastFormData: any = null;
 
   constructor(
     private livrosService: LivrosService,
-    private autoresService: AutoresService
+    private autoresService: AutoresService,
+    private errorHandler: ErrorHandlerService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit() {
@@ -58,11 +67,13 @@ export class LivrosContainerComponent implements OnInit {
       this.livrosService.obterTodos().subscribe({
         next: (data) => {
           this.livros = data;
+          this.erro = null;
           resolve();
         },
-        error: (error) => {
-          console.error('Erro ao carregar livros:', error);
-          reject(error);
+        error: (errorResponse: ErrorResponse) => {
+          this.erro = this.errorHandler.getDisplayMessage(errorResponse);
+          console.error('Erro ao carregar livros:', errorResponse);
+          reject(errorResponse);
         },
       });
     });
@@ -75,9 +86,10 @@ export class LivrosContainerComponent implements OnInit {
           this.autores = data;
           resolve();
         },
-        error: (error) => {
-          console.error('Erro ao carregar autores:', error);
-          reject(error);
+        error: (errorResponse: ErrorResponse) => {
+          console.error('Erro ao carregar autores:', errorResponse);
+          // Para autores, não bloqueamos a interface, apenas logamos
+          resolve();
         },
       });
     });
@@ -92,6 +104,9 @@ export class LivrosContainerComponent implements OnInit {
 
   handleSalvar(livroData: any) {
     this.salvando = true;
+    this.erro = null;
+    this.lastFormData = livroData;
+
     const request = this.livroEditando
       ? this.livrosService.alterar(this.livroEditando._id!, livroData)
       : this.livrosService.criar(livroData);
@@ -100,10 +115,29 @@ export class LivrosContainerComponent implements OnInit {
       next: () => {
         this.carregarLivros();
         this.handleCancelar();
+
+        // Notificação de sucesso
+        if (this.livroEditando) {
+          this.notificationService.updated('Livro');
+        } else {
+          this.notificationService.created('Livro');
+        }
       },
-      error: (error) => {
-        console.error('Erro ao salvar livro:', error);
-        // Aqui você pode adicionar notificação de erro
+      error: (errorResponse: ErrorResponse) => {
+        this.erro = this.errorHandler.getDisplayMessage(errorResponse);
+        console.error('Erro ao salvar livro:', errorResponse);
+
+        // Notificação de erro com retry
+        if (this.errorHandler.shouldRetry(errorResponse)) {
+          this.notificationService.showRetryNotification(
+            errorResponse.userMessage,
+            () => this.handleSalvar(this.getLastFormData())
+          );
+        } else {
+          this.notificationService.error(errorResponse.userMessage);
+        }
+
+        this.salvando = false;
       },
       complete: () => {
         this.salvando = false;
@@ -118,13 +152,17 @@ export class LivrosContainerComponent implements OnInit {
 
   handleExcluir(livroId: string) {
     if (confirm('Tem certeza que deseja excluir este livro?')) {
+      this.erro = null;
+
       this.livrosService.excluir(livroId).subscribe({
         next: () => {
           this.carregarLivros();
+          this.notificationService.deleted('Livro');
         },
-        error: (error) => {
-          console.error('Erro ao excluir livro:', error);
-          // Aqui você pode adicionar notificação de erro
+        error: (errorResponse: ErrorResponse) => {
+          this.erro = this.errorHandler.getDisplayMessage(errorResponse);
+          console.error('Erro ao excluir livro:', errorResponse);
+          this.notificationService.deleteError('livro');
         },
       });
     }
@@ -133,5 +171,9 @@ export class LivrosContainerComponent implements OnInit {
   handleCancelar() {
     this.mostrarFormulario = false;
     this.livroEditando = null;
+  }
+
+  private getLastFormData() {
+    return this.lastFormData;
   }
 }
