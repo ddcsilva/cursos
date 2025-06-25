@@ -22,34 +22,29 @@ Este curso ensina como desenvolver uma API RESTful completa do zero utilizando N
 ## 📚 Estrutura do Curso
 
 ### 1️⃣ **Criando o projeto com Node.js** (32min)
-
 - Entendendo APIs
 - Criando o servidor
 - Criando rotas
 
 ### 2️⃣ **Express e primeiras rotas** (48min)
-
 - Iniciando com Express
 - Criando registros com POST
 - Buscando e atualizando livros
 - Deletando livros
 
 ### 3️⃣ **Persistindo dados** (46min)
-
 - Bancos de dados
 - Criando coleção no MongoDB
 - Conectando MongoDB e API
 - Criando models e schemas
 
 ### 4️⃣ **Evoluindo a API** (43min)
-
 - Criando controller para Livro
 - Controller POST
 - Controller PUT
 - Controller DELETE
 
 ### 5️⃣ **Adicionando funcionalidades** (40min)
-
 - Criando autores
 - Unindo livros e autores
 - Buscas por parâmetro
@@ -61,7 +56,6 @@ Este curso ensina como desenvolver uma API RESTful completa do zero utilizando N
 ## 🛠️ Tecnologias Utilizadas
 
 ### Backend
-
 - **Node.js**: Runtime JavaScript para backend
 - **Express**: Framework web para Node.js
 - **MongoDB**: Banco de dados NoSQL
@@ -69,7 +63,6 @@ Este curso ensina como desenvolver uma API RESTful completa do zero utilizando N
 - **REST API**: Padrão arquitetural para APIs
 
 ### Frontend (Adicionado)
-
 - **Angular**: Framework TypeScript para desenvolvimento web
 - **TypeScript**: Linguagem tipada baseada em JavaScript
 - **Angular HTTP Client**: Para comunicação com a API
@@ -78,7 +71,7 @@ Este curso ensina como desenvolver uma API RESTful completa do zero utilizando N
 
 ## 📂 Estrutura do Projeto
 
-```text
+```
 node-express-mongo/
 ├── livraria-api/              # 🔧 Backend API
 │   ├── src/
@@ -119,50 +112,41 @@ node-express-mongo/
 ### 🔧 Backend (API)
 
 1. **Navegar para a pasta da API**:
-
    ```bash
    cd livraria-api
    ```
 
 2. **Instalar dependências**:
-
    ```bash
    npm install
    ```
 
 3. **Configurar MongoDB**:
-
    - Certifique-se de ter o MongoDB instalado e rodando
    - Configure a string de conexão no arquivo `dbConnect.js`
 
 4. **Executar a API**:
-
    ```bash
    npm start
    ```
-
    - A API estará disponível em `http://localhost:3000`
 
 ### 🎨 Frontend Angular
 
 1. **Navegar para a pasta do frontend**:
-
    ```bash
    cd livraria-frontend
    ```
 
 2. **Instalar dependências**:
-
    ```bash
    npm install
    ```
 
 3. **Executar o frontend**:
-
    ```bash
    ng serve
    ```
-
    - O frontend estará disponível em `http://localhost:4200`
 
 ### 🌐 Testando a Aplicação Completa
@@ -174,7 +158,6 @@ node-express-mongo/
 ## 📝 Endpoints da API
 
 ### Livros
-
 - `GET /livros` - Listar todos os livros
 - `GET /livros/:id` - Buscar livro por ID
 - `POST /livros` - Criar novo livro
@@ -182,7 +165,6 @@ node-express-mongo/
 - `DELETE /livros/:id` - Deletar livro
 
 ### Autores
-
 - `GET /autores` - Listar todos os autores
 - `GET /autores/:id` - Buscar autor por ID
 - `POST /autores` - Criar novo autor

@@ -78,7 +78,7 @@ src/
 | POST | `/livros` | Cria um novo livro |
 | PUT | `/livros/:id` | Atualiza um livro |
 | DELETE | `/livros/:id` | Remove um livro |
-| GET | `/livros/busca?titulo=valor` | Busca livros por título |
+| GET | `/livros/busca?editora=valor` | Busca livros por editora |
 
 ### 👥 Autores
 
@@ -126,14 +126,17 @@ Content-Type: application/json
   "editora": "Companhia das Letras",
   "preco": 29.90,
   "paginas": 256,
-  "autor": "ObjectId_do_autor"
+  "autor": {
+    "nome": "Machado de Assis",
+    "nacionalidade": "Brasileira"
+  }
 }
 ```
 
-### Buscar livros por título
+### Buscar livros por editora
 
 ```bash
-GET /livros/busca?titulo=Dom
+GET /livros/busca?editora=Companhia
 ```
 
 ## 🌐 CORS Configuration

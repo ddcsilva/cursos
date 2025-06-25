@@ -1,10 +1,10 @@
 # 🎨 Livraria Frontend - Angular
 
-Interface web moderna para gerenciamento de livros e autores, desenvolvida em Angular 18 com Angular Material.
+Interface web para gerenciamento de livros e autores, desenvolvida em Angular 18 com Angular Material.
 
 ## 📋 Sobre
 
-Esta aplicação frontend foi desenvolvida para consumir a API RESTful de gerenciamento de livraria. Oferece uma interface gráfica completa e intuitiva para realizar todas as operações CRUD de livros e autores, servindo como um caso de uso real para testar a API backend.
+Esta aplicação frontend foi desenvolvida para consumir a API RESTful de gerenciamento de livraria. Oferece uma interface simples para realizar operações CRUD de livros e autores, servindo como um caso de uso real para testar a API backend.
 
 ## 🛠️ Tecnologias
 
@@ -19,29 +19,23 @@ Esta aplicação frontend foi desenvolvida para consumir a API RESTful de gerenc
 ## 🎯 Funcionalidades
 
 ### 📚 Gestão de Livros
-
-- ✅ Listar todos os livros com paginação
-- ✅ Visualizar detalhes de um livro específico
+- ✅ Listar todos os livros
 - ✅ Adicionar novos livros
 - ✅ Editar informações de livros existentes
 - ✅ Remover livros do sistema
-- ✅ Buscar livros por título
 
 ### 👥 Gestão de Autores
-
 - ✅ Listar todos os autores
-- ✅ Visualizar detalhes de um autor específico
 - ✅ Adicionar novos autores
 - ✅ Editar informações de autores existentes
 - ✅ Remover autores do sistema
 
 ### 🎨 Interface e UX
-
-- ✅ Design moderno e responsivo
+- ✅ Design moderno com Angular Material
 - ✅ Notificações de sucesso e erro
 - ✅ Loading states durante operações
-- ✅ Validações de formulário em tempo real
-- ✅ Navegação intuitiva entre páginas
+- ✅ Formulários reativos com validações
+- ✅ Interface responsiva
 
 ## 📂 Estrutura do Projeto
 
@@ -58,16 +52,27 @@ src/
 │   │   ├── interceptors/
 │   │   │   └── error.interceptor.ts     # Interceptador de erros HTTP
 │   │   ├── models/              # Modelos de dados centrais
+│   │   ├── providers/           # Providers de serviços
 │   │   └── services/            # Serviços compartilhados
 │   ├── features/                # Módulos de funcionalidades
 │   │   ├── autores/             # Módulo de autores
 │   │   │   ├── autores.service.ts
 │   │   │   ├── components/      # Componentes específicos
-│   │   │   └── containers/      # Páginas/containers
+│   │   │   │   ├── autor-card/
+│   │   │   │   ├── autor-form/
+│   │   │   │   ├── autor-list/
+│   │   │   │   └── autor-empty-state/
+│   │   │   └── containers/      # Container principal
+│   │   │       └── autores-container.component.*
 │   │   └── livros/              # Módulo de livros
 │   │       ├── livros.service.ts
 │   │       ├── components/      # Componentes específicos
-│   │       └── containers/      # Páginas/containers
+│   │       │   ├── livro-card/
+│   │       │   ├── livro-form/
+│   │       │   ├── livro-list/
+│   │       │   └── livro-empty-state/
+│   │       └── containers/      # Container principal
+│   │           └── livros-container.component.*
 │   ├── models/                  # Modelos TypeScript
 │   │   ├── autor.model.ts
 │   │   └── livro.model.ts
@@ -82,7 +87,6 @@ src/
 ## 🚀 Instalação e Execução
 
 ### Pré-requisitos
-
 - Node.js (versão 18 ou superior)
 - Angular CLI instalado globalmente: `npm install -g @angular/cli`
 - API backend rodando na porta 3000
@@ -90,19 +94,15 @@ src/
 ### Passos
 
 1. **Instalar dependências**:
-
    ```bash
    npm install
    ```
 
 2. **Executar em modo desenvolvimento**:
-
    ```bash
    ng serve
    ```
-
    ou
-
    ```bash
    npm start
    ```
@@ -123,39 +123,36 @@ export const API_CONFIG = {
 };
 ```
 
-## 📱 Páginas da Aplicação
+## 📱 Rotas da Aplicação
 
-### 🏠 Dashboard
+A aplicação possui as seguintes rotas:
 
-- Visão geral do sistema
-- Acesso rápido às funcionalidades
+- `/` - Redireciona para `/livros`
+- `/livros` - Página de gestão de livros
+- `/autores` - Página de gestão de autores
 
-### 📚 Livros
-
-- `/livros` - Lista de todos os livros
-- `/livros/novo` - Formulário para adicionar livro
-- `/livros/:id/editar` - Formulário para editar livro
-
-### 👥 Autores
-
-- `/autores` - Lista de todos os autores
-- `/autores/novo` - Formulário para adicionar autor
-- `/autores/:id/editar` - Formulário para editar autor
+*As rotas usam lazy loading para carregar os componentes conforme necessário*
 
 ## 🎨 Componentes Principais
 
 ### Shared Components
-
 - **App Layout** - Layout principal da aplicação
 - **Page Container** - Container padronizado para páginas
 - **Notification** - Sistema de notificações
 
-### Feature Components
+### Livros Components
+- **Livros Container** - Container principal da página de livros
+- **Livro Card** - Cartão para exibir informações do livro
+- **Livro Form** - Formulário para criar/editar livros
+- **Livro List** - Lista de livros
+- **Livro Empty State** - Estado vazio quando não há livros
 
-- **Lista de Livros** - Exibe livros em formato de tabela/cards
-- **Formulário de Livro** - Formulário para criar/editar livros
-- **Lista de Autores** - Exibe autores em formato de tabela/cards
-- **Formulário de Autor** - Formulário para criar/editar autores
+### Autores Components
+- **Autores Container** - Container principal da página de autores
+- **Autor Card** - Cartão para exibir informações do autor
+- **Autor Form** - Formulário para criar/editar autores
+- **Autor List** - Lista de autores
+- **Autor Empty State** - Estado vazio quando não há autores
 
 ## 📦 Scripts Disponíveis
 
@@ -166,7 +163,7 @@ export const API_CONFIG = {
 
 ## 🔍 Tratamento de Erros
 
-A aplicação possui um sistema robusto de tratamento de erros:
+A aplicação possui um sistema de tratamento de erros:
 
 - **Error Interceptor** - Intercepta erros HTTP automaticamente
 - **Global Error Handler** - Trata erros não capturados
@@ -176,17 +173,15 @@ A aplicação possui um sistema robusto de tratamento de erros:
 ## 🎯 Validações de Formulário
 
 ### Livros
-
-- Título: obrigatório, mínimo 2 caracteres
-- Editora: obrigatório
-- Preço: obrigatório, deve ser um número positivo
-- Páginas: obrigatório, deve ser um número inteiro positivo
-- Autor: obrigatório, deve ser um autor válido
+- Título: obrigatório
+- Editora: opcional
+- Preço: opcional, deve ser um número
+- Páginas: opcional, deve ser um número
+- Autor: obrigatório, selecionado da lista de autores
 
 ### Autores
-
-- Nome: obrigatório, mínimo 2 caracteres
-- Nacionalidade: obrigatório
+- Nome: obrigatório
+- Nacionalidade: opcional
 
 ## 🌐 Consumo da API
 
