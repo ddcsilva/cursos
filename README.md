@@ -22,6 +22,14 @@ O repositório está organizado por instrutor/plataforma, facilitando a navegaç
       📄 Projetos
 ```
 
+## 🎓 Cursos em Andamento
+
+### 🅰️ Angular 19 - Do Zero ao Avançado (Dougllas Sousa)
+**Plataforma**: Udemy
+**Status**: 🔄 Em andamento
+**Foco**: Angular moderno com Material Design, TailwindCSS, APIs REST, Login Social e arquitetura escalável
+**Pasta**: [Dougllas Sousa/Angular](./Dougllas%20Sousa/Angular/)
+
 ## 🚀 Como Usar
 
 1. Navegue pelas pastas organizadas por instrutor
