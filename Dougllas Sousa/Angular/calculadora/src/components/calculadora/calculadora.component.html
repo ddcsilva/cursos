@@ -1,0 +1,68 @@
+<div class="calculator-container">
+  <div class="calculator" tabindex="0">
+    <!-- Header com título -->
+    <div class="calculator-header">
+      <h2 class="title">Calculadora</h2>
+      <button
+        class="history-btn"
+        (click)="alternarHistorico()"
+        [attr.aria-label]="
+          mostrarHistorico ? 'Ocultar histórico' : 'Mostrar histórico'
+        "
+      >
+        📋
+      </button>
+    </div>
+
+    <!-- Display -->
+    <app-leitor-calculadora
+      [leitor]="calculatorService.exibicao()"
+      [expressao]="calculatorService.expressao()"
+    ></app-leitor-calculadora>
+
+    <!-- Grid de botões -->
+    <div class="buttons-grid">
+      @for (row of botoes; track $index) { @for (button of row; track
+      button.valor) {
+      <app-botao-calculadora
+        [botao]="button"
+        (cliqueBotao)="aoClicarBotao($event)"
+      ></app-botao-calculadora>
+      } }
+    </div>
+
+    <!-- Histórico (condicional) -->
+    @if (mostrarHistorico) {
+    <div class="history-panel">
+      <div class="history-header">
+        <h3>Histórico</h3>
+        <button
+          class="clear-history-btn"
+          (click)="limparHistorico()"
+          [disabled]="calculatorService.historicoCalculo().length === 0"
+        >
+          Limpar
+        </button>
+      </div>
+
+      <div class="history-list">
+        @if (calculatorService.historicoCalculo().length === 0) {
+        <div class="empty-history">Nenhum cálculo realizado</div>
+        } @else { @for (entry of calculatorService.historicoCalculo(); track
+        entry.id) {
+        <div
+          class="history-item"
+          (click)="usarResultadoHistorico(entry.resultado)"
+        >
+          <div class="history-expression">{{ entry.expressao }}</div>
+          <div class="history-result">= {{ entry.resultado }}</div>
+          <div class="history-time">
+            {{ formatarTempo(entry.timestamp) }}
+          </div>
+        </div>
+        } }
+      </div>
+    </div>
+    }
+  </div>
+</div>

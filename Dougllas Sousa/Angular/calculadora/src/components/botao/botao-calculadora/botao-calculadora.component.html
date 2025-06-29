@@ -1,0 +1,11 @@
+<button
+  [class]="classesBotao()"
+  [attr.aria-label]="botao.exibicao"
+  (click)="manipularClique()"
+  (mousedown)="aoPressionarMouse()"
+  (mouseup)="aoSoltarMouse()"
+  (mouseleave)="aoSoltarMouse()"
+  [disabled]="desabilitado"
+>
+  {{ botao.exibicao }}
+</button>

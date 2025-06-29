@@ -1,0 +1,306 @@
+@use "tailwindcss";
+
+button {
+  @apply font-semibold rounded-2xl transition-all duration-300 ease-out;
+  @apply border-none outline-none cursor-pointer select-none;
+  @apply active:scale-95;
+
+  /* Enhanced sizing with better proportions */
+  width: 100%;
+  height: clamp(4rem, 12vw, 5.5rem);
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Modern styling */
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* Enhanced border radius */
+  border-radius: clamp(1rem, 3vw, 1.5rem);
+}
+
+/* Sweep shine effect */
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+/* Enhanced focus states */
+button:focus-visible {
+  outline: 3px solid rgba(59, 130, 246, 0.6);
+  outline-offset: 3px;
+}
+
+/* NUMBER BUTTONS - Clean and professional */
+.btn-number {
+  @apply text-gray-700;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 1px rgba(226, 232, 240, 0.6);
+
+  /* Text shadow for depth */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-number:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  box-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 1), 0 0 0 1px rgba(226, 232, 240, 0.8);
+}
+
+.btn-number:active {
+  transform: translateY(-1px) scale(0.98);
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* OPERATION BUTTONS - Bold blue */
+.btn-operation {
+  @apply text-white font-bold;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  box-shadow: 0 6px 20px 0 rgba(59, 130, 246, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn-operation:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  box-shadow: 0 12px 32px 0 rgba(59, 130, 246, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.btn-operation:active {
+  transform: translateY(-1px) scale(0.98);
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+  box-shadow: 0 4px 12px 0 rgba(59, 130, 246, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* EQUALS BUTTON - Prominent green */
+.btn-equals {
+  @apply text-white font-bold;
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  box-shadow: 0 6px 20px 0 rgba(16, 185, 129, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+}
+
+.btn-equals:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: linear-gradient(135deg, #059669 0%, #065f46 100%);
+  box-shadow: 0 12px 32px 0 rgba(16, 185, 129, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.btn-equals:active {
+  transform: translateY(-1px) scale(0.98);
+  background: linear-gradient(135deg, #047857 0%, #064e3b 100%);
+  box-shadow: 0 4px 12px 0 rgba(16, 185, 129, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* COMMAND BUTTONS - Alert red */
+.btn-command {
+  @apply text-white font-bold;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  box-shadow: 0 6px 20px 0 rgba(239, 68, 68, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn-command:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  box-shadow: 0 12px 32px 0 rgba(239, 68, 68, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.btn-command:active {
+  transform: translateY(-1px) scale(0.98);
+  background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+  box-shadow: 0 4px 12px 0 rgba(239, 68, 68, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* SCIENTIFIC BUTTONS - Purple elegance */
+.btn-scientific {
+  @apply text-white font-semibold;
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  box-shadow: 0 6px 20px 0 rgba(139, 92, 246, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn-scientific:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  box-shadow: 0 12px 32px 0 rgba(139, 92, 246, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.btn-scientific:active {
+  transform: translateY(-1px) scale(0.98);
+  background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+  box-shadow: 0 4px 12px 0 rgba(139, 92, 246, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* PRESSED STATE - Visual feedback */
+.pressed {
+  transform: scale(0.96) !important;
+  filter: brightness(0.9);
+  transition: all 0.1s ease-in-out !important;
+}
+
+/* DISABLED STATE - Accessible and clear */
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+  filter: grayscale(0.5);
+  pointer-events: none;
+}
+
+button:disabled:hover {
+  transform: none !important;
+  box-shadow: none;
+}
+
+/* RIPPLE EFFECT - Modern interaction feedback */
+button {
+  overflow: hidden;
+  position: relative;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.5s ease-out;
+}
+
+button:active::after {
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+}
+
+/* ENHANCED RESPONSIVE DESIGN */
+@media (max-width: 640px) {
+  button {
+    height: clamp(3.5rem, 10vw, 4.5rem);
+    font-size: clamp(1.125rem, 3.5vw, 1.5rem);
+    border-radius: clamp(0.875rem, 2.5vw, 1.25rem);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  button {
+    height: clamp(4.25rem, 11vw, 5rem);
+    font-size: clamp(1.375rem, 3.75vw, 1.625rem);
+  }
+}
+
+@media (min-width: 1025px) {
+  button {
+    height: 5.5rem;
+    font-size: 1.75rem;
+  }
+
+  button:hover {
+    transform: translateY(-4px) scale(1.05);
+  }
+}
+
+/* HIGH CONTRAST MODE - Accessibility */
+@media (prefers-contrast: high) {
+  .btn-number {
+    border: 2px solid #374151;
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .btn-operation,
+  .btn-equals,
+  .btn-command,
+  .btn-scientific {
+    border: 2px solid currentColor;
+  }
+}
+
+/* REDUCED MOTION - Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  button,
+  button::before,
+  button::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  button:hover,
+  button:active {
+    transform: none !important;
+  }
+}
+
+/* DARK MODE SUPPORT */
+@media (prefers-color-scheme: dark) {
+  .btn-number {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    color: #f9fafb;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(75, 85, 99, 0.6);
+  }
+
+  .btn-number:hover {
+    background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+  }
+}
+
+/* TOUCH DEVICE OPTIMIZATIONS */
+@media (hover: none) and (pointer: coarse) {
+  button {
+    height: clamp(4rem, 12vw, 6rem);
+    font-size: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  button:hover {
+    transform: none;
+  }
+
+  button:active {
+    transform: scale(0.95);
+  }
+}
