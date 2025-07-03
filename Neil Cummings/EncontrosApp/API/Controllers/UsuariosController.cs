@@ -17,7 +17,7 @@ public class UsuariosController(AppDbContext context) : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Usuario>> ObterUsuarioPorId(int id)
+    public async Task<ActionResult<Usuario>> ObterUsuarioPorId(string id)
     {
         var usuario = await context.Usuarios.FindAsync(id);
 
