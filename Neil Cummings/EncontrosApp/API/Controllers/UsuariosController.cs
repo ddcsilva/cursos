@@ -1,6 +1,7 @@
 using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
@@ -9,22 +10,22 @@ namespace API.Controllers;
 public class UsuariosController(AppDbContext context) : ControllerBase
 {
     [HttpGet]
-    public ActionResult<IReadOnlyList<Usuario>> ObterUsuarios()
+    public async Task<ActionResult<IReadOnlyList<Usuario>>> ObterUsuarios()
     {
-        var usuarios = context.Usuarios.ToList();
-        return usuarios;
+        var usuarios = await context.Usuarios.ToListAsync();
+        return Ok(usuarios);
     }
 
     [HttpGet("{id}")]
-    public ActionResult<Usuario> ObterUsuarioPorId(int id)
+    public async Task<ActionResult<Usuario>> ObterUsuarioPorId(int id)
     {
-        var usuario = context.Usuarios.Find(id);
+        var usuario = await context.Usuarios.FindAsync(id);
 
         if (usuario == null)
         {
             return NotFound();
         }
 
-        return usuario;
+        return Ok(usuario);
     }
 }
