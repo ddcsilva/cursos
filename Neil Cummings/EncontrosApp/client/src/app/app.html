@@ -1,1 +1,7 @@
-{{ title }}
+<h3>{{ title }}</h3>
+
+<ul>
+  @for (usuario of usuarios(); track $index) {
+  <li>{{ usuario.id }} - {{ usuario.nomeExibicao }}</li>
+  }
+</ul>
