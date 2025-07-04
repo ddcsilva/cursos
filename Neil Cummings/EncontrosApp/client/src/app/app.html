@@ -1,7 +1,9 @@
-<h3>{{ title }}</h3>
+<h3 class="text-3xl text-red-500">{{ title }}</h3>
 
 <ul>
   @for (usuario of usuarios(); track $index) {
   <li>{{ usuario.id }} - {{ usuario.nomeExibicao }}</li>
   }
 </ul>
+
+<button class="btn btn-primary">Click me</button>
