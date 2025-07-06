@@ -1,5 +1,6 @@
 using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ public class UsuariosController(AppDbContext context) : MainController
         return Ok(usuarios);
     }
 
+    [Authorize]
     [HttpGet("{id}")]
     public async Task<ActionResult<Usuario>> ObterUsuarioPorId(string id)
     {
