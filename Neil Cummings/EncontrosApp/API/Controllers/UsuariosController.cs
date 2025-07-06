@@ -5,9 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
-[Route("api/[controller]")]
-[ApiController]
-public class UsuariosController(AppDbContext context) : ControllerBase
+public class UsuariosController(AppDbContext context) : MainController
 {
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<Usuario>>> ObterUsuarios()
