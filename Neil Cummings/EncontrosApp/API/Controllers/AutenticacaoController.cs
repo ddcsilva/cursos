@@ -6,6 +6,7 @@ using API.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Interfaces;
+using API.Extensions;
 
 namespace API.Controllers;
 
@@ -32,13 +33,7 @@ public class AutenticacaoController(AppDbContext context, ITokenService tokenSer
         await context.Usuarios.AddAsync(usuario);
         await context.SaveChangesAsync();
 
-        return new UsuarioDTO
-        {
-            Id = usuario.Id,
-            Email = usuario.Email,
-            NomeExibicao = usuario.NomeExibicao,
-            Token = tokenService.CriarToken(usuario)
-        };
+        return usuario.ConverterParaDTO(tokenService);
     }
 
     [HttpPost("login")]
@@ -63,13 +58,7 @@ public class AutenticacaoController(AppDbContext context, ITokenService tokenSer
             }
         }
 
-        return new UsuarioDTO
-        {
-            Id = usuario.Id,
-            Email = usuario.Email,
-            NomeExibicao = usuario.NomeExibicao,
-            Token = tokenService.CriarToken(usuario)
-        };
+        return usuario.ConverterParaDTO(tokenService);
     }
 
     private async Task<bool> EmailExisteAsync(string email)
