@@ -5,13 +5,14 @@ using API.Entities;
 using API.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using API.Interfaces;
 
 namespace API.Controllers;
 
-public class AutenticacaoController(AppDbContext context) : MainController
+public class AutenticacaoController(AppDbContext context, ITokenService tokenService) : MainController
 {
     [HttpPost("registrar")]
-    public async Task<ActionResult<Usuario>> RegistrarAsync(RegistroDTO registroDTO)
+    public async Task<ActionResult<UsuarioDTO>> RegistrarAsync(RegistroDTO registroDTO)
     {
         if (await EmailExisteAsync(registroDTO.Email))
         {
@@ -31,11 +32,17 @@ public class AutenticacaoController(AppDbContext context) : MainController
         await context.Usuarios.AddAsync(usuario);
         await context.SaveChangesAsync();
 
-        return Ok(usuario);
+        return new UsuarioDTO
+        {
+            Id = usuario.Id,
+            Email = usuario.Email,
+            NomeExibicao = usuario.NomeExibicao,
+            Token = tokenService.CriarToken(usuario)
+        };
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<Usuario>> LoginAsync(LoginDTO loginDTO)
+    public async Task<ActionResult<UsuarioDTO>> LoginAsync(LoginDTO loginDTO)
     {
         var usuario = await context.Usuarios.SingleOrDefaultAsync(u => u.Email == loginDTO.Email);
 
@@ -56,7 +63,13 @@ public class AutenticacaoController(AppDbContext context) : MainController
             }
         }
 
-        return Ok(usuario);
+        return new UsuarioDTO
+        {
+            Id = usuario.Id,
+            Email = usuario.Email,
+            NomeExibicao = usuario.NomeExibicao,
+            Token = tokenService.CriarToken(usuario)
+        };
     }
 
     private async Task<bool> EmailExisteAsync(string email)
