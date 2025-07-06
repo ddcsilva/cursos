@@ -19,10 +19,10 @@
     </nav>
 
     <div class="flex align-middle ml-auto gap-3">
-      <form class="flex items-center gap-3">
-        <input type="text" placeholder="Email" class="input" />
-        <input type="password" placeholder="Senha" class="input" />
-        <button class="btn btn-primary">Entrar</button>
+      <form #loginForm="ngForm" (ngSubmit)="login()" class="flex items-center gap-3">
+        <input type="text" placeholder="Email" class="input" name="email" [(ngModel)]="credenciais.email" />
+        <input type="password" placeholder="Senha" class="input" name="senha" [(ngModel)]="credenciais.senha" />
+        <button type="submit" class="btn btn-primary">Entrar</button>
       </form>
     </div>
   </div>
