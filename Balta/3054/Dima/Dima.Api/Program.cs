@@ -2,6 +2,16 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 app.MapGet("/v1/transactions", () => new { message = "Hello World!" });
+app.MapPost(
+    "/v1/transactions",
+    (Request request) => new Response
+    {
+        Id = 1,
+        Title = "Nova transação"
+    })
+    .WithName("CreateTransaction")
+    .WithSummary("Cria uma nova transação")
+    .Produces<Response>();
 
 app.Run();
 
@@ -15,5 +25,12 @@ public class Request
     public long CategoryId { get; set; }
     public string UserId { get; set; } = string.Empty;
 }
+
 // Response
+public class Response
+{
+    public long Id { get; set; }
+
+}
+
 // Handler
