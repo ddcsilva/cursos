@@ -4,7 +4,7 @@ var app = builder.Build();
 app.MapGet("/v1/transactions", () => new { message = "Hello World!" });
 app.MapPost(
     "/v1/transactions",
-    (Request request) => new Response
+    (Request request, Handler handler) => new Response
     {
         Id = 1,
         Title = "Nova transação"
@@ -34,3 +34,15 @@ public class Response
 }
 
 // Handler
+
+public class Handler
+{
+    public Response Handle(Request request)
+    {
+        return new Response
+        {
+            Id = 4,
+            Title = request.Title
+        };
+    }
+}
