@@ -9,7 +9,7 @@ var connectionString = builder
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(connectionString);
+    options.UseSqlite(connectionString);
 });
 
 builder.Services.AddEndpointsApiExplorer();

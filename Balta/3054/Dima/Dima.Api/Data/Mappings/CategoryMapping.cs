@@ -15,28 +15,24 @@ public class CategoryMapping : IEntityTypeConfiguration<Category>
         builder.HasKey(c => c.Id);
         builder.Property(c => c.Id)
             .HasColumnName("Id")
-            .HasColumnType("BIGINT")
             .ValueGeneratedOnAdd()
             .IsRequired(true);
 
         // Configuração do título
         builder.Property(c => c.Title)
             .HasColumnName("Title")
-            .HasColumnType("NVARCHAR")
             .HasMaxLength(80)
             .IsRequired(true);
 
         // Configuração da descrição
         builder.Property(c => c.Description)
             .HasColumnName("Description")
-            .HasColumnType("NVARCHAR")
             .HasMaxLength(255)
             .IsRequired(false);
 
         // Configuração do UserId
         builder.Property(c => c.UserId)
             .HasColumnName("UserId")
-            .HasColumnType("NVARCHAR")
             .HasMaxLength(160)
             .IsRequired(true);
 

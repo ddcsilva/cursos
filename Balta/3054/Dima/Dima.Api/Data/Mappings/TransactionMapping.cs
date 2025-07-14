@@ -15,52 +15,43 @@ public class TransactionMapping : IEntityTypeConfiguration<Transaction>
         builder.HasKey(t => t.Id);
         builder.Property(t => t.Id)
             .HasColumnName("Id")
-            .HasColumnType("BIGINT")
             .ValueGeneratedOnAdd()
             .IsRequired(true);
 
         // Configuração do título
         builder.Property(t => t.Title)
             .HasColumnName("Title")
-            .HasColumnType("NVARCHAR")
             .HasMaxLength(80)
             .IsRequired(true);
 
         // Configuração do tipo de transação
         builder.Property(t => t.Type)
             .HasColumnName("Type")
-            .HasColumnType("SMALLINT")
             .IsRequired(true);
 
         // Configuração do valor
         builder.Property(t => t.Amount)
             .HasColumnName("Amount")
-            .HasColumnType("MONEY")
             .HasPrecision(18, 2)
             .IsRequired(true);
 
         // Configuração das datas
         builder.Property(t => t.CreatedAt)
             .HasColumnName("CreatedAt")
-            .HasColumnType("DATETIME2")
-            .HasDefaultValueSql("GETDATE()")
             .IsRequired(true);
 
         builder.Property(t => t.PaidOrReceivedAt)
             .HasColumnName("PaidOrReceivedAt")
-            .HasColumnType("DATETIME2")
             .IsRequired(false);
 
         // Configuração da chave estrangeira CategoryId
         builder.Property(t => t.CategoryId)
             .HasColumnName("CategoryId")
-            .HasColumnType("BIGINT")
             .IsRequired(true);
 
         // Configuração do UserId
         builder.Property(t => t.UserId)
             .HasColumnName("UserId")
-            .HasColumnType("NVARCHAR")
             .HasMaxLength(160)
             .IsRequired(true);
 
