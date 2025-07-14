@@ -6,6 +6,8 @@ builder.Services.AddSwaggerGen(options =>
     options.CustomSchemaIds(type => type.FullName);
 });
 
+builder.Services.AddTransient<Handler>();
+
 var app = builder.Build();
 
 app.UseSwagger();
