@@ -1,18 +1,26 @@
+using System.Text.Json.Serialization;
+
 namespace Dima.Core.Responses;
 
-public class BaseResponse
+public class BaseResponse<TData>
 {
-    private readonly int _statusCode;
+    private const int DEFAULT_STATUS_CODE = 200;
+    private readonly int _statusCode = DEFAULT_STATUS_CODE;
 
-    public BaseResponse(string? data, string message, int statusCode)
+    [JsonConstructor]
+    public BaseResponse() => _statusCode = DEFAULT_STATUS_CODE;
+
+    public BaseResponse(TData? data, int statusCode = DEFAULT_STATUS_CODE, string? message = null)
     {
         Data = data;
         Message = message;
         _statusCode = statusCode;
     }
 
-    public string? Data { get; set; }
-    public string Message { get; set; } = string.Empty;
+    public TData? Data { get; set; }
+    public string? Message { get; set; }
 
-    public bool IsSuccess => _statusCode is >= 200 and <= 299;
+    [JsonIgnore]
+    public bool IsSuccess
+        => _statusCode is >= 200 and <= 299;
 }
