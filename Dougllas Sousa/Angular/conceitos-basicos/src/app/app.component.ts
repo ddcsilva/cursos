@@ -7,6 +7,4 @@ import { CalculadoraComponent } from './calculadora/calculadora.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'conceitos-basicos';
-}
+export class AppComponent {}
