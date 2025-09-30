@@ -1,0 +1,70 @@
+// Container principal - Centralização com Flexbox
+.container {
+  display: flex; // Usa Flexbox para layout flexível
+  justify-content: center; // Centraliza horizontalmente
+  align-items: center; // Centraliza verticalmente
+  width: 100%; // Ocupa toda a largura disponível
+  min-height: 100vh; // Altura mínima = 100% da janela (vh = viewport height)
+  background-color: #f0f0f0; // Fundo cinza claro
+}
+
+// Caixa do formulário - Card branco centralizado
+.form-box {
+  background-color: #fff; // Fundo branco
+  border-radius: 8px; // Cantos arredondados (8 pixels)
+  box-shadow: 0 4px 6px #000; // Sombra: 0px horizontal, 4px vertical, 6px blur, cor preta
+  padding: 20px; // Espaçamento interno (respiro)
+  text-align: center; // Alinha texto ao centro
+}
+
+// Título do formulário
+.form-box h2 {
+  margin-bottom: 20px; // Espaçamento abaixo do título
+  color: #333; // Cor cinza escuro (quase preto)
+}
+
+// Labels dos campos
+.form-box label {
+  display: block; // Ocupa linha inteira (força quebra de linha)
+  margin: 10px 0 5px; // Margens: 10px topo, 0 laterais, 5px embaixo
+  color: #555; // Cor cinza médio
+}
+
+// Campos de entrada de número
+.form-box input[type='number'] {
+  width: 70%; // 70% da largura do pai (.form-box)
+  padding: 10px; // Espaçamento interno do campo
+  margin-bottom: 15px; // Espaço abaixo do campo
+  border: 1px solid #ccc; // Borda: 1px sólida cinza clara
+  border-radius: 4px; // Cantos levemente arredondados
+  font-size: 16px; // Tamanho da fonte
+}
+
+// Botão de submit
+.form-box button {
+  width: 50%; // 50% da largura do pai
+  padding: 10px; // Espaçamento interno do botão
+  background-color: #2b0e9e; // Cor de fundo azul/roxo
+  color: #fff; // Cor do texto branca
+  border: none; // Remove borda padrão
+  border-radius: 4px; // Cantos arredondados
+  font-size: 16px; // Tamanho da fonte
+  cursor: pointer; // Cursor vira mãozinha ao passar por cima
+}
+
+// Efeito hover do botão (quando mouse passa por cima)
+.form-box button:hover {
+  background-color: #0056b3; // Muda para azul mais claro no hover
+}
+
+// Área de exibição do resultado
+.result-display {
+  margin-top: 20px; // Espaçamento acima da área de resultado
+  font-size: 18px; // Tamanho da fonte um pouco maior
+  color: #333; // Cor cinza escuro
+}
+
+// Span do resultado (o valor numérico)
+.result-display span {
+  font-weight: bold; // Texto em negrito para destacar o resultado
+}

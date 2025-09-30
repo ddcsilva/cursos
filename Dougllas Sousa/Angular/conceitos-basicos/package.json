@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "format:check": "prettier --check \"src/**/*.{ts,html,scss,css}\" \"*.json\"",
-    "format": "prettier --write \"src/**/*.{ts,html,scss,css}\" \"*.json\""
+    "format:test": "prettier --list-different \"./projects/**/*.{ts,html,scss,json}\"",
+    "format:write": "prettier --write \"./projects/**/*.{ts,html,scss,json}\""
   },
   "private": true,
   "dependencies": {
