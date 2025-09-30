@@ -11,10 +11,16 @@
       <button type="submit">Somar</button>
     </form>
 
-    <div class="result-display">
-      <p>
-        Resultado: <span id="result">{{ resultado }}</span>
-      </p>
-    </div>
+    @if (resultado) {
+      <div class="result-display">
+        <p>
+          Resultado: <span id="result">{{ resultado }}</span>
+        </p>
+      </div>
+    } @else {
+      <div class="result-display">
+        <p>Nenhum resultado encontrado</p>
+      </div>
+    }
   </div>
 </div>
