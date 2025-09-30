@@ -10,9 +10,15 @@ import { FormsModule } from '@angular/forms';
 export class CalculadoraComponent {
   numero1: number = 0;
   numero2: number = 0;
-  resultado: number = 0;
+  resultado: number | null = null;
 
   calcularResultado() {
-    this.resultado = this.numero1 + this.numero2;
+    this.resultado = Number(this.numero1) + Number(this.numero2);
+  }
+
+  limpar() {
+    this.numero1 = 0;
+    this.numero2 = 0;
+    this.resultado = null;
   }
 }

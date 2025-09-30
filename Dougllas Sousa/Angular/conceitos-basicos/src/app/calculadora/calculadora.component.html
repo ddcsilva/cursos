@@ -8,10 +8,13 @@
       <label>Número 2</label>
       <input type="number" name="numero2" id="numero2" [(ngModel)]="numero2" />
 
-      <button type="submit">Somar</button>
+      <div class="button-container">
+        <button type="submit">Somar</button>
+        <button type="button" (click)="limpar()">Limpar</button>
+      </div>
     </form>
 
-    @if (resultado) {
+    @if (resultado !== null) {
       <div class="result-display">
         <p>
           Resultado: <span id="result">{{ resultado }}</span>

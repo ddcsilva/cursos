@@ -40,9 +40,17 @@
   font-size: 16px; // Tamanho da fonte
 }
 
-// Botão de submit
-.form-box button {
-  width: 50%; // 50% da largura do pai
+// Container dos botões - Organiza lado a lado
+.button-container {
+  display: flex; // Flexbox: organiza botões em linha horizontal
+  justify-content: center; // Centraliza os botões no container
+  gap: 10px; // Espaçamento de 10px entre os botões
+  margin-top: 10px; // Espaço acima do container (separa dos inputs)
+}
+
+// Estilização específica dos botões dentro do container
+.button-container button {
+  width: 40%; // 40% cada = 80% total + 10px gap + 10% margem = equilibrado
   padding: 10px; // Espaçamento interno do botão
   background-color: #2b0e9e; // Cor de fundo azul/roxo
   color: #fff; // Cor do texto branca
@@ -52,8 +60,8 @@
   cursor: pointer; // Cursor vira mãozinha ao passar por cima
 }
 
-// Efeito hover do botão (quando mouse passa por cima)
-.form-box button:hover {
+// Efeito hover dos botões do container (quando mouse passa por cima)
+.button-container button:hover {
   background-color: #0056b3; // Muda para azul mais claro no hover
 }
 
