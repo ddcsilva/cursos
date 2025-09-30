@@ -1,0 +1,18 @@
+/* Configuração TypeScript para Testes (Specs) */
+/* Este arquivo estende o tsconfig.json base e adiciona configurações específicas para testes */
+{
+  // Herda configurações do tsconfig.json base
+  "extends": "./tsconfig.json",
+
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec", // Pasta de saída específica para testes
+    "types": [
+      "jasmine" // Tipos do framework de testes Jasmine
+    ]
+  },
+
+  "include": [
+    "src/**/*.spec.ts", // Inclui todos os arquivos de teste (.spec.ts)
+    "src/**/*.d.ts" // Inclui arquivos de declaração de tipos
+  ]
+}

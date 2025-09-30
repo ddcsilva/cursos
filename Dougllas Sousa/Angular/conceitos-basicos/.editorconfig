@@ -1,0 +1,21 @@
+# Configuração do Editor para o Projeto Angular
+# Este arquivo define regras de formatação e estilo de código que são aplicadas automaticamente
+# Mais informações: https://editorconfig.org
+root = true
+
+[*] # Configurações aplicadas a TODOS os arquivos do projeto
+charset = utf-8 # Define a codificação de caracteres como UTF-8
+indent_style = space # Usa espaços para indentação (não tabs)
+indent_size = 2 # Define 2 espaços para cada nível de indentação
+insert_final_newline = true # Adiciona uma linha vazia no final de cada arquivo
+trim_trailing_whitespace = true # Remove espaços em branco no final das linhas
+
+
+[*.ts] # Configurações específicas para arquivos TypeScript (.ts)
+quote_type = single # Usa aspas simples (') ao invés de aspas duplas (")
+ij_typescript_use_double_quotes = false # IDEs JetBrains (WebStorm, IntelliJ): força o uso de aspas simples
+
+
+[*.md]
+max_line_length = off # Desabilita o limite de caracteres por linha
+trim_trailing_whitespace = false # Mantém espaços em branco no final (necessário no Markdown)

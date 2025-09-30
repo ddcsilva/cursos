@@ -1,0 +1,62 @@
+# Arquivos e Pastas Ignorados pelo Git - Projeto Angular
+# Este arquivo define o que o Git NÃO deve rastrear/versionar
+# Mais informações: https://docs.github.com/get-started/getting-started-with-git/ignoring-files
+
+# Saída compilada - Arquivos gerados automaticamente ao compilar o projeto
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node - Dependências e logs do Node.js/npm
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs e Editores - Configurações específicas de cada IDE
+# JetBrains (WebStorm, IntelliJ, PhpStorm)
+.idea/
+# Eclipse
+.project
+.classpath
+# Cloud9
+.c9/
+# Arquivos de launch de IDEs
+*.launch
+# Configurações de IDEs
+.settings/
+# Sublime Text
+*.sublime-workspace
+
+# Visual Studio Code - Mantém apenas configurações compartilháveis
+# Ignora tudo da pasta .vscode...
+.vscode/*
+# ... exceto estes arquivos de configuração compartilháveis:
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+# Histórico de edições do VS Code
+.history/*
+
+# Diversos - Arquivos temporários e de teste
+# Cache do Angular CLI
+/.angular/cache
+# Cache do compilador SASS/SCSS
+.sass-cache/
+# Arquivo de lock de conexão
+/connect.lock
+# Relatórios de cobertura de testes
+/coverage
+# Log de conexões WebRTC
+/libpeerconnection.log
+# Log do Testem (test runner)
+testem.log
+# Definições de tipos TypeScript (antigas)
+/typings
+
+# Arquivos do Sistema Operacional
+# MacOS: metadados de pastas
+.DS_Store
+# Windows: cache de miniaturas de imagens
+Thumbs.db

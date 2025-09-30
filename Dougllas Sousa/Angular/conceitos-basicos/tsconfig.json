@@ -1,0 +1,33 @@
+/* Configuração Principal do TypeScript para o Projeto Angular */
+/* Mais informações: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html */
+/* Opções do compilador Angular: https://angular.dev/reference/configs/angular-compiler-options */
+{
+  // Não compila automaticamente ao salvar
+  "compileOnSave": false,
+
+  // Opções do compilador TypeScript
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc", // Pasta de saída dos arquivos compilados
+    "strict": true, // Ativa todas as verificações estritas do TypeScript
+    "noImplicitOverride": true, // Exige palavra-chave 'override' ao sobrescrever métodos
+    "noPropertyAccessFromIndexSignature": true, // Força uso de notação de colchetes para índices
+    "noImplicitReturns": true, // Exige que funções retornem valor em todos os caminhos
+    "noFallthroughCasesInSwitch": true, // Previne erros em switch sem break
+    "skipLibCheck": true, // Pula verificação de tipos em bibliotecas (.d.ts)
+    "isolatedModules": true, // Garante que cada arquivo pode ser transpilado isoladamente
+    "esModuleInterop": true, // Compatibilidade entre módulos ES6 e CommonJS
+    "experimentalDecorators": true, // Habilita decorators (@Component, @Input, etc)
+    "moduleResolution": "bundler", // Estratégia de resolução de módulos
+    "importHelpers": true, // Importa funções auxiliares do tslib (reduz tamanho)
+    "target": "ES2022", // Versão JavaScript alvo da compilação
+    "module": "ES2022" // Sistema de módulos usado
+  },
+
+  // Opções específicas do compilador Angular
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false, // Usa novo formato de IDs para internacionalização
+    "strictInjectionParameters": true, // Verificação estrita de injeção de dependências
+    "strictInputAccessModifiers": true, // Verificação estrita de modificadores de acesso em @Input
+    "strictTemplates": true // Verificação estrita de tipos nos templates HTML
+  }
+}

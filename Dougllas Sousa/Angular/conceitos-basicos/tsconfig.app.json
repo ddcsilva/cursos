@@ -1,0 +1,14 @@
+/* Configuração TypeScript para a Aplicação Angular */
+/* Este arquivo estende o tsconfig.json base e adiciona configurações específicas para o app */
+{
+  // Herda configurações do tsconfig.json base
+  "extends": "./tsconfig.json",
+
+  "compilerOptions": {
+    "outDir": "./out-tsc/app", // Pasta de saída específica para a aplicação
+    "types": [] // Não inclui tipos globais automaticamente
+  },
+
+  "files": ["src/main.ts"], // Arquivo principal de entrada da aplicação
+  "include": ["src/**/*.d.ts"] // Inclui arquivos de declaração de tipos
+}
