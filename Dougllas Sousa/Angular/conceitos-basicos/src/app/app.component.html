@@ -1,1 +1,30 @@
-<app-calculadora></app-calculadora>
+<!-- @if (telaAtual === 'home') {
+  <div class="home-container">
+    <div class="home-box">
+      <h1>Curso de Angular - Dougllas Sousa</h1>
+      <p>Escolha um exemplo para ver o resultado</p>
+
+      <div class="exercise-buttons">
+        <button (click)="abrirCalculadora()">Calculadora</button>
+
+        <button (click)="abrirListaCompras()">Lista de Compras</button>
+      </div>
+    </div>
+  </div>
+}
+
+@if (telaAtual === 'calculadora') {
+  <div class="exercise-container">
+    <button class="btn-voltar" (click)="voltarParaHome()">Voltar</button>
+    <app-calculadora></app-calculadora>
+  </div>
+}
+
+@if (telaAtual === 'lista-compras') {
+  <div class="exercise-container">
+    <button class="btn-voltar" (click)="voltarParaHome()">Voltar</button>
+    <app-lista-compras></app-lista-compras>
+  </div>
+} -->
+
+<app-lista-compras></app-lista-compras>

@@ -1,0 +1,139 @@
+// Container principal - Centralização com Flexbox
+.container-wrapper {
+  display: flex; // Flexbox para centralizar
+  justify-content: center; // Centraliza horizontalmente
+  align-items: center; // Centraliza verticalmente
+  min-height: 100vh; // Altura mínima = tela inteira
+  width: 100%; // Largura total
+  background-color: #f0f0f0; // Fundo cinza claro
+}
+
+// Card principal da lista de compras
+.container {
+  background: #fff; // Fundo branco
+  border-radius: 12px; // Cantos arredondados
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); // Sombra suave (rgba para transparência)
+  padding: 20px 30px; // Espaçamento: 20px vertical, 30px horizontal
+  text-align: center; // Centraliza texto
+  width: 90%; // 90% da largura disponível
+  max-width: 600px; // Largura máxima de 600px (não cresce mais que isso)
+}
+
+// Título principal
+.container h1 {
+  // Escopo específico (só h1 dentro de .container)
+  font-size: 24px; // Tamanho da fonte
+  margin-bottom: 20px; // Espaço abaixo do título
+  color: #4b4949; // Cor cinza escuro
+}
+
+// Formulário de adicionar item
+.add-item-form {
+  display: flex; // Flexbox para organizar input + botão
+  justify-content: center; // Centraliza elementos
+  align-items: center; // Alinha verticalmente
+  gap: 10px; // Espaço de 10px entre elementos
+  margin-bottom: 20px; // Espaço abaixo do formulário
+}
+
+// Input de texto do formulário
+.add-item-form input {
+  // Escopo: apenas inputs dentro do form
+  flex: 1; // Ocupa todo o espaço disponível (cresce para preencher)
+  padding: 10px; // Espaçamento interno
+  border: 2px solid #007bff; // Borda azul de 2px
+  border-radius: 6px; // Cantos arredondados
+  font-size: 16px; // Tamanho da fonte
+}
+
+// Estado focus do input (quando clicado/selecionado)
+.add-item-form input:focus {
+  outline: none; // Remove borda padrão do navegador
+  border-color: #0056b3; // Muda borda para azul mais escuro
+}
+
+// Botão de adicionar (submit)
+.add-item-form button[type='submit'] {
+  padding: 10px 20px; // Espaçamento: 10px vertical, 20px horizontal
+  border: none; // Remove borda padrão
+  border-radius: 6px; // Cantos arredondados
+  background: #007bff; // Fundo azul
+  color: #fff; // Texto branco
+  font-size: 16px; // Tamanho da fonte
+  cursor: pointer; // Cursor mãozinha
+  transition: background 0.3s; // Animação suave de 0.3s para mudanças de background
+}
+
+// Hover do botão de adicionar
+.add-item-form button[type='submit']:hover {
+  background: #0056b3; // Azul mais escuro no hover
+}
+
+// Botão de remover (type="button")
+.add-item-form button[type='button'] {
+  padding: 10px 20px; // Espaçamento interno
+  border: none; // Remove borda padrão
+  border-radius: 6px; // Cantos arredondados
+  background: #d51f1f; // Vermelho para ação de remover
+  color: #fff; // Texto branco
+  font-size: 16px; // Tamanho da fonte
+  cursor: pointer; // Cursor mãozinha
+  transition: background 0.3s; // Animação suave de 0.3s
+}
+
+// Hover do botão de remover
+.add-item-form button[type='button']:hover {
+  background: #a81818; // Vermelho mais escuro no hover
+}
+
+// Tabela de itens
+.container table {
+  // Escopo: apenas tables dentro de .container
+  width: 100%; // Largura total do container
+  border-collapse: collapse; // Remove espaços entre bordas das células
+  margin-top: 10px; // Espaço acima da tabela
+}
+
+// Cabeçalho da tabela
+.container thead {
+  background: #007bff; // Fundo azul
+  color: #fff; // Texto branco
+}
+
+// Células do cabeçalho
+.container th {
+  background: #007bff; // Fundo azul (reforça o thead)
+  padding: 12px; // Espaçamento interno
+  text-align: center; // Centraliza texto
+  border: 1px solid #ddd; // Borda cinza clara
+}
+
+// Células de dados
+.container td {
+  padding: 12px; // Espaçamento interno
+  text-align: center; // Centraliza texto
+  border: 1px solid #ddd; // Borda cinza clara
+}
+
+// Linhas ímpares (1ª, 3ª, 5ª...) - Padrão zebrado
+.container tbody tr:nth-child(odd) {
+  background-color: #f9f9f9; // Cinza bem claro
+}
+
+// Linhas pares (2ª, 4ª, 6ª...) - Padrão zebrado
+.container tbody tr:nth-child(even) {
+  background-color: #e6f0ff; // Azul bem claro
+}
+
+// Checkbox personalizado (aumentado)
+.container input[type='checkbox'] {
+  transform: scale(1.2); // Aumenta o tamanho em 20%
+  cursor: pointer; // Cursor mãozinha
+}
+
+// Classe para item riscado (quando checkbox marcado)
+.item-riscado {
+  text-decoration: line-through; // Texto riscado (──────)
+  color: #999; // Cor cinza clara para itens completos
+  opacity: 0.6; // Semi-transparente (60% de opacidade)
+}

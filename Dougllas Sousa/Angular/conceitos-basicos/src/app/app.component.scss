@@ -1,0 +1,88 @@
+// Container da página inicial (Home)\
+.home-container {
+  display: flex; // Flexbox para centralizar
+  justify-content: center; // Centraliza horizontalmente
+  align-items: center; // Centraliza verticalmente
+  min-height: 100vh; // Altura mínima = tela inteira
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); // Gradiente roxo
+}
+
+// Card central da home
+.home-box {
+  background-color: #fff; // Fundo branco
+  border-radius: 12px; // Cantos bem arredondados
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); // Sombra mais forte
+  padding: 40px; // Espaçamento interno generoso
+  text-align: center; // Alinha texto ao centro
+  max-width: 500px; // Largura máxima do card
+}
+
+// Título da home
+.home-box h1 {
+  color: #333; // Cor escura
+  margin-bottom: 10px; // Espaço abaixo do título
+  font-size: 28px; // Fonte grande
+}
+
+// Parágrafo da home
+.home-box p {
+  color: #666; // Cinza médio
+  margin-bottom: 30px; // Espaço antes dos botões
+  font-size: 16px;
+}
+
+// Container dos botões de exercícios
+.exercise-buttons {
+  display: flex; // Flexbox para organizar botões
+  flex-direction: column; // Empilha botões verticalmente (um embaixo do outro)
+  gap: 15px; // Espaço de 15px entre os botões
+}
+
+// Estilo dos botões de exercícios
+.exercise-buttons button {
+  padding: 15px 30px; // Espaçamento interno (vertical horizontal)
+  font-size: 18px; // Fonte grande
+  font-weight: bold; // Texto em negrito
+  background-color: #667eea; // Cor roxa
+  color: #fff; // Texto branco
+  border: none; // Sem borda
+  border-radius: 8px; // Cantos arredondados
+  cursor: pointer; // Cursor mãozinha
+  transition: all 0.3s ease; // Animação suave (0.3 segundos)
+}
+
+// Efeito hover dos botões
+.exercise-buttons button:hover {
+  background-color: #764ba2; // Roxo mais escuro no hover
+  transform: translateY(-3px); // Move 3px para cima
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); // Sombra ao hover
+}
+
+// Container dos exercícios (quando navega)
+.exercise-container {
+  position: relative; // Para posicionar o botão voltar
+}
+
+// Botão de voltar
+.btn-voltar {
+  position: fixed; // Fica fixo na tela (não rola com a página)
+  top: 20px; // 20px do topo
+  left: 20px; // 20px da esquerda
+  padding: 10px 20px; // Espaçamento interno
+  background-color: #667eea; // Cor roxa
+  color: #fff; // Texto branco
+  border: none; // Sem borda
+  border-radius: 8px; // Cantos arredondados
+  cursor: pointer; // Cursor mãozinha
+  font-size: 16px; // Tamanho da fonte
+  font-weight: bold; // Negrito
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); // Sombra
+  z-index: 1000; // Fica por cima de tudo (número alto)
+  transition: all 0.3s ease; // Animação suave
+}
+
+// Hover do botão voltar
+.btn-voltar:hover {
+  background-color: #764ba2; // Roxo mais escuro
+  transform: scale(1.05); // Aumenta 5% no hover
+}
