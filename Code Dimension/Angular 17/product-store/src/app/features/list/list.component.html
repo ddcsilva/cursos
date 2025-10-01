@@ -4,6 +4,8 @@
   >
 </div>
 
-@for (product of products; track product.id) {
-<app-card [product]="product"></app-card>
-}
+<div class="cards-container">
+  @for (product of products; track product.id) {
+  <app-card [product]="product"></app-card>
+  }
+</div>

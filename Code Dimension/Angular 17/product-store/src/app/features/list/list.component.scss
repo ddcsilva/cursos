@@ -3,3 +3,9 @@
   justify-content: flex-end;
   padding: 16px 0;
 }
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
