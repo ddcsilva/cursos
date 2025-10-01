@@ -69,21 +69,11 @@
   background: #0056b3; // Azul mais escuro no hover
 }
 
-// Botão de remover (type="button")
-.add-item-form button[type='button'] {
-  padding: 10px 20px; // Espaçamento interno
-  border: none; // Remove borda padrão
-  border-radius: 6px; // Cantos arredondados
-  background: #d51f1f; // Vermelho para ação de remover
-  color: #fff; // Texto branco
-  font-size: 16px; // Tamanho da fonte
-  cursor: pointer; // Cursor mãozinha
-  transition: background 0.3s; // Animação suave de 0.3s
-}
-
-// Hover do botão de remover
-.add-item-form button[type='button']:hover {
-  background: #a81818; // Vermelho mais escuro no hover
+// Botão desabilitado
+.add-item-form button[type='submit']:disabled {
+  background: #cccccc; // Cinza quando desabilitado
+  cursor: not-allowed; // Cursor de "não permitido"
+  opacity: 0.6; // Semi-transparente
 }
 
 // Tabela de itens
@@ -129,6 +119,23 @@
 .container input[type='checkbox'] {
   transform: scale(1.2); // Aumenta o tamanho em 20%
   cursor: pointer; // Cursor mãozinha
+}
+
+// Botão de remover dentro da tabela
+.container td button[type='button'] {
+  padding: 6px 12px; // Espaçamento menor para botão dentro da tabela
+  border: none; // Remove borda padrão
+  border-radius: 4px; // Cantos arredondados
+  background: #d51f1f; // Vermelho para ação de remover
+  color: #fff; // Texto branco
+  font-size: 14px; // Fonte um pouco menor
+  cursor: pointer; // Cursor mãozinha
+  transition: background 0.3s; // Animação suave
+}
+
+// Hover do botão de remover
+.container td button[type='button']:hover {
+  background: #a81818; // Vermelho mais escuro no hover
 }
 
 // Classe para item riscado (quando checkbox marcado)
