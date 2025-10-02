@@ -11,5 +11,7 @@
     (edit)="onEdit(product)"
     (delete)="onDelete(product)"
   ></app-card>
+  } @empty {
+  <app-no-items></app-no-items>
   }
 </div>
