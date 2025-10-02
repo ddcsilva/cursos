@@ -13,7 +13,15 @@ export class ProductService {
     return this.http.get<Product[]>('/api/products');
   }
 
-  create(payload: PayloadProduct) {
+  get(id: string) {
+    return this.http.get<Product>(`/api/products/${id}`);
+  }
+
+  post(payload: PayloadProduct) {
     return this.http.post<Product>('/api/products', payload);
+  }
+
+  put(id: string, payload: PayloadProduct) {
+    return this.http.put<Product>(`/api/products/${id}`, payload);
   }
 }

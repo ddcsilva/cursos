@@ -38,7 +38,7 @@ export class CreateComponent {
 
   onSubmit(): void {
     this.productService
-      .create({
+      .post({
         title: this.form.controls.title.value,
       })
       .subscribe(() => {
