@@ -1,10 +1,6 @@
 {
   "products": [
     {
-      "title": "Produto de Teste",
-      "id": "1"
-    },
-    {
       "id": "1034",
       "title": "Teste"
     },
@@ -23,10 +19,6 @@
     {
       "title": "Meia 2",
       "id": "6b4b"
-    },
-    {
-      "title": "Danilo 233",
-      "id": "6a7a"
     }
   ]
 }

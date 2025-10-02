@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -21,6 +22,10 @@ export class ListComponent implements OnInit {
   matDialog = inject(MatDialog);
 
   ngOnInit(): void {
+    this.loadProducts();
+  }
+
+  private loadProducts(): void {
     this.productsService.getAll().subscribe((products) => {
       this.products = products;
     });
@@ -34,8 +39,11 @@ export class ListComponent implements OnInit {
     this.matDialog
       .open(DeleteDialogComponent)
       .afterClosed()
-      .subscribe((result: boolean) => {
-        console.log(result);
+      .pipe(filter((answer: boolean) => answer))
+      .subscribe(() => {
+        this.productsService.delete(product.id).subscribe(() => {
+          this.loadProducts();
+        });
       });
   }
 }
