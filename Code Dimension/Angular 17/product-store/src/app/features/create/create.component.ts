@@ -2,13 +2,14 @@ import { Component, inject } from '@angular/core';
 import { Product } from '../../shared/interfaces/product.interface';
 import { ProductService } from '../../shared/services/product.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormComponent } from '../../shared/components/form/form.component';
+import { BackToListComponent } from '../../shared/components/back-to-list/back-to-list.component';
 
 @Component({
   selector: 'app-create',
   standalone: true,
-  imports: [FormComponent],
+  imports: [FormComponent, BackToListComponent, RouterLink],
   templateUrl: './create.component.html',
 })
 export class CreateComponent {
