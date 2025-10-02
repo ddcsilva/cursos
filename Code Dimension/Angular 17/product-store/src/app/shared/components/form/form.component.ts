@@ -1,4 +1,4 @@
-import { Component, input, OnInit, output } from '@angular/core';
+import { Component, effect, input, output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -9,6 +9,7 @@ import { Product } from '../../interfaces/product.interface';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { PayloadProduct } from '../../interfaces/payload-product.type';
 
 @Component({
   selector: 'app-form',
@@ -22,22 +23,31 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
 })
-export class FormComponent implements OnInit {
+export class FormComponent {
   product = input<Product | null>(null);
-  done = output<Product>();
-  form!: FormGroup;
+  done = output<PayloadProduct>();
 
-  ngOnInit(): void {
-    this.form = new FormGroup({
-      title: new FormControl<string>(this.product()?.title ?? '', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
-    });
-  }
+  form = new FormGroup({
+    title: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
+  });
+
+  productEffect = effect(() => {
+    const product = this.product();
+
+    if (product) {
+      this.form.patchValue({ title: product.title });
+    }
+  });
 
   onSubmit(): void {
-    const product = this.form.value as Product;
-    this.done.emit(product);
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    this.done.emit(this.form.getRawValue());
   }
 }
