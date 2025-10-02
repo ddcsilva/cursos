@@ -4,8 +4,7 @@ import { Product } from '../../shared/interfaces/product.interface';
 import { CardComponent } from './components/card/card.component';
 import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
+import { ConfirmationDialogService } from '../../shared/services/confirmation-dialog.service';
 import { filter } from 'rxjs';
 
 @Component({
@@ -19,7 +18,7 @@ export class ListComponent implements OnInit {
   products: Product[] = [];
   productsService = inject(ProductService);
   router = inject(Router);
-  matDialog = inject(MatDialog);
+  confirmationDialogService = inject(ConfirmationDialogService);
 
   ngOnInit(): void {
     this.loadProducts();
@@ -36,9 +35,8 @@ export class ListComponent implements OnInit {
   }
 
   onDelete(product: Product): void {
-    this.matDialog
-      .open(DeleteDialogComponent)
-      .afterClosed()
+    this.confirmationDialogService
+      .openDialog()
       .pipe(filter((answer: boolean) => answer))
       .subscribe(() => {
         this.productsService.delete(product.id).subscribe(() => {

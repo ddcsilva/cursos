@@ -3,13 +3,12 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-delete-dialog',
+  selector: 'app-confirmation-dialog',
   standalone: true,
   imports: [MatDialogModule, MatButtonModule],
-  templateUrl: './delete-dialog.component.html',
-  styleUrl: './delete-dialog.component.scss',
+  templateUrl: './confirmation-dialog.component.html',
 })
-export class DeleteDialogComponent {
+export class ConfirmationDialogComponent {
   matDialogRef = inject(MatDialogRef);
 
   onCancel(): void {
