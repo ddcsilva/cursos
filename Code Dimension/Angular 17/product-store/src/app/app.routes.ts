@@ -11,6 +11,12 @@ import { Router } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
+    resolve: {
+      products: () => {
+        const productService = inject(ProductService);
+        return productService.getAll();
+      },
+    },
     component: ListComponent,
   },
   {
