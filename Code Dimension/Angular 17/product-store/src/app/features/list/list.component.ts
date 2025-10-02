@@ -5,7 +5,7 @@ import { CardComponent } from './components/card/card.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { ConfirmationDialogService } from '../../shared/services/confirmation-dialog.service';
-import { switchMap, tap } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs';
 import { NoItemsComponent } from './components/no-items/no-items.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -33,6 +33,7 @@ export class ListComponent {
     this.confirmationDialogService
       .openDialog()
       .pipe(
+        filter(Boolean),
         switchMap(() => this.productsService.delete(product.id)),
         switchMap(() => this.productsService.getAll()),
         tap((products) => this.products.set(products))

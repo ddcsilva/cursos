@@ -2,30 +2,32 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Product } from '../interfaces/product.interface';
 import { PayloadProduct } from '../interfaces/payload-product.type';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
+  private readonly API_URL = '/api/products';
 
-  getAll() {
-    return this.http.get<Product[]>('/api/products');
+  getAll(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.API_URL);
   }
 
-  get(id: string) {
-    return this.http.get<Product>(`/api/products/${id}`);
+  get(id: string): Observable<Product> {
+    return this.http.get<Product>(`${this.API_URL}/${id}`);
   }
 
-  post(payload: PayloadProduct) {
-    return this.http.post<Product>('/api/products', payload);
+  post(payload: PayloadProduct): Observable<Product> {
+    return this.http.post<Product>(this.API_URL, payload);
   }
 
-  put(id: string, payload: PayloadProduct) {
-    return this.http.put<Product>(`/api/products/${id}`, payload);
+  put(id: string, payload: PayloadProduct): Observable<Product> {
+    return this.http.put<Product>(`${this.API_URL}/${id}`, payload);
   }
 
-  delete(id: string) {
-    return this.http.delete<Product>(`/api/products/${id}`);
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.API_URL}/${id}`);
   }
 }
