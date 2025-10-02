@@ -3,14 +3,14 @@
   Tem certeza que deseja excluir o produto?
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close (click)="onCancel()">
+  <button mat-raised-button [mat-dialog-close]="false">
     Cancelar
   </button>
   <button
     mat-raised-button
     color="warn"
     mat-dialog-close
-    (click)="onDelete()"
+    [mat-dialog-close]="true"
     cdkFocusInitial
   >
     Excluir
