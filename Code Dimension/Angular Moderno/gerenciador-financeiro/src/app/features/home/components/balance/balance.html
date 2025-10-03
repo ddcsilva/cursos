@@ -2,19 +2,19 @@
   class="card"
   [type]="'income'"
   [label]="'Entrada'"
-  [value]="300"
+  [value]="totalIncome()"
 ></app-balance-card>
 
 <app-balance-card
   class="card"
   [type]="'outcome'"
   [label]="'Saída'"
-  [value]="-100"
+  [value]="totalOutcome()"
 ></app-balance-card>
 
 <app-balance-card
   class="card"
   [type]="'balance'"
   [label]="'Saldo'"
-  [value]="200"
+  [value]="balance()"
 ></app-balance-card>
