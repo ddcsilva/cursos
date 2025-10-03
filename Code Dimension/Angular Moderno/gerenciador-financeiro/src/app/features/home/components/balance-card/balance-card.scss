@@ -1,7 +1,7 @@
 .positive {
-  color: green;
+  color: var(--custom-color-positive);
 }
 
 .negative {
-  color: var(--mat-sys-error);
+  color: var(--custom-color-negative);
 }
