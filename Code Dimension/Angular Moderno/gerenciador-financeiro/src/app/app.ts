@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Layout } from './core/layout/layout';
 import { RouterOutlet } from '@angular/router';
+import { Layout } from './core/layout/layout';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,4 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {
-  protected title = 'gerenciador-financeiro';
-}
+export class App {}

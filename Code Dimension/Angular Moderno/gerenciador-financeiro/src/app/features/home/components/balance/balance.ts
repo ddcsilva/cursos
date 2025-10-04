@@ -1,5 +1,7 @@
 import { Component, computed, input } from '@angular/core';
 import { BalanceCard } from './components/balance-card/balance-card';
+import { Transaction } from '../../../../shared/transaction/interfaces/transaction';
+import { TransactionType } from '../../../../shared/transaction/enums/transaction-type';
 
 @Component({
   selector: 'app-balance',
@@ -8,17 +10,17 @@ import { BalanceCard } from './components/balance-card/balance-card';
   styleUrl: './balance.scss',
 })
 export class Balance {
-  transactions = input.required<{ value: number; type: string }[]>();
+  transactions = input.required<Transaction[]>();
 
   totalIncome = computed(() => {
     return this.transactions()
-      .filter((item) => item.type === 'income')
+      .filter((item) => item.type === TransactionType.INCOME)
       .reduce((total, item) => total + item.value, 0);
   });
 
   totalOutcome = computed(() => {
     return this.transactions()
-      .filter((item) => item.type === 'outcome')
+      .filter((item) => item.type === TransactionType.OUTCOME)
       .reduce((total, item) => total + item.value, 0);
   });
 
