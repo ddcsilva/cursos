@@ -1,0 +1,25 @@
+/*
+  Viewport: Significa a área visível da tela do usuário.
+   - width: Largura da viewport
+   - height: Altura da viewport
+  Box-sizing: Significa o tamanho do elemento, incluindo padding e border.
+   - border-box: Inclui padding e border no cálculo do tamanho do elemento
+   - content-box: Inclui apenas o conteúdo do elemento no cálculo do tamanho
+*/
+
+* {
+  /* Reset de estilos */
+  margin: 0; /* Remove margens padrão */
+  padding: 0; /* Remove padding padrão */
+}
+
+body {
+  box-sizing: border-box; /* Inclui padding e border no cálculo do tamanho do elemento */
+  height: 100vh; /* Deixa o body ocupar toda a altura da viewport */
+  background-color: #000000; /* Cor de fundo preto */
+  color: #f6f6f6; /* Cor do texto branco */
+}
+
+.titulo-destaque {
+  color: #22d4fd; /* Cor do texto azul */
+}
