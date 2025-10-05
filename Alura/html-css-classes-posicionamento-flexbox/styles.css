@@ -1,25 +1,61 @@
-/*
-  Viewport: Significa a área visível da tela do usuário.
-   - width: Largura da viewport
-   - height: Altura da viewport
-  Box-sizing: Significa o tamanho do elemento, incluindo padding e border.
-   - border-box: Inclui padding e border no cálculo do tamanho do elemento
-   - content-box: Inclui apenas o conteúdo do elemento no cálculo do tamanho
-*/
+@import url("https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;600&display=swap");
 
 * {
-  /* Reset de estilos */
-  margin: 0; /* Remove margens padrão */
-  padding: 0; /* Remove padding padrão */
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  box-sizing: border-box; /* Inclui padding e border no cálculo do tamanho do elemento */
-  height: 100vh; /* Deixa o body ocupar toda a altura da viewport */
-  background-color: #000000; /* Cor de fundo preto */
-  color: #f6f6f6; /* Cor do texto branco */
+  box-sizing: border-box;
+  height: 100vh;
+  background-color: #000000;
+  color: #f6f6f6;
 }
 
-.titulo-destaque {
-  color: #22d4fd; /* Cor do texto azul */
+.apresentacao {
+  margin: 10% 15%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.apresentacao__conteudo {
+  width: 615px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.apresentacao__conteudo__titulo {
+  font-family: "Krona One", sans-serif;
+  font-size: 36px;
+}
+
+.apresentacao__conteudo__titulo__destaque {
+  color: #22d4fd;
+}
+
+.apresentacao__conteudo__texto {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.apresentacao__links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.apresentacao__links__link {
+  background-color: #22d4fd;
+  width: 280px;
+  padding: 21.5px 0;
+  border-radius: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  color: #000000;
+  text-decoration: none;
 }
