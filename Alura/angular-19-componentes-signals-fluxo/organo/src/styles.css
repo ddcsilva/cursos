@@ -3,3 +3,14 @@ html {
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-prata: "Prata", serif;
+
+  --color-primaria: #6278f7;
+  --color-secundaria: #2e2e2e;
+
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+}
