@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
+import { FormComponent } from "../../features/transaction/form/form.component";
 
 @Component({
   selector: 'app-main-layout',
-  imports: [HeaderComponent],
+  imports: [HeaderComponent, FormComponent],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.css',
 })
