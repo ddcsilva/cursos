@@ -1,1 +1,8 @@
-<app-livro [livro]="livro"></app-livro>
+<section class="generos">
+  <h3 class="generos__titulo">{{ genero().value }}</h3>
+  <div class="generos__livros">
+    @for (livro of genero().livros; track livro) {
+    <app-livro [livro]="livro"></app-livro>
+    }
+  </div>
+</section>

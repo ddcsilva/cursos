@@ -1,0 +1,20 @@
+.generos {
+  display: flex;
+  flex-direction: column;
+  padding: 48px 160px;
+}
+
+.generos__titulo {
+  font-family: var(--font-prata);
+  font-size: 28px;
+  font-weight: var(--font-weight-normal);
+  line-height: 38px;
+  text-align: center;
+}
+
+.generos__livros {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
