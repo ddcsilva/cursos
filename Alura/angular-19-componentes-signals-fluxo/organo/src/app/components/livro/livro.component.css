@@ -10,8 +10,7 @@
   position: relative;
   overflow: hidden;
   padding-top: 16px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  margin-left: 64px;
+  border-top: 24px solid;
 }
 
 .livro__imagem {
@@ -68,4 +67,24 @@
   line-height: 20px;
   text-align: center;
   color: var(--color-secundaria);
+}
+
+.romance {
+  border-color: #82cffa;
+}
+
+.misterio {
+  border-color: #a6d157;
+}
+
+.fantasia {
+  border-color: #e06b69;
+}
+
+.ficcao-cientifica {
+  border-color: #db6ebf;
+}
+
+.tecnicos {
+  border-color: #ff8a29;
 }
