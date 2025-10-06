@@ -1,0 +1,15 @@
+.lista-livros__linha-destaque {
+  width: 64px;
+  border-bottom: 4px solid var(--color-primaria);
+  display: block;
+  margin: 0 auto;
+}
+
+.lista-livros__titulo {
+  font-family: var(--font-prata);
+  font-size: 40px;
+  font-weight: var(--font-weight-normal);
+  line-height: 72px;
+  text-align: center;
+  color: var(--color-primaria);
+}
