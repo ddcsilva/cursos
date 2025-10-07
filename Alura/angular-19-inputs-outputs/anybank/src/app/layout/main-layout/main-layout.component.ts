@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormComponent } from '../../features/transaction/form/form.component';
 import { Transaction } from '../../features/transaction/models/transaction.model';
 import { HeaderComponent } from '../header/header.component';
@@ -10,7 +10,10 @@ import { HeaderComponent } from '../header/header.component';
   styleUrl: './main-layout.component.css',
 })
 export class MainLayoutComponent {
+  transactions = signal<Transaction[]>([]);
+
   onProcessTransaction(transaction: Transaction) {
-    console.table(transaction);
+    this.transactions.update(current => [transaction, ...current]);
+    console.table(this.transactions());
   }
 }
