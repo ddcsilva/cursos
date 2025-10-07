@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { Component, input } from '@angular/core';
 import { AccountComponent } from './account/account.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +8,6 @@ import { AccountComponent } from './account/account.component';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  balance = input.required<number>();
+}

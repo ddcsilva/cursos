@@ -1,7 +1,6 @@
 <div class="layout">
   <div class="main-content">
-    <app-header />
+    <app-header [balance]="balance()" />
     <app-form (transactionCreated)="onProcessTransaction($event)" />
-    {{ balance() }}
   </div>
 </div>

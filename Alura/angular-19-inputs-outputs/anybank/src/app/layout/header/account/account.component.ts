@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-account',
@@ -7,4 +7,6 @@ import { CurrencyPipe } from '@angular/common';
   templateUrl: './account.component.html',
   styleUrl: './account.component.css',
 })
-export class AccountComponent {}
+export class AccountComponent {
+  balance = input.required<number>();
+}
