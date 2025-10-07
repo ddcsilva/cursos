@@ -1,8 +1,8 @@
 import { Component, computed, signal } from '@angular/core';
 import { FormComponent } from '../../features/transaction/components/form/form.component';
+import { TransactionHistoryComponent } from '../../features/transaction/components/transaction-history/transaction-history.component';
 import { Transaction, TransactionType } from '../../features/transaction/models/transaction.model';
 import { HeaderComponent } from '../header/header.component';
-import { TransactionHistoryComponent } from "../../features/transaction/components/transaction-history/transaction-history.component";
 
 @Component({
   selector: 'app-main-layout',

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Transaction } from '../../models/transaction.model';
 import { TransactionItemComponent } from './transaction-item/transaction-item.component';
 
 @Component({
@@ -7,4 +8,6 @@ import { TransactionItemComponent } from './transaction-item/transaction-item.co
   templateUrl: './transaction-history.component.html',
   styleUrl: './transaction-history.component.css',
 })
-export class TransactionHistoryComponent {}
+export class TransactionHistoryComponent {
+  transactions = input<Transaction[]>();
+}

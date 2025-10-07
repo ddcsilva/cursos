@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+import { Component, input } from '@angular/core';
+import { Transaction } from '../../../models/transaction.model';
 
 @Component({
   selector: 'app-transaction-item',
-  imports: [],
+  imports: [CurrencyPipe],
   templateUrl: './transaction-item.component.html',
   styleUrl: './transaction-item.component.css',
 })
-export class TransactionItemComponent {}
+export class TransactionItemComponent {
+  transaction = input<Transaction>();
+}

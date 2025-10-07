@@ -4,5 +4,5 @@
     <app-form (transactionCreated)="onProcessTransaction($event)" />
   </div>
 
-  <app-transaction-history class="transaction-history" />
+  <app-transaction-history [transactions]="transactions()" class="transaction-history" />
 </div>
