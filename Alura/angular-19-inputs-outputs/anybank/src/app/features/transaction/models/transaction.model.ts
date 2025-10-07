@@ -2,6 +2,7 @@ import { nanoid } from 'nanoid';
 
 export class Transaction {
   readonly id = nanoid();
+  readonly date = new Date();
 
   constructor(
     public readonly type: TransactionType,
