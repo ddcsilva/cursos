@@ -2,9 +2,13 @@
   <h2 class="title">Extrato</h2>
 
   <ul class="transaction-items">
-    @for (transaction of transactions(); track $index) {
+    @for (transaction of transactions(); track transaction.id) {
       <li>
         <app-transaction-item [transaction]="transaction" />
+      </li>
+    } @empty {
+      <li aria-hidden="true">
+        Ainda não há transações
       </li>
     }
   </ul>
