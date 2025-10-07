@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
 import { FormComponent } from '../../features/transaction/form/form.component';
+import { Transaction } from '../../features/transaction/models/transaction.model';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-main-layout',
@@ -9,7 +10,7 @@ import { FormComponent } from '../../features/transaction/form/form.component';
   styleUrl: './main-layout.component.css',
 })
 export class MainLayoutComponent {
-  onProcessTransaction() {
-    console.log('transaction created');
+  onProcessTransaction(transaction: Transaction) {
+    console.table(transaction);
   }
 }

@@ -12,12 +12,12 @@ export class FormComponent {
   transactionValue = '';
   typeTransaction = '';
 
-  transactionCreated = output();
+  transactionCreated = output<Transaction>();
 
   onSubmit() {
     const transaction = new Transaction(this.typeTransaction as TransactionType, Number(this.transactionValue));
 
-    this.transactionCreated.emit();
+    this.transactionCreated.emit(transaction);
 
     this.transactionValue = '';
     this.typeTransaction = '';
