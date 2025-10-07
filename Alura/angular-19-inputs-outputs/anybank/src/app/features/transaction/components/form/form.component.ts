@@ -11,18 +11,22 @@ import { Transaction, TransactionType } from '../../models/transaction.model';
 })
 export class FormComponent {
   transactionValue = '';
-  typeTransaction = '';
+  transactionType: TransactionType | '' = '';
 
   transactionCreated = output<Transaction>();
 
   transactionTypeEnum = TransactionType;
 
   onSubmit() {
-    const transaction = new Transaction(this.typeTransaction as TransactionType, Number(this.transactionValue));
+    if (!this.transactionType || !this.transactionValue || Number(this.transactionValue) <= 0) {
+      return;
+    }
+
+    const transaction = new Transaction(this.transactionType as TransactionType, Number(this.transactionValue));
 
     this.transactionCreated.emit(transaction);
 
     this.transactionValue = '';
-    this.typeTransaction = '';
+    this.transactionType = '';
   }
 }

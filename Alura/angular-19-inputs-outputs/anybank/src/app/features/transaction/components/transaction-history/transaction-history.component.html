@@ -3,13 +3,11 @@
 
   <ul class="transaction-items">
     @for (transaction of transactions(); track transaction.id) {
-      <li>
-        <app-transaction-item [transaction]="transaction" />
-      </li>
+    <li>
+      <app-transaction-item [transaction]="transaction" />
+    </li>
     } @empty {
-      <li aria-hidden="true">
-        Ainda não há transações
-      </li>
+    <li aria-hidden="true" class="empty-state">Ainda não há transações</li>
     }
   </ul>
 </aside>

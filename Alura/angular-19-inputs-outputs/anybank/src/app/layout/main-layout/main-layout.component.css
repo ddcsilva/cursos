@@ -12,14 +12,18 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  min-width: 0;
 }
 
-.extrato {
-  flex-basis: 17.625rem;
+.transaction-history {
+  flex-basis: 20rem;
+  min-width: 18rem;
+  flex-shrink: 0;
 }
 
 @media screen and (max-width: 48rem) {
-  .extrato {
+  .transaction-history {
     flex-basis: 100%;
+    min-width: 100%;
   }
 }

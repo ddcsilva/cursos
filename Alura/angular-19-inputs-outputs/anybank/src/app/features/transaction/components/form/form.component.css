@@ -48,7 +48,7 @@
   align-items: center;
   gap: 0.5rem;
 
-  transition: border 0.3s;
+  transition: border 0.3s ease-in-out;
 }
 
 .input:focus {
@@ -68,7 +68,7 @@
   right: 1.5rem;
 }
 
-.select-type-transaction {
+.select-transaction-type {
   padding-right: 3.5rem;
   appearance: none;
   background-color: transparent;
@@ -127,4 +127,10 @@
 
 .confirm-button:focus {
   background: var(--azul-pressionado);
+}
+
+.confirm-button:disabled {
+  background: var(--cinza);
+  cursor: not-allowed;
+  opacity: 0.6;
 }

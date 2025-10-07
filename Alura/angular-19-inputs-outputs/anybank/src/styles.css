@@ -43,3 +43,9 @@ ul,
 li {
   list-style: none;
 }
+
+select,
+button,
+[type='submit'] {
+  cursor: pointer;
+}

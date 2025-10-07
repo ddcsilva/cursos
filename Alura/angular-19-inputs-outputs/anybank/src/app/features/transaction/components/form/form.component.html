@@ -6,10 +6,10 @@
       <label class="input-group">
         Transação
         <div class="select-container">
-          <select [(ngModel)]="typeTransaction" name="type-transaction" class="input select-type-transaction" required>
+          <select [(ngModel)]="transactionType" name="transaction-type" class="input select-transaction-type" required>
             <option value="" selected disabled>Selecione o tipo de transação</option>
             @for (type of transactionTypeEnum | keyvalue; track type.key) {
-              <option [value]="type.value">{{ type.value }}</option>
+            <option [value]="type.value">{{ type.value }}</option>
             }
           </select>
         </div>
@@ -30,7 +30,9 @@
         </div>
       </label>
 
-      <button type="submit" class="confirm-button">Confirmar Transação</button>
+      <button type="submit" class="confirm-button" [disabled]="!transactionValue || !transactionType">
+        Confirmar Transação
+      </button>
     </div>
   </form>
 </main>

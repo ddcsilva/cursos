@@ -3,14 +3,36 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  animation: slideIn 0.3s ease-out;
+  transition: background-color 0.2s;
+}
+
+.transaction-item:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .transaction-value {
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 600;
+  flex-shrink: 0;
 }
 
 .date {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 400;
+  color: var(--cinza-escuro);
+  white-space: nowrap;
 }
