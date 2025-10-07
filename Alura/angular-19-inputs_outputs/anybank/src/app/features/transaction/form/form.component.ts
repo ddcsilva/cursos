@@ -12,7 +12,7 @@ export class FormComponent {
   typeTransaction = '';
 
   onSubmit() {
-    console.log(this.transactionValue);
-    console.log(this.typeTransaction);
+    this.transactionValue = '';
+    this.typeTransaction = '';
   }
 }
