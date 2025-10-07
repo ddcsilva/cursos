@@ -1,7 +1,7 @@
 import { KeyValuePipe } from '@angular/common';
 import { Component, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Transaction, TransactionType } from '../models/transaction.model';
+import { Transaction, TransactionType } from '../../models/transaction.model';
 
 @Component({
   selector: 'app-form',

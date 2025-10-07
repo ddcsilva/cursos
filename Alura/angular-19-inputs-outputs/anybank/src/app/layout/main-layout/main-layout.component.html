@@ -3,4 +3,6 @@
     <app-header [balance]="balance()" />
     <app-form (transactionCreated)="onProcessTransaction($event)" />
   </div>
+
+  <app-transaction-history class="transaction-history" />
 </div>
