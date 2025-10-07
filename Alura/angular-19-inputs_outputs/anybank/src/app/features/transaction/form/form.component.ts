@@ -8,9 +8,11 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './form.component.css',
 })
 export class FormComponent {
-  transactionValue = '40.00';
+  transactionValue = '';
+  typeTransaction = '';
 
   onSubmit() {
     console.log(this.transactionValue);
+    console.log(this.typeTransaction);
   }
 }

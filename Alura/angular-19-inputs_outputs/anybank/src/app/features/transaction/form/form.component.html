@@ -1,12 +1,12 @@
 <main class="form-container">
-  <form (ngSubmit)="onSubmit()" class="form">
+  <form (ngSubmit)="onSubmit()" class="form" ngNativeValidate>
     <h2 class="title">Nova Transação</h2>
 
     <div class="inputs">
       <label class="input-group">
         Transação
         <div class="select-container">
-          <select name="type-transaction" class="input select-type-transaction" required>
+          <select [(ngModel)]="typeTransaction" name="type-transaction" class="input select-type-transaction" required>
             <option value="" selected disabled>Selecione o tipo de transação</option>
             <option value="deposit">Depósito</option>
             <option value="withdraw">Saque</option>
@@ -29,7 +29,7 @@
         </div>
       </label>
 
-      <button type="button" class="confirm-button">Confirmar Transação</button>
+      <button type="submit" class="confirm-button">Confirmar Transação</button>
     </div>
   </form>
 </main>
