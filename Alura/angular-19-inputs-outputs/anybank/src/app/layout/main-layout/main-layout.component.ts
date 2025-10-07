@@ -1,6 +1,6 @@
 import { Component, computed, signal } from '@angular/core';
 import { FormComponent } from '../../features/transaction/form/form.component';
-import { Transaction } from '../../features/transaction/models/transaction.model';
+import { Transaction, TransactionType } from '../../features/transaction/models/transaction.model';
 import { HeaderComponent } from '../header/header.component';
 
 @Component({
@@ -14,7 +14,14 @@ export class MainLayoutComponent {
 
   balance = computed(() => {
     return this.transactions().reduce((acc, transaction) => {
-      return acc + transaction.value;
+      switch (transaction.type) {
+        case TransactionType.DEPOSIT:
+          return acc + transaction.value;
+        case TransactionType.WITHDRAW:
+          return acc - transaction.value;
+        default:
+          throw new Error('Tipo de transação inválido');
+      }
     }, 0);
   });
 
