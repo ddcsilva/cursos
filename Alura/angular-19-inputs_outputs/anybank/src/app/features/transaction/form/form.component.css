@@ -73,3 +73,58 @@
   appearance: none;
   background-color: transparent;
 }
+
+.input-container {
+  position: relative;
+}
+
+.input-container::before {
+  position: absolute;
+  content: "R$";
+  top: 0.5938rem;
+  left: 1rem;
+
+  color: var(--cinza-escuro);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.input-container:has(.input-valor-transacao:not(:placeholder-shown))::before {
+  color: var(--preto);
+}
+
+.input-value-transaction {
+  width: 100%;
+  padding-left: 2.88rem;
+  background-color: transparent;
+}
+
+.input-value-transaction::placeholder {
+  color: var(--cinza-escuro);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.confirm-button {
+  border-radius: 1rem;
+  background: var(--azul-destaques);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  display: flex;
+  padding: 0.5rem 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+
+  transition: background-color 0.3s;
+}
+
+.confirm-button:hover {
+  background: var(--azul-hover);
+}
+
+.confirm-button:focus {
+  background: var(--azul-pressionado);
+}
