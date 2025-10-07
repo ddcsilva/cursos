@@ -26,7 +26,11 @@ export class MainLayoutComponent {
   });
 
   onProcessTransaction(transaction: Transaction) {
+    if (transaction.type === TransactionType.WITHDRAW && transaction.value > this.balance()) {
+      alert('Não é possível sacar um valor maior que o saldo');
+      return;
+    }
+
     this.transactions.update(current => [transaction, ...current]);
-    console.table(this.transactions());
   }
 }
