@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { FormComponent } from '../../features/transaction/form/form.component';
 import { Transaction } from '../../features/transaction/models/transaction.model';
 import { HeaderComponent } from '../header/header.component';
@@ -11,6 +11,12 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class MainLayoutComponent {
   transactions = signal<Transaction[]>([]);
+
+  balance = computed(() => {
+    return this.transactions().reduce((acc, transaction) => {
+      return acc + transaction.value;
+    }, 0);
+  });
 
   onProcessTransaction(transaction: Transaction) {
     this.transactions.update(current => [transaction, ...current]);
