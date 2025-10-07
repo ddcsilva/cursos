@@ -62,7 +62,7 @@
 
 .select-container::after {
   position: absolute;
-  content: "▼";
+  content: '▼';
   font-size: 0.9rem;
   top: 0.625rem;
   right: 1.5rem;
@@ -80,7 +80,7 @@
 
 .input-container::before {
   position: absolute;
-  content: "R$";
+  content: 'R$';
   top: 0.5938rem;
   left: 1rem;
 

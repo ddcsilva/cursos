@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
-import { FormComponent } from "../../features/transaction/form/form.component";
+import { FormComponent } from '../../features/transaction/form/form.component';
 
 @Component({
   selector: 'app-main-layout',

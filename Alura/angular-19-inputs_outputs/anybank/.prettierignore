@@ -1,0 +1,25 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+.angular
+build
+coverage
+
+# Package manager
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode
+.idea
+
+# Outros
+*.min.js
+*.min.css
