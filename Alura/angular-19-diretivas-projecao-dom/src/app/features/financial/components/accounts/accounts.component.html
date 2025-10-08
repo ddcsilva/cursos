@@ -1,24 +1,22 @@
-<section>
-  <div class="title-container">
+<app-card>
+  <ng-container card-title>
     <h2 class="texto-lg">Minhas contas</h2>
-  </div>
+  </ng-container>
 
-  <div class="body-card">
-    <div class="accounts-and-button">
-      <ul>
-        @for (account of accounts(); track account.name) {
-          <li>
-            <app-account [account]="account" />
-          </li>
-        } @empty {
-          <li aria-hidden="true">Ainda não há contas criadas.</li>
-        }
-      </ul>
+  <div class="accounts-and-button">
+    <ul>
+      @for (account of accounts(); track account.name) {
+        <li class="item-entre-divisorias">
+          <app-account [account]="account" />
+        </li>
+      } @empty {
+        <li aria-hidden="true">Ainda não há contas criadas.</li>
+      }
+    </ul>
 
-      <app-button class="add-account-button">
-        <img src="icones/carteira.svg" alt="" class="waller-icon" />
-        Adicionar conta
-      </app-button>
-    </div>
+    <app-button class="add-account-button">
+      <img src="icones/carteira.svg" alt="" class="waller-icon" />
+      Adicionar conta
+    </app-button>
   </div>
-</section>
+</app-card>
