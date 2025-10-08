@@ -1,0 +1,24 @@
+.transaction {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name-and-value {
+  width: 70%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.name {
+  font-weight: 700;
+}
+
+.date-and-account {
+  width: 30%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

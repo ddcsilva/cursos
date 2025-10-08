@@ -1,0 +1,21 @@
+<section>
+  <div class="title-container">
+    <h2 class="texto-lg">Movimentação financeira</h2>
+  </div>
+
+  <div class="body-card">
+    <div class="transactions-and-button">
+      <ul>
+        @for (transaction of transactions(); track transaction.id) {
+          <li class="item-entre-divisorias">
+            <app-transaction [transaction]="transaction" />
+          </li>
+        } @empty {
+          <li aria-hidden="true">Ainda não há transações.</li>
+        }
+      </ul>
+
+      <app-button class="add-transaction-button" texto="Adicionar transação" />
+    </div>
+  </div>
+</section>

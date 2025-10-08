@@ -1,0 +1,21 @@
+<section>
+  <div class="title-container">
+    <h2 class="texto-lg">Minhas contas</h2>
+  </div>
+
+  <div class="body-card">
+    <div class="accounts-and-button">
+      <ul>
+        @for (account of accounts(); track account.name) {
+          <li>
+            <app-account [account]="account" />
+          </li>
+        } @empty {
+          <li aria-hidden="true">Ainda não há contas criadas.</li>
+        }
+      </ul>
+
+      <app-button class="add-account-button" texto="Adicionar conta" />
+    </div>
+  </div>
+</section>

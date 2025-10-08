@@ -1,0 +1,28 @@
+.account {
+  display: flex;
+  align-items: center;
+}
+
+.bank {
+  width: 70%;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bank-name {
+  font-weight: 700;
+}
+
+.balance {
+  width: 30%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.balance-text {
+  font-weight: 700;
+}
