@@ -2,7 +2,7 @@ import { Component, input } from '@angular/core';
 import { AccountComponent } from './account/account.component';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { Account } from '../../models/account.model';
-import { CardComponent } from "../financial-area/card/card.component";
+import { CardComponent } from '../../../../shared/components/card/card.component';
 
 @Component({
   selector: 'app-accounts',

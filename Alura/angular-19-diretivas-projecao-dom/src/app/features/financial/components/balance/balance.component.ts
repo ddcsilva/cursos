@@ -1,7 +1,7 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { HighlightNumericValueDirective } from '../../../../shared/directives/highlight-numeric-value.directive';
-import { CardComponent } from '../financial-area/card/card.component';
+import { CardComponent } from '../../../../shared/components/card/card.component';
 
 @Component({
   selector: 'app-balance',

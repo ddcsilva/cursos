@@ -2,7 +2,7 @@ import { Component, input } from '@angular/core';
 import { TransactionComponent } from './transaction/transaction.component';
 import { Transaction } from '../../models/transaction.model';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
-import { CardComponent } from "../financial-area/card/card.component";
+import { CardComponent } from '../../../../shared/components/card/card.component';
 
 @Component({
   selector: 'app-transactions',
