@@ -1,5 +1,5 @@
 <div class="transaction">
-  <div class="name-and-value">
+  <div class="name-and-value" [appHighlightNumericValue]="value()">
     <span class="name texto-md">{{ transaction().name || transaction().type }}</span>
     <span class="texto-md">{{ value() | currency: 'BRL' }}</span>
   </div>

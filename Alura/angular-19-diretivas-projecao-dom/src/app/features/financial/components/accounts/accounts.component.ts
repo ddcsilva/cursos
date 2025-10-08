@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { AccountComponent } from './account/account.component';
-import { ButtonComponent } from '../../../../shared/button/button.component';
+import { ButtonComponent } from '../../../../shared/Components/button/button.component';
 import { Account } from '../../models/account.model';
 
 @Component({

@@ -12,7 +12,7 @@ import { Account } from '../../models/account.model';
   styleUrl: './financial-area.component.css',
 })
 export class FinancialAreaComponent {
-  balance = 0;
+  balance = 30;
 
   transactions: Transaction[] = [
     {
