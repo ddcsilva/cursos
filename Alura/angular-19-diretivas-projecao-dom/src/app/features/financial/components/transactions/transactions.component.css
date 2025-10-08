@@ -21,3 +21,7 @@
 .add-transaction-button {
   margin: 0 auto;
 }
+
+.coin-icon {
+  width: 1rem;
+}

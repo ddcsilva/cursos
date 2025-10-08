@@ -6,6 +6,4 @@ import { Component, input } from '@angular/core';
   templateUrl: './button.component.html',
   styleUrl: './button.component.css',
 })
-export class ButtonComponent {
-  texto = input.required<string>();
-}
+export class ButtonComponent {}
